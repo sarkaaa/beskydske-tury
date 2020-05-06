@@ -25,7 +25,7 @@ type Props = {
 
 const Link = ({ children, href,...props }: Props) => (
   <>
-    <StyledLink href={href} {...props}>{ children }</StyledLink>
+    <StyledLink href={href} {...props}>{children}</StyledLink>
   </>
 )
 
