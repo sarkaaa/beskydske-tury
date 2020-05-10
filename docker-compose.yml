@@ -9,8 +9,8 @@ services:
       - "9929:9929"
       - "9230:9230"
     volumes:
-      - /app/node_modules
-      - .:/app
+      - /home/node/node_modules
+      - .:/home/node
     environment:
       - NODE_ENV=development
       - GATSBY_WEBPACK_PUBLICPATH=/
