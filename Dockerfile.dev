@@ -1,0 +1,24 @@
+FROM node:alpine
+
+# Also exposing VSCode debug ports
+EXPOSE 8888 9929 9230
+
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+ENV PATH=$PATH:/home/node/.npm-global/bin
+
+RUN \
+  apk add --no-cache python make g++ && \
+  apk add vips-dev fftw-dev --update-cache \
+  --repository http://dl-3.alpinelinux.org/alpine/edge/community \
+  --repository http://dl-3.alpinelinux.org/alpine/edge/main \
+  && rm -fR /var/cache/apk/*
+
+USER node
+WORKDIR /home/node
+RUN npm install -g gatsby-cli
+
+COPY package.json .
+RUN yarn install && yarn cache clean
+COPY . .
+CMD ["yarn", "develop", "-H", "0.0.0.0", "--port", "8888" ]
+
