@@ -32,14 +32,14 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Nunito`,
+            family: `Lato`,
             subsets: [`latin-ext`],
-            variants: [`400`, `700`],
+            variants: [`400`, `700`, `900`],
           },
           {
-            family: `Pacifico`,
+            family: `Merriweather`,
             subsets: [`latin-ext`],
-            variants: [`400`, `600`],
+            variants: [`300`, `400`, `700`],
           },
         ],
       },
