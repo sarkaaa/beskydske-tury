@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 6rem 0;
+  padding: 8rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
   display: flex;
   flex-direction: column;
@@ -15,14 +15,22 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.dark};
   text-align: center;
-  font-family: 'Pacifico', cursive;
-  font-size: 4rem;
+  font-family: 'Lato', sans-serif;
+  font-size: ${({ theme }) => theme.sizes.sizeXL};
   line-height: 1.7;
-  font-weight: 400;
+  font-weight: 900;
 
   @media screen and (min-width: 420px) {
-      font-size: 5rem;
+      font-size: ${({ theme }) => theme.sizes.sizeXXL};
   }
+`
+
+const SubTitle = styled.h2`
+  color: ${({ theme }) => theme.colors.dark};
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  line-height: 1;
+  font-weight: 400;
 `
 
 type Props = {
@@ -37,9 +45,9 @@ const Header = ({ title, subtitle = null}: Props) => (
     </Title>
     {
       subtitle && 
-      <h2>
+      <SubTitle>
         {subtitle}
-      </h2>
+      </SubTitle>
     }    
   </Wrapper>
 )

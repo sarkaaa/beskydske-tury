@@ -7,8 +7,8 @@ const Icon = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0.25rem;
-  border-radius: 1.25rem;
+  padding: 0.1rem;
+  border-radius: 1.5rem;
   transition: linear 0.25s;
   background-color: ${({ theme }) => theme.colors.light};
 

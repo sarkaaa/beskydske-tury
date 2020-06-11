@@ -5,8 +5,11 @@ const StyledLink = styled.a`
   position: relative;
   display: inline-block;
   color: ${({ theme }) => theme.colors.dark};
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
   line-height: 1;
   text-decoration: none;
+  letter-spacing: 1px;
   padding: 4px 0.3rem;
   margin: 0 0.1rem;
   overflow: hidden;
@@ -23,7 +26,7 @@ const StyledLink = styled.a`
     left: 0;
     bottom: -2px;
     background-image: linear-gradient(-50deg, #0a5913, #5cc460);
-    border-radius: 0.25rem;
+    border-radius: 0;
     transform: translateY(calc(100% - 2px));
     transition: transform .25s ease-out;
     z-index: -1;
@@ -35,6 +38,7 @@ const StyledLink = styled.a`
     &::before {
       transform: translateY(0);
       transition: transform .25s ease-out;
+      border-radius: 0.25rem;
     }
   }
 `

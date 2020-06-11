@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import styled, { ThemeProvider } from 'styled-components'
+import GlobalStyles from '../constants/globalStyles'
 import theme from '../constants/theme'
 
 import Link from './link'
-import Icon from './social'
-import "./layout.css"
+import Icon from './icon'
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
@@ -69,7 +69,7 @@ const Footer = styled.footer`
 
   & > span {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Lato', sans-serif;
     text-align: center;
     font-size: 1rem;
   }
@@ -87,12 +87,16 @@ type Props = {
 
 const Layout = ({ children }: Props) => (
   <ThemeProvider theme={theme}>
+    <GlobalStyles />
     <Wrapper>
       <Navbar>
         <span>logo</span>
         <Categories>
           <li>
             <Link href="/">Domovská stránka</Link>
+          </li>
+          <li>
+            <Link href="/about">O webu & kontakt</Link>
           </li>
         </Categories>
       </Navbar>

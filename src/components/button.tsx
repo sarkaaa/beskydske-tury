@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 const Button = styled.button<{ bordered?: boolean }>`
   border-radius: 3rem;
   padding: 0.6rem 2.5rem;
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.sizes.sizeS};
   color: ${({ theme }) => theme.colors.light};
   border: solid 4px transparent;
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-50deg, #0D7419, #4ec752, #6ADD6E);
@@ -17,6 +17,7 @@ const Button = styled.button<{ bordered?: boolean }>`
   `}
   
   &:hover {
+    cursor: pointer;
     box-shadow: none;
     color: ${({ theme }) => theme.colors.light};
     background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-50deg, #0a5913, #5cc460);
