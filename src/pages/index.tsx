@@ -1,13 +1,12 @@
 import React from "react"
+import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from '../components/button'
 import Header from '../components/header'
-
-const Container = styled.div`
-  padding: 3rem 6rem;
-`
+import Emoji from "../components/emoji";
+import Container from "../components/container";
 
 const Title = styled.h3`
   text-align: center;
@@ -22,6 +21,9 @@ const InfoWrapper = styled.div`
 
 const InfoContainer = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `
 
 const ButtonWrapper = styled.div<{ centered?: boolean }>`
@@ -37,11 +39,14 @@ const SpaceDiv = styled.div`
 
 const HorizontalInfo = styled.div`
   display: flex;
-  align-items: baseline;
+  align-items: center;
   margin-top: 5rem;
 
   & div {
     flex: 1;
+    &:first-child {
+      text-align: center;
+    }
   }
 `
 
@@ -52,29 +57,31 @@ const IndexPage = () => (
       <Container>
       <InfoWrapper>
         <InfoContainer>
-          <span>image</span> 
+          <Emoji label="mountain" symbol="⛰" emojiSize="large" />
           <Title>Trasy</Title>
           <p>Do laboris reprehenderit excepteur ullamco cillum in commodo incididunt eiusmod nisi cillum consectetur. Magna nisi tempor consequat nostrud velit. Proident Lorem eiusmod exercitation aliqua consequat amet anim enim. Cupidatat ad deserunt commodo dolor exercitation ut voluptate cillum tempor laboris occaecat commodo sint. Esse consequat deserunt adipisicing nostrud anim culpa.</p>
         </InfoContainer>
         <SpaceDiv />
         <InfoContainer>
-          <span>image</span> 
+        <Emoji label="map" symbol="🗺" emojiSize="large" />          
           <Title>Stažení do Mapy.cz</Title>
           <p>Do laboris reprehenderit excepteur ullamco cillum in commodo incididunt eiusmod nisi cillum consectetur. Magna nisi tempor consequat nostrud velit. Proident Lorem eiusmod exercitation aliqua consequat amet anim enim. Cupidatat ad deserunt commodo dolor exercitation ut voluptate cillum tempor laboris occaecat commodo sint. Esse consequat deserunt adipisicing nostrud anim culpa.</p>
         </InfoContainer>
         <SpaceDiv />
         <InfoContainer>
-          <span>image</span> 
+          <Emoji label="community" symbol="🐜" emojiSize="large" />
           <Title>Komunita</Title>
           <p>Do laboris reprehenderit excepteur ullamco cillum in commodo incididunt eiusmod nisi cillum consectetur. Magna nisi tempor consequat nostrud velit. Proident Lorem eiusmod exercitation aliqua consequat amet anim enim. Cupidatat ad deserunt commodo dolor exercitation ut voluptate cillum tempor laboris occaecat commodo sint. Esse consequat deserunt adipisicing nostrud anim culpa.</p>
         </InfoContainer>
       </InfoWrapper>
       <ButtonWrapper centered>
-        <Button onClick={() => {}}>Přejít na trasy</Button>
+        <Link to="/trasy">
+          <Button>Přejít na trasy</Button>
+        </Link>
       </ButtonWrapper>
       <HorizontalInfo>
         <div>
-          <span>image</span>
+          <Emoji label="opensource" symbol="👩🏻‍💻🐻👨🏼‍💻" emojiSize="large" />
         </div>
         <div>       
           <h3>Open source project</h3>

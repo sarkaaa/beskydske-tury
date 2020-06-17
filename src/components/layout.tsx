@@ -54,18 +54,28 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.light};
   padding: 3rem 0;
 `
 
 const Footer = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   width: 100%;
   margin: 0;
   padding: 1rem 3rem;
   border-top: 1px solid ${({ theme }) => theme.colors.gray};
+`
+
+const FooterContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  @media screen and (min-width: 1200px) {
+    width: 1140px;
+  }
 
   & > span {
     color: ${({ theme }) => theme.colors.dark};
@@ -93,32 +103,37 @@ const Layout = ({ children }: Props) => (
         <span>logo</span>
         <Categories>
           <li>
-            <Link href="/">Domovská stránka</Link>
+            <Link to="/" navLink>Domovská stránka</Link>
           </li>
           <li>
-            <Link href="/about">O webu & kontakt</Link>
+            <Link to="/trasy" navLink>Trasy</Link>
+          </li>
+          <li>
+            <Link to="/kontakt" navLink>O webu & kontakt</Link>
           </li>
         </Categories>
       </Navbar>
       <Main>{children}</Main>
       <Footer>
-        <span>
-          Beskydské túry, 2020
-        </span>
-        <span>
-          Vytvořila <Link href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</Link> | Open source projekt
-        </span>
-        <IconsWrapper>
-          <Icon href="mailto:info@beskydsketury.cz">
-            <FontAwesomeIcon icon={faEnvelope} />
-          </Icon>
-          <Icon href="https://github.com/sarkaaa/beskydske-tury" target="_blank">
-            <FontAwesomeIcon icon={faGithub} />
-          </Icon>
-          <Icon href="https://www.instagram.com/beskydsketury/" target="_blank">
-            <FontAwesomeIcon icon={faInstagram} />
-          </Icon>
-        </IconsWrapper>
+        <FooterContainer>
+          <span>
+            Beskydské túry, 2020
+          </span>
+          <span>
+            Vytvořila <Link href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</Link> | Open source projekt
+          </span>
+          <IconsWrapper>
+            <Icon href="mailto:info@beskydsketury.cz">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </Icon>
+            <Icon href="https://github.com/sarkaaa/beskydske-tury" target="_blank">
+              <FontAwesomeIcon icon={faGithub} />
+            </Icon>
+            <Icon href="https://www.instagram.com/beskydsketury/" target="_blank">
+              <FontAwesomeIcon icon={faInstagram} />
+            </Icon>
+          </IconsWrapper>
+        </FooterContainer>
       </Footer>
     </Wrapper>
   </ThemeProvider>

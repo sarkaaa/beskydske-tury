@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 8rem 0;
+  padding: 5rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@ const Title = styled.h1`
   text-align: center;
   font-family: 'Lato', sans-serif;
   font-size: ${({ theme }) => theme.sizes.sizeXL};
-  line-height: 1.7;
+  line-height: 1.2;
   font-weight: 900;
 
   @media screen and (min-width: 420px) {
