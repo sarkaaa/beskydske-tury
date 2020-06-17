@@ -4,17 +4,18 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from '../components/button'
 import Header from '../components/header'
+import Container from "../components/container";
 
-const About = () => (
+const Kontakt = () => (
   <Layout>
-    <SEO title="O webu & kontakt" />
-    <Header title="O webu & kontakt" />
-    <div>
+    <SEO title="Trasy" />
+    <Header title="Trasy" />
+    <Container>
       <p>
         Enim ad sit labore duis mollit fugiat magna ipsum dolore nulla. Enim officia non ullamco tempor mollit id eiusmod exercitation minim in. Nostrud nostrud eu laboris laborum.
       </p>
-    </div>
+    </Container>
   </Layout>
 )
 
-export default About
+export default Kontakt
