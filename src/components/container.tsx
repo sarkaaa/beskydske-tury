@@ -1,12 +1,24 @@
-import * as React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  width: 100%;
-  
-  @media screen and (min-width: 1200px) {
+  width: auto;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media ${({ theme }) => theme.sizes.screenWidth.mobile} {
+    width: 540px;
+  }
+
+  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+    width: 720px;
+  }
+
+  @media ${({ theme }) => theme.sizes.screenWidth.desktopLG} {
+    width: 960px;
+  }
+
+  @media ${({ theme }) => theme.sizes.screenWidth.desktopXL} {
     width: 1140px;
-    padding: 3rem 6rem;
   }
 `
 export default Container

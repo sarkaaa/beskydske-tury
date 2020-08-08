@@ -12,6 +12,14 @@ const Wrapper = styled.div`
   margin: 1rem;
 `
 
+const Title = styled.h1`
+  text-align: center;
+`
+
+const Subtitle = styled.h2`
+  text-align: center;
+`
+
 // const Title = styled.h1`
 //   color: ${({ theme }) => theme.colors.dark};
 //   text-align: center;
@@ -40,14 +48,14 @@ type Props = {
 
 const Header = ({ title, subtitle = null}: Props) => (
   <Wrapper>
-    <h1>
+    <Title>
       {title}
-    </h1>
+    </Title>
     {
       subtitle && 
-      <h2>
+      <Subtitle>
         {subtitle}
-      </h2>
+      </Subtitle>
     }    
   </Wrapper>
 )

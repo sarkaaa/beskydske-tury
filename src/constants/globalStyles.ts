@@ -1,6 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyles = createGlobalStyle`
+  *::selection {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
   body {
     margin: 0;
     padding: 0;
@@ -10,8 +13,9 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeXL};
+    text-align: center;
   }
-  @media screen and (min-width: 420px) {
+  @media ${({ theme }) => theme.sizes.screenWidth.mobileXS} {
     h1 {
       font-size: ${({ theme }) => theme.sizes.sizeXXL};
     }
