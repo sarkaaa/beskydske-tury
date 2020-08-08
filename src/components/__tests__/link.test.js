@@ -3,18 +3,18 @@ import renderer from "react-test-renderer"
 import { ThemeProvider } from "styled-components"
 import "jest-styled-components"
 
-import Button from "../button"
+import StyledLink from "../link"
 import theme from "../../constants/theme"
 
 const Wrapper = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 )
 
-test("Button renders correctly", () => {
+test("Link renders correctly", () => {
   const tree = renderer
     .create(
       <Wrapper>
-        <Button onClick={() => {}}>Hello World</Button>
+        <StyledLink href="/">Domovská stránka</StyledLink>
       </Wrapper>
     )
     .toJSON()

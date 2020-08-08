@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Emoji renders correctly 1`] = `
+.c0 {
+  font-size: 10rem;
+}
+
+<span
+  aria-hidden="false"
+  aria-label="label"
+  className="c0"
+  role="img"
+>
+  🐻
+</span>
+`;

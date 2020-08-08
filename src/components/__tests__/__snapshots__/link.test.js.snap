@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link renders correctly 1`] = `
+.c0 {
+  position: relative;
+  display: inline-block;
+  margin: 0 0.1rem;
+  overflow: hidden;
+  vertical-align: bottom;
+  z-index: 0;
+  -webkit-transition: ease-out .4s;
+  transition: ease-out .4s;
+}
+
+.c0:hover a {
+  color: #0D7419;
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c0:hover::before {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  -webkit-transition: -webkit-transform .25s ease-out;
+  -webkit-transition: transform .25s ease-out;
+  transition: transform .25s ease-out;
+  border-radius: 0.25rem;
+}
+
+.c0 a {
+  color: #4A4A4A;
+  font-family: 'Lato',sans-serif;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
+}
+
+<div
+  className="c0"
+>
+  <a
+    href="/"
+  >
+    Domovská stránka
+  </a>
+</div>
+`;
