@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Link } from 'gatsby'
 import styled, { css } from 'styled-components'
 
-const StyledLinkWrapper = styled.div<{navLink}>`
+const StyledLinkWrapper = styled.div<{ navLink?: boolean }>`
   position: relative;
   display: inline-block;
   margin: 0 0.1rem;

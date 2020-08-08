@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const TitleWrapper = styled.h3<{ centered?: boolean }>`
   color: ${({ theme }) => theme.colors.dark};
@@ -18,7 +18,7 @@ type Props = {
   children: React.ReactNode;
 }
 
-const Title = ({ size, centered=false, children }: Props) => (
+const Title = ({ size, centered = false, children }: Props) => (
   <TitleWrapper centered={centered} size={size}>
     {children}
   </TitleWrapper>

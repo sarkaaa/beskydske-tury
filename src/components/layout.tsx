@@ -1,12 +1,9 @@
 import React from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from '../constants/globalStyles'
 import theme from '../constants/theme'
 
-import Link from './link'
+import StyledLink from './link'
 import Icon from './icon'
 
 const Wrapper = styled.div`
@@ -77,7 +74,7 @@ const FooterContainer = styled.div`
     width: 1140px;
   }
 
-  & > span {
+  & > p {
     color: ${({ theme }) => theme.colors.dark};
     font-family: 'Lato', sans-serif;
     text-align: center;
@@ -100,38 +97,32 @@ const Layout = ({ children }: Props) => (
     <GlobalStyles />
     <Wrapper>
       <Navbar>
-        <span>logo</span>
+        <p>logo</p>
         <Categories>
           <li>
-            <Link to="/" navLink>Domovská stránka</Link>
+            <StyledLink to="/" navLink>Domovská stránka</StyledLink>
           </li>
           <li>
-            <Link to="/trasy" navLink>Trasy</Link>
+            <StyledLink to="/trasy" navLink>Trasy</StyledLink>
           </li>
           <li>
-            <Link to="/kontakt" navLink>O webu & kontakt</Link>
+            <StyledLink to="/kontakt" navLink>O webu & kontakt</StyledLink>
           </li>
         </Categories>
       </Navbar>
       <Main>{children}</Main>
       <Footer>
         <FooterContainer>
-          <span>
+          <p>
             Beskydské túry, 2020
-          </span>
-          <span>
-            Vytvořila <Link href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</Link> | Open source projekt
-          </span>
+          </p>
+          <p>
+            Vytvořila <StyledLink href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</StyledLink> | Open source projekt
+          </p>
           <IconsWrapper>
-            <Icon href="mailto:info@beskydsketury.cz">
-              <FontAwesomeIcon icon={faEnvelope} />
-            </Icon>
-            <Icon href="https://github.com/sarkaaa/beskydske-tury" target="_blank">
-              <FontAwesomeIcon icon={faGithub} />
-            </Icon>
-            <Icon href="https://www.instagram.com/beskydsketury/" target="_blank">
-              <FontAwesomeIcon icon={faInstagram} />
-            </Icon>
+            <Icon to="mailto:info@beskydsketury.cz" iconName="email" />
+            <Icon to="https://github.com/sarkaaa/beskydske-tury" iconName="github" />
+            <Icon to="https://www.instagram.com/beskydsketury/" iconName="ig" />
           </IconsWrapper>
         </FooterContainer>
       </Footer>
