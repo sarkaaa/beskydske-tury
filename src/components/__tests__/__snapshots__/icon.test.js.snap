@@ -44,8 +44,8 @@ exports[`Icon renders correctly 1`] = `
 
 <a
   className="c0"
+  href="https://github.com"
   target="_blank"
-  to="https://github.com"
 >
   <svg
     aria-hidden="true"
