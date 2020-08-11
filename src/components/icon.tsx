@@ -44,7 +44,7 @@ type Props = {
 
 const Icon = ({ to, iconName }: Props) => (
   <>
-    <IconWrapper to={to} target="_blank">
+    <IconWrapper href={to} target="_blank">
       <FontAwesomeIcon icon={iconNames[iconName]} />
     </IconWrapper>
   </>

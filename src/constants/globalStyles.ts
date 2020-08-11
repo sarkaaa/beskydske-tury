@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
  
 const GlobalStyles = createGlobalStyle`
   *::selection {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    background-color: ${({ theme }) => theme.colors.selectionBg};
   }
   body {
     margin: 0;

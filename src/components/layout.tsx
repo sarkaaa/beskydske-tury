@@ -53,13 +53,14 @@ const Footer = styled.footer`
 `
 
 const FooterContainer = styled.div`
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin: 0 auto;
+  padding: 0 2rem;
 
   @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
     flex-direction: row;
