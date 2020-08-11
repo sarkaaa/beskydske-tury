@@ -32,9 +32,9 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Lato`,
+            family: `Noto Sans`,
             subsets: [`latin-ext`],
-            variants: [`400`, `700`, `900`],
+            variants: [`400`, `700`],
           },
           {
             family: `Merriweather`,

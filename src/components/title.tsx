@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 
 const TitleWrapper = styled.h3<{ centered?: boolean }>`
   color: ${({ theme }) => theme.colors.dark};
-  font-family: 'Lato', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: 900;
   font-size: 1.75rem;
 

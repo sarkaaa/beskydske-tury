@@ -2,7 +2,12 @@ import React from "react"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from '../constants/globalStyles'
 import theme from '../constants/theme'
+import {
+  useWindowSize,
+} from '@react-hook/window-size'
 
+import Navigation from './navigation'
+import MobileNavigation from './mobileNavigation'
 import StyledLink from './link'
 import Icon from './icon'
 
@@ -31,22 +36,6 @@ const Navbar = styled.div`
   z-index: 99999;
 `
 
-const Categories = styled.ul`
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-
-  & li {
-    float: left;
-    margin: 0.3rem 0.5rem;
-  }
-
-  & li a {
-    text-transform: uppercase;
-  }
-`
-
 const Main = styled.main`
   display: flex;
   flex-direction: column;
@@ -66,17 +55,23 @@ const Footer = styled.footer`
 const FooterContainer = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin: 0 auto;
 
-  @media screen and (min-width: 1200px) {
+  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+    flex-direction: row;
+  }
+
+  @media ${({ theme }) => theme.sizes.screenWidth.desktopXL} {
     width: 1140px;
   }
 
   & > p {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     text-align: center;
     font-size: 1rem;
   }
@@ -88,46 +83,59 @@ const IconsWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const CATEGORIES = [
+  {
+    title: "Domovská stránka",
+    to: "/"
+  },
+  {
+    title: "Trasy",
+    to: "/trasy"
+  },
+  {
+    title: "O webu & kontakt",
+    to: "/kontakt"
+  }
+]
+
 type Props = {
   children: React.ReactNode;
 }
 
-const Layout = ({ children }: Props) => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyles />
-    <Wrapper>
-      <Navbar>
-        <p>logo</p>
-        <Categories>
-          <li>
-            <StyledLink to="/" navLink>Domovská stránka</StyledLink>
-          </li>
-          <li>
-            <StyledLink to="/trasy" navLink>Trasy</StyledLink>
-          </li>
-          <li>
-            <StyledLink to="/kontakt" navLink>O webu & kontakt</StyledLink>
-          </li>
-        </Categories>
-      </Navbar>
-      <Main>{children}</Main>
-      <Footer>
-        <FooterContainer>
-          <p>
-            Beskydské túry, 2020
-          </p>
-          <p>
-            Vytvořila <StyledLink href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</StyledLink> | Open source projekt
-          </p>
-          <IconsWrapper>
-            <Icon to="mailto:info@beskydsketury.cz" iconName="email" />
-            <Icon to="https://github.com/sarkaaa/beskydske-tury" iconName="github" />
-            <Icon to="https://www.instagram.com/beskydsketury/" iconName="ig" />
-          </IconsWrapper>
-        </FooterContainer>
-      </Footer>
-    </Wrapper>
-  </ThemeProvider>
-)
+const Layout = ({ children }: Props) => {
+  const [width] = useWindowSize()
+
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Wrapper>
+        <Navbar>
+          <p>logo</p>
+          {
+            width > 700
+            ? <Navigation categories={CATEGORIES} />
+            : <MobileNavigation categories={CATEGORIES} />
+          }
+        </Navbar>
+        <Main>{children}</Main>
+        <Footer>
+          <FooterContainer>
+            <p>
+              Beskydské túry, 2020
+            </p>
+            <p>
+              Vytvořila <StyledLink href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</StyledLink> | Open source projekt
+            </p>
+            <IconsWrapper>
+              <Icon to="mailto:info@beskydsketury.cz" iconName="email" />
+              <Icon to="https://github.com/sarkaaa/beskydske-tury" iconName="github" />
+              <Icon to="https://www.instagram.com/beskydsketury/" iconName="ig" />
+            </IconsWrapper>
+          </FooterContainer>
+        </Footer>
+      </Wrapper>
+    </ThemeProvider>
+  )
+}
 
 export default Layout

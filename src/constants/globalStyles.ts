@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeXL};
     text-align: center;
+    line-height: 1.2;
   }
   @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
     h1 {
@@ -24,7 +25,13 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.dark};
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
-    font-size: ${({ theme }) => theme.sizes.sizeXL};
+    font-size: ${({ theme }) => theme.sizes.sizeL};
+    line-height: 1.25;
+  }
+  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+    h2 {
+      font-size: ${({ theme }) => theme.sizes.sizeXL};
+    }
   }
   h3 {
     color: ${({ theme }) => theme.colors.dark};

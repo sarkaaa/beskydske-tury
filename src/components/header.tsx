@@ -23,7 +23,7 @@ const Subtitle = styled.h2`
 // const Title = styled.h1`
 //   color: ${({ theme }) => theme.colors.dark};
 //   text-align: center;
-//   font-family: 'Lato', sans-serif;
+//   font-family: 'Noto Sans', sans-serif;
 //   font-size: ${({ theme }) => theme.sizes.sizeXL};
 //   line-height: 1.2;
 //   font-weight: 900;
@@ -36,7 +36,7 @@ const Subtitle = styled.h2`
 // const SubTitle = styled.h2`
 //   color: ${({ theme }) => theme.colors.dark};
 //   text-align: center;
-//   font-family: 'Lato', sans-serif;
+//   font-family: 'Noto Sans', sans-serif;
 //   line-height: 1;
 //   font-weight: 400;
 // `

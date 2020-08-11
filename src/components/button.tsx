@@ -4,7 +4,7 @@ const Button = styled.button<{ secondary?: boolean, small?: boolean }>`
   border-radius: 3rem;
   padding: 0.6rem 2.5rem;
   font-size: ${({ theme }) => theme.sizes.sizeS};
-  font-family: 'Lato', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   color: ${({ theme }) => theme.colors.light};
   border: solid 2px transparent;
   background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(-50deg, #0D7419, #4ec752, #6ADD6E);

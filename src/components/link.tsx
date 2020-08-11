@@ -12,7 +12,11 @@ const StyledLinkWrapper = styled.div<{ navLink?: boolean }>`
   transition: ease-out .4s;
 
   ${({ navLink }) => navLink && css`
-    padding: 4px 0.3rem;
+    padding: 0.25rem;
+    
+    & a {
+      padding: 0.25rem 0.3rem;
+    }
 
     &::before {
       content: "";
@@ -30,10 +34,12 @@ const StyledLinkWrapper = styled.div<{ navLink?: boolean }>`
     }
   `}
 
-  &:hover {
+  &:hover,
+  &:focus {
     & a {
       color: ${({ navLink, theme }) => navLink ? theme.colors.light : theme.colors.primary};
       text-decoration: ${({ navLink }) => navLink ? 'none' : 'underline'};
+      outline: none;
     }
 
     &::before {
@@ -45,7 +51,7 @@ const StyledLinkWrapper = styled.div<{ navLink?: boolean }>`
 
   & a {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 400;
     line-height: 1;
     text-decoration: none;
