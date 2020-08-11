@@ -10,25 +10,25 @@ const GlobalStyles = createGlobalStyle`
   }
   h1 {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeXL};
     text-align: center;
   }
-  @media ${({ theme }) => theme.sizes.screenWidth.mobileXS} {
+  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
     h1 {
       font-size: ${({ theme }) => theme.sizes.sizeXXL};
     }
   }
   h2 {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeXL};
   }
   h3 {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeM};
   }
