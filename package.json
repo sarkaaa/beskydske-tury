@@ -5,6 +5,11 @@
   "version": "0.1",
   "author": "Sarka Chwastkova <chwastkova.s@gmail.com>",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@react-hook/window-size": "^3.0.7",
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
@@ -15,9 +20,9 @@
     "@types/storybook__addon-links": "^5.2.1",
     "@types/storybook__react": "^5.2.1",
     "awesome-typescript-loader": "^5.2.1",
-    "babel-jest": "^25.4.0",
+    "babel-jest": "^26.2.2",
     "babel-plugin-styled-components": "^1.10.7",
-    "babel-preset-gatsby": "^0.4.0",
+    "babel-preset-gatsby": "^0.5.5",
     "babel-preset-react-app": "^9.1.2",
     "gatsby": "^2.20.35",
     "gatsby-image": "^2.3.5",
@@ -35,13 +40,17 @@
     "jest": "^25.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
+    "react-burger-menu": "^2.7.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
     "react-test-renderer": "^16.13.1",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "typescript": "^3.9.7"
   },
   "devDependencies": {
     "enzyme": "^3.11.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
     "jest-enzyme": "^7.1.2",
     "jest-styled-components": "^7.0.2",
     "prettier": "2.0.4"
@@ -57,7 +66,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
