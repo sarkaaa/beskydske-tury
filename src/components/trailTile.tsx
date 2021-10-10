@@ -3,15 +3,19 @@ import styled from 'styled-components'
 import Button from './button'
 import Label from './label'
 
+const TileWrapper = styled.div`
+  margin-bottom: 3rem;
+`
+
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 6rem;
+  height: 12rem;
   background: ${({ theme }) => theme.colors.primary};
 `
 
 const TrailTile = () => (
-  <div>
+  <TileWrapper>
     <div>
       <ImageWrapper>
         <Label>
@@ -41,7 +45,7 @@ const TrailTile = () => (
       <Button onClick={() => {}} secondary small>Detail</Button>
     </div>
 
-  </div>
+  </TileWrapper>
 )
 
 export default TrailTile

@@ -9,8 +9,12 @@ import Container from "../components/container";
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+
+  @media screen and (min-width: 720px) {
+    grid-template-columns: 1fr 2fr;
+  }
 `
 
 const CheckboxWrapper = styled.div`
@@ -22,7 +26,7 @@ const CheckboxWrapper = styled.div`
 const TrailsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 `
 
 

@@ -1,15 +1,13 @@
 import React from "react"
-import styled, { ThemeProvider } from 'styled-components'
-import GlobalStyles from '../constants/globalStyles'
-import theme from '../constants/theme'
-import {
-  useWindowSize,
-} from '@react-hook/window-size'
+import styled, { ThemeProvider } from "styled-components"
+import GlobalStyles from "../constants/globalStyles"
+import theme from "../constants/theme"
+import { useWindowSize } from "@react-hook/window-size"
 
-import Navigation from './navigation'
-import MobileNavigation from './mobileNavigation'
-import StyledLink from './link'
-import Icon from './icon'
+import Navigation from "./navigation"
+import MobileNavigation from "./mobileNavigation"
+import StyledLink from "./link"
+import Icon from "./icon"
 
 const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.light};
@@ -30,9 +28,9 @@ const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: rgba(255, 255, 255, 0.1);
   padding: 1rem 3rem;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+  /* border-bottom: 1px solid ${({ theme }) => theme.colors.gray}; */
   z-index: 99999;
 `
 
@@ -42,7 +40,7 @@ const Main = styled.main`
   align-items: center;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.light};
-  padding: 3rem 0;
+  padding: 0;
 `
 
 const Footer = styled.footer`
@@ -72,7 +70,7 @@ const FooterContainer = styled.div`
 
   & > p {
     color: ${({ theme }) => theme.colors.dark};
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     text-align: center;
     font-size: 1rem;
   }
@@ -82,25 +80,25 @@ const IconsWrapper = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-`;
+`
 
 const CATEGORIES = [
   {
     title: "Domovská stránka",
-    to: "/"
+    to: "/",
   },
   {
     title: "Trasy",
-    to: "/trasy"
+    to: "/trasy",
   },
   {
     title: "O webu & kontakt",
-    to: "/kontakt"
-  }
+    to: "/kontakt",
+  },
 ]
 
 type Props = {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Layout = ({ children }: Props) => {
@@ -112,25 +110,33 @@ const Layout = ({ children }: Props) => {
       <Wrapper>
         <Navbar>
           <p>logo</p>
-          {
-            width > 700
-            ? <Navigation categories={CATEGORIES} />
-            : <MobileNavigation categories={CATEGORIES} />
-          }
+          {width > 700 ? (
+            <Navigation categories={CATEGORIES} />
+          ) : (
+            <MobileNavigation categories={CATEGORIES} />
+          )}
         </Navbar>
         <Main>{children}</Main>
         <Footer>
           <FooterContainer>
+            <p>Beskydské túry, 2020</p>
             <p>
-              Beskydské túry, 2020
-            </p>
-            <p>
-              Vytvořila <StyledLink href="https://www.sarkachwastkova.cz" target="_blank">Šárka Chwastková</StyledLink> | Open source projekt
+              Vytvořila{" "}
+              <StyledLink href="https://www.pandacode.cz" target="_blank">
+                Šárka Chwastková
+              </StyledLink>{" "}
+              | Open source projekt
             </p>
             <IconsWrapper>
               <Icon to="mailto:info@beskydsketury.cz" iconName="email" />
-              <Icon to="https://github.com/sarkaaa/beskydske-tury" iconName="github" />
-              <Icon to="https://www.instagram.com/beskydsketury/" iconName="ig" />
+              <Icon
+                to="https://github.com/sarkaaa/beskydske-tury"
+                iconName="github"
+              />
+              <Icon
+                to="https://www.instagram.com/beskydsketury/"
+                iconName="ig"
+              />
             </IconsWrapper>
           </FooterContainer>
         </Footer>

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
- 
+
 const GlobalStyles = createGlobalStyle`
   *::selection {
     background-color: ${({ theme }) => theme.colors.selectionBg};
@@ -27,6 +27,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeL};
     line-height: 1.25;
+    text-align: center;
   }
   @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
     h2 {
@@ -38,6 +39,7 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     font-size: ${({ theme }) => theme.sizes.sizeM};
+    text-align: center;
   }
   p {
     color: ${({ theme }) => theme.colors.dark};
@@ -47,5 +49,5 @@ const GlobalStyles = createGlobalStyle`
     line-height: 2;
   }
 `;
- 
+
 export default GlobalStyles;

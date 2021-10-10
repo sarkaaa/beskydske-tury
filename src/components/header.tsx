@@ -1,19 +1,28 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
+import header from "../images/header.jpeg"
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 5rem 0;
+  height: 75vh;
+  padding: 1rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  margin: 1rem;
+  margin: 0;
+  background-image: url(${header});
+  background-size: cover;
+`
+
+const TitleContainer = styled.div`
+  margin-top: 6rem;
 `
 
 const Title = styled.h1`
   text-align: center;
+  margin-bottom: 0;
 `
 
 const Subtitle = styled.h2`
@@ -42,21 +51,17 @@ const Subtitle = styled.h2`
 // `
 
 type Props = {
-  title: string;
-  subtitle?: string;
+  title: string
+  subtitle?: string
 }
 
-const Header = ({ title, subtitle = null}: Props) => (
+const Header = ({ title, subtitle = null }: Props) => (
   <Wrapper>
-    <Title>
-      {title}
-    </Title>
-    {
-      subtitle && 
-      <Subtitle>
-        {subtitle}
-      </Subtitle>
-    }    
+    <TitleContainer>
+      <Title>{title}</Title>
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    </TitleContainer>
+    <div>Arrow scroll down</div>
   </Wrapper>
 )
 

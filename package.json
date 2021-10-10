@@ -43,6 +43,7 @@
     "react-burger-menu": "^2.7.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
+    "react-mapycz": "^1.1.3",
     "react-test-renderer": "^16.13.1",
     "styled-components": "^5.1.0",
     "typescript": "^3.9.7"

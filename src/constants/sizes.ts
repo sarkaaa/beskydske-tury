@@ -1,7 +1,7 @@
-export const sizeXXL = '8rem';
-export const sizeXL = '4rem';
+export const sizeXXL = '5.5rem';
+export const sizeXL = '2.25rem';
 export const sizeL = '3rem';
-export const sizeM = '1.75rem'
+export const sizeM = '1.25rem'
 export const sizeS = '1rem';
 export const sizeXS = '0.8rem';
 
