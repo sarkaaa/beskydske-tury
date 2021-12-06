@@ -1,18 +1,19 @@
-import React from 'react';
-import styled from 'styled-components'
+import * as React from "react"
+import styled, { css } from "styled-components"
 
-const StyledEmoji = styled.span<{ emojiSize: string }>`
-  font-size: ${( props ) => props.emojiSize === 'small' ? '1rem' : '10rem'};
-
-`
+const StyledEmoji = styled.span<{ emojiSize: string }>(
+  ({ emojiSize }) => css`
+    font-size: ${emojiSize === "small" ? "1rem" : "10rem"};
+  `
+)
 
 type Props = {
-  symbol: string;
-  label: string;
-  emojiSize?: 'small' | 'large';
+  symbol: string
+  label: string
+  emojiSize?: "small" | "large"
 }
 
-const Emoji = ({ symbol, label, emojiSize = 'small' }: Props) => (
+const Emoji = ({ symbol, label, emojiSize = "small" }: Props) => (
   <StyledEmoji
     role="img"
     aria-label={label ? label : ""}

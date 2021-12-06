@@ -68,7 +68,10 @@ function SEO({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+      <script type="text/javascript">Loader.load();</script>
+  </Helmet>
   )
 }
 

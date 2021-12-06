@@ -1,6 +1,6 @@
 import React from "react"
-import styled from 'styled-components'
-import StyledLink from './link'
+import styled from "styled-components"
+import StyledLink from "./link"
 
 const Categories = styled.ul`
   list-style: none;
@@ -24,13 +24,13 @@ type Props = {
 
 const Navigation = ({ categories }: Props) => (
   <Categories>
-    {
-      categories.map(({ title, to }) => (
-        <li>
-          <StyledLink to={to} navLink>{title}</StyledLink>
-        </li>
-      ))
-    }
+    {categories.map(({ title, to }) => (
+      <li key={title}>
+        <StyledLink to={to} navLink>
+          {title}
+        </StyledLink>
+      </li>
+    ))}
   </Categories>
 )
 

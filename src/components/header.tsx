@@ -1,62 +1,72 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled, { css } from "styled-components"
+import header from "../images/header.png"
 
-const Wrapper = styled.div`
-  width: 100%;
-  padding: 5rem 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.dark};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
+const Wrapper = styled.div<{ homePage?: boolean; customBg?: string }>(
+  ({ theme, homePage, customBg }) => css`
+    position: relative;
+    width: 100%;
+    min-height: 45vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    background-image: url(${customBg || header});
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+
+    @media ${theme.sizes.screenWidth.mobile} {
+      min-height: ${homePage ? "70vh" : "45vh"};
+    }
+
+    ${customBg &&
+    css`
+      &:after {
+        position: absolute;
+        content: " ";
+        width: 100%;
+        height: 100%;
+        background: #0e0e0e;
+        opacity: 50%;
+        z-index: 1;
+      }
+    `}
+  `
+)
+
+const TitleContainer = styled.div`
+  position: relative;
+  max-width: 1240px;
+  margin-top: 6rem;
+  z-index: 2;
 `
 
 const Title = styled.h1`
   text-align: center;
+  margin-bottom: 0;
 `
 
-const Subtitle = styled.h2`
-  text-align: center;
-`
-
-// const Title = styled.h1`
-//   color: ${({ theme }) => theme.colors.dark};
-//   text-align: center;
-//   font-family: 'Noto Sans', sans-serif;
-//   font-size: ${({ theme }) => theme.sizes.sizeXL};
-//   line-height: 1.2;
-//   font-weight: 900;
-
-//   @media screen and (min-width: 420px) {
-//       font-size: ${({ theme }) => theme.sizes.sizeXXL};
-//   }
-// `
-
-// const SubTitle = styled.h2`
-//   color: ${({ theme }) => theme.colors.dark};
-//   text-align: center;
-//   font-family: 'Noto Sans', sans-serif;
-//   line-height: 1;
-//   font-weight: 400;
-// `
+const Subtitle = styled.h2(
+  ({ theme }) => css`
+    color: ${theme.colors.light};
+    text-align: center;
+  `
+)
 
 type Props = {
-  title: string;
-  subtitle?: string;
+  title: string
+  subtitle?: string
+  customBg?: string
 }
 
-const Header = ({ title, subtitle = null}: Props) => (
-  <Wrapper>
-    <Title>
-      {title}
-    </Title>
-    {
-      subtitle && 
-      <Subtitle>
-        {subtitle}
-      </Subtitle>
-    }    
+const Header = ({ title, subtitle = null, customBg }: Props) => (
+  <Wrapper customBg={customBg} homePage={window.location.pathname === "/"}>
+    <TitleContainer>
+      <Title>{title}</Title>
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    </TitleContainer>
   </Wrapper>
 )
 

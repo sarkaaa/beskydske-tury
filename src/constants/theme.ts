@@ -1,7 +1,8 @@
+import { DefaultTheme } from 'styled-components';
 import * as colors from "./colors";
 import * as sizes from "./sizes";
 
-const theme = {
+const theme: DefaultTheme = {
   colors,
   sizes
 };
