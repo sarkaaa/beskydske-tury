@@ -1,12 +1,13 @@
 import React from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import Emoji from "../components/emoji"
 
 const Title = styled.h3`
   text-align: center;
 `
 
-const InfoContainer = styled.div<{ order: number }>`
+const InfoContainer = styled.div<{ order: number }>(
+  ({ theme, order }) => css`
   flex: 100%;
   display: flex;
   flex-direction: column;
@@ -14,16 +15,16 @@ const InfoContainer = styled.div<{ order: number }>`
   padding: 0 1.5rem;
   position: relative;
 
-  @media ${({ theme }) => theme.sizes.screenWidth.mobile} {
+  @media ${theme.sizes.screenWidth.mobile} {
     flex: 50%;
   }
 
-  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+  @media ${theme.sizes.screenWidth.tablet} {
     flex: 28%;
   }
 
   :after {
-    content: "${({ order }) => order}";
+    content: "${order}";
     color: #c0c0c0;
     font-size: 25rem;
     line-height: 1;
@@ -38,6 +39,7 @@ const InfoContainer = styled.div<{ order: number }>`
     z-index: 2;
   }
 `
+)
 
 type Props = {
   order: number

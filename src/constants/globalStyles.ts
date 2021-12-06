@@ -1,53 +1,53 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-  *::selection {
-    background-color: ${({ theme }) => theme.colors.selectionBg};
+const GlobalStyles = createGlobalStyle(
+  ({ theme }) => css`*::selection {
+    background-color: ${theme.colors.selectionBg};
   }
   body {
     margin: 0;
     padding: 0;
   }
   h1 {
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${theme.colors.light};
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
-    font-size: ${({ theme }) => theme.sizes.sizeXL};
+    font-size: ${theme.sizes.sizeXL};
     text-align: center;
     line-height: 1.2;
   }
-  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+  @media ${theme.sizes.screenWidth.tablet} {
     h1 {
-      font-size: ${({ theme }) => theme.sizes.sizeXXL};
+      font-size: ${theme.sizes.sizeXXL};
     }
   }
   h2 {
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${theme.colors.dark};
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
-    font-size: ${({ theme }) => theme.sizes.sizeL};
+    font-size: ${theme.sizes.sizeL};
     line-height: 1.25;
     text-align: center;
   }
-  @media ${({ theme }) => theme.sizes.screenWidth.tablet} {
+  @media ${theme.sizes.screenWidth.tablet} {
     h2 {
-      font-size: ${({ theme }) => theme.sizes.sizeXL};
+      font-size: ${theme.sizes.sizeXL};
     }
   }
   h3 {
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${theme.colors.dark};
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
-    font-size: ${({ theme }) => theme.sizes.sizeM};
+    font-size: ${theme.sizes.sizeM};
     text-align: center;
   }
   p {
-    color: ${({ theme }) => theme.colors.dark};
+    color: ${theme.colors.dark};
     font-family: 'Merriweather', sans-serif;
     font-weight: 500;
-    font-size: ${({ theme }) => theme.sizes.sizeXS};
+    font-size: ${theme.sizes.sizeXS};
     line-height: 2;
-  }
-`;
+  }`
+)
 
 export default GlobalStyles;

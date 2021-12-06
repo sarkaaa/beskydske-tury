@@ -1,7 +1,11 @@
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `Beskydské túry`,
-    description: `Turistické trasy v Beskydech pro všechny.`,
+    description: `Turistické trasy v Beskydech.`,
     author: `@sarkachwastkova`,
   },
   plugins: [
@@ -14,6 +18,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-lint-queries`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -27,28 +32,41 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Noto Sans`,
-            subsets: [`latin-ext`],
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Merriweather`,
-            subsets: [`latin-ext`],
-            variants: [`300`, `400`, `700`],
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       {
+    //         family: `Noto Sans`,
+    //         subsets: [`latin-ext`],
+    //         variants: [`400`, `700`],
+    //       },
+    //       {
+    //         family: `Merriweather`,
+    //         subsets: [`latin-ext`],
+    //         variants: [`300`, `400`, `700`],
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-164520326-1",
       },
+    },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL || "http://localhost:1337",
+        collectionTypes: ["user", "trail"],
+        // singleTypes: [`global`],
+        queryLimit: 1000,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/trasy/*`] },
     },
   ],
 }
