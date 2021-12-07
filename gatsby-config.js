@@ -15,7 +15,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/data`,
       },
     },
     `gatsby-plugin-lint-queries`,
@@ -55,15 +55,17 @@ module.exports = {
         trackingId: "UA-164520326-1",
       },
     },
-    {
-      resolve: "gatsby-source-strapi",
-      options: {
-        apiURL: process.env.API_URL || "http://localhost:1337",
-        collectionTypes: ["user", "trail"],
-        // singleTypes: [`global`],
-        queryLimit: 1000,
-      },
-    },
+    `gatsby-transformer-json`,
+    // !Strapi
+    // {
+    //   resolve: "gatsby-source-strapi",
+    //   options: {
+    //     apiURL: process.env.API_URL || "http://localhost:1337",
+    //     collectionTypes: ["user", "trail"],
+    //     // singleTypes: [`global`],
+    //     queryLimit: 1000,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/trasy/*`] },

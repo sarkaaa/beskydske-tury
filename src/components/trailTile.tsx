@@ -215,11 +215,7 @@ const TrailTile = ({ trail }: Props) => {
   const routeResult = routeInfo({ coords: mapCoords, criterion: "turist1" })
 
   return (
-    <TileWrapper
-      bg={cover_image.localFile.childImageSharp.fluid.src}
-      as={Link}
-      to={`/${id}`}
-    >
+    <TileWrapper bg={cover_image} as={Link} to={`/trasaTmp`}>
       <TileContent>
         <Title>{title}</Title>
         <TrailInfo>

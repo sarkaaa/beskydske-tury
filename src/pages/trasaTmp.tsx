@@ -88,7 +88,49 @@ const params = {
   criterion: "turist2",
 }
 
-const Trasa = ({ data }) => {
+const TRAIL_TMP = {
+  title: "Na Pustevny z Kunčic p. O. okolo Stolové",
+  content:
+    "Mírně delší a v určitých úsecích i mírně náročnější trasa na Pustevny malinko netradičně. Výchozí bod je parkoviště u restaurace Koliba v Kunčicích pod Ondřejníkem. Trasa vede okolo Stolové, kde jsou nádherné výhledy a pak přes Tanečnici na Pustevny. Z Pusteven se můžete dát ještě dál k Radegastovi a na vrchol Radhošť. Cesta zpět z Pusteven vede okolo vrcholu Čertův mlýn, kde je úsek s prudkým kopcem a pak okolo vrcholu Kněhyně, který patří k nejvyšším místum v moravskoslezských Beskydech..",
+  criterion: "turist1",
+  trail_type: "aa",
+  coords: {
+    lat1: 49.5220217,
+    lng1: 18.3084428,
+    lat2: 49.5187,
+    lng2: 18.2879639,
+    lat3: 49.5020256,
+    lng3: 18.2902097,
+    lat4: 49.4923217,
+    lng4: 18.2671789,
+    lat5: 49.4910969,
+    lng5: 18.2753197,
+    lat6: 49.5006922,
+    lng6: 18.3106617,
+    lat7: 49.5220217,
+    lng7: 18.3084428,
+    lat8: null,
+    lng8: null,
+    lat9: null,
+    lng9: null,
+    lat10: null,
+    lng10: null,
+    lat11: null,
+    lng11: null,
+    lat12: null,
+    lng12: null,
+  },
+  availability_bus: null,
+  availability_car: {
+    parking1: "Parkoviště Koliba",
+    parking2: null,
+    parking3: null,
+  },
+  availability_train: null,
+  cover_image: "/trails/2.jpeg",
+}
+
+const Trasa = () => {
   const {
     title,
     content,
@@ -98,7 +140,7 @@ const Trasa = ({ data }) => {
     coords,
     trail_type,
     cover_image,
-  } = data.strapiTrail
+  } = TRAIL_TMP
 
   let mapCoords = []
 
@@ -221,93 +263,5 @@ const Trasa = ({ data }) => {
     </Layout>
   )
 }
-
-// export const query = graphql`
-//   query TrailTemplate($id: String!) {
-//     strapiTrail(id: { eq: $id }) {
-//       id
-//       title
-//       content
-//       cover_image {
-//         localFile {
-//           childImageSharp {
-//             fixed(width: 200, height: 125) {
-//               ...GatsbyImageSharpFixed
-//             }
-//             fluid {
-//               ...GatsbyImageSharpFluid
-//               base64
-//               tracedSVG
-//               srcWebp
-//               srcSetWebp
-//               originalImg
-//               originalName
-//             }
-//           }
-//         }
-//       }
-//       cover_image_map {
-//         localFile {
-//           childImageSharp {
-//             fixed(width: 200, height: 125) {
-//               ...GatsbyImageSharpFixed
-//             }
-//             fluid {
-//               base64
-//               tracedSVG
-//               srcWebp
-//               srcSetWebp
-//               originalImg
-//               originalName
-//             }
-//           }
-//         }
-//       }
-//       trail_type
-//       availability_car {
-//         parking1
-//         parking2
-//         parking3
-//       }
-//       availability_bus {
-//         stop1
-//         stop2
-//         stop3
-//       }
-//       availability_train {
-//         station1
-//         station2
-//         station3
-//       }
-//       criterion
-//       coords {
-//         lat1
-//         lng1
-//         lat2
-//         lng2
-//         lat3
-//         lng3
-//         lat4
-//         lng4
-//         lat5
-//         lng5
-//         lat6
-//         lng6
-//         lat7
-//         lng7
-//         lat8
-//         lng8
-//         lat9
-//         lng9
-//         lat10
-//         lng10
-//         lat11
-//         lng11
-//         lat12
-//         lng12
-//       }
-//     }
-//   }
-// `
 
 export default SMapProvider(Trasa)
