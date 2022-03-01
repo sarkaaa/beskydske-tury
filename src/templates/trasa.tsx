@@ -29,15 +29,42 @@ import Header from "../components/header"
 const colorDefaultValue = "#f00"
 const pathDefaultValue = 3
 
+const InfoPanelWrapper = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+
+    @media ${theme.sizes.screenWidth.tablet} {
+      flex-direction: row;
+    }
+  `
+)
+
 const InfoWrapper = styled.div(
   ({ theme }) => css`
     flex: 1;
     display: block;
-    margin: 2rem 0;
-    padding: 0 1rem;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
+    border-bottom: 1px solid ${theme.colors.gray};
 
-    &:not(:last-of-type) {
-      border-right: 1px solid ${theme.colors.primary};
+    @media ${theme.sizes.screenWidth.tablet} {
+      &:not(:last-of-type) {
+        border-bottom: none;
+        border-right: 1px solid ${theme.colors.primary};
+        margin: 2rem 0;
+        padding: 0 1rem;
+      }
+    }
+  `
+)
+
+const MapWrapper = styled(Map)(
+  ({ theme }) => css`
+    width: 100%;
+
+    @media ${theme.sizes.screenWidth.tablet} {
+      width: 60vh;
     }
   `
 )
@@ -138,7 +165,7 @@ const Trasa = ({ data }) => {
           <Icon iconName="arrowLeft" dark small />
           <StyledLink to="/trasy">Zpět na všechny trasy</StyledLink>
         </BackLinkWrapper>
-        <Map height="60vh" center={mapCoords[2]}>
+        <MapWrapper center={mapCoords[2]}>
           <KeyboardControl />
           <ZoomControl />
           <MouseControl zoom={true} pan={true} wheel={true} />
@@ -155,9 +182,9 @@ const Trasa = ({ data }) => {
               dynamicRoute
             />
           </PathLayer>
-        </Map>
+        </MapWrapper>
         <div>
-          <div style={{ display: "flex" }}>
+          <InfoPanelWrapper>
             <InfoWrapper>
               <InfoTitle>Délka trasy</InfoTitle>
               <InfoContent>
@@ -213,7 +240,7 @@ const Trasa = ({ data }) => {
                 <p>Z bodu A do bodu {trail_type === "aa" ? "A" : "B"}</p>
               </InfoContent>
             </InfoWrapper>
-          </div>
+          </InfoPanelWrapper>
           <Content>{content}</Content>
           <LinkWrapper>
             <StyledLink href={routeInfo?.url} target="_blank">

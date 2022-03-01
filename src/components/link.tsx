@@ -43,7 +43,7 @@ const StyledLinkWrapper = styled.div<{ navLink?: boolean }>(
     &:hover,
   &:focus {
       & a {
-        color: ${navLink ? theme.colors.light : theme.colors.primary};
+        color: ${theme.colors.primary};
         text-decoration: ${navLink ? "none" : "underline"};
         outline: none;
       }

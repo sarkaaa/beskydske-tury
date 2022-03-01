@@ -232,7 +232,7 @@ const TrailTile = ({ trail }: Props) => {
           <TrailLengthAvailabityWrapper>
             <TrailLengthAvailabilityContent>
               <Icon iconName="mountain" />
-              <InfoText>{(routeResult?.length * 0.001).toFixed(2)} km</InfoText>
+              <InfoText>{(routeResult?.length * 0.001).toFixed(1)} km</InfoText>
             </TrailLengthAvailabilityContent>
             <TrailLengthAvailabilityContent>
               {availability_train && <Icon iconName="train" />}

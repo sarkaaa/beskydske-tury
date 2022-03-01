@@ -25,8 +25,9 @@ const InfoContainer = styled.div<{ order: number }>(
 
   :after {
     content: "${order}";
-    color: #c0c0c0;
+    color: #d3d3d3;
     font-size: 25rem;
+    font-family: "Noto Sans", sans-serif;
     line-height: 1;
     position: absolute;
     top: 0;

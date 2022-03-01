@@ -21,7 +21,7 @@ const Wrapper = styled.div(
 )
 
 const Navbar = styled.div<{ transparent?: boolean }>(
-  ({ transparent }) => css`
+  ({ theme, transparent }) => css`
     position: fixed;
     top: 0;
     right: 0;
@@ -29,7 +29,9 @@ const Navbar = styled.div<{ transparent?: boolean }>(
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ${transparent ? "rgba(255, 255, 255, 0.1)" : "white"};
+    background-color: ${transparent
+      ? "rgba(255, 255, 255, 0.25)"
+      : theme.colors.light};
     padding: 1rem 3rem;
     z-index: 99999;
   `

@@ -1,5 +1,8 @@
 import React from "react"
 import styled, { css } from "styled-components"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons"
+import { Link as LinkBase } from "react-scroll"
 import header from "../images/header.png"
 
 const Wrapper = styled.div<{ homePage?: boolean; customBg?: string }>(
@@ -55,6 +58,39 @@ const Subtitle = styled.h2(
   `
 )
 
+const Link = styled(LinkBase)(
+  () => css`
+    &:hover {
+      cursor: pointer;
+    }
+  `
+)
+
+const Icon = styled(FontAwesomeIcon)(
+  ({ theme }) => css`
+    color: ${theme.colors.light};
+    animation: bounce 2s infinite;
+    font-size: ${theme.sizes.sizeL};
+    padding-bottom: 1rem;
+
+    @keyframes bounce {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-1rem);
+      }
+      60% {
+        transform: translateY(-0.5rem);
+      }
+    }
+  `
+)
+
 type Props = {
   title: string
   subtitle?: string
@@ -67,6 +103,18 @@ const Header = ({ title, subtitle = null, customBg }: Props) => (
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </TitleContainer>
+    {window.location.pathname === "/" && (
+      <Link
+        activeClass="active"
+        className="mainSection"
+        to="mainSection"
+        spy={true}
+        smooth={true}
+        duration={500}
+      >
+        <Icon icon={faChevronDown} />
+      </Link>
+    )}
   </Wrapper>
 )
 
