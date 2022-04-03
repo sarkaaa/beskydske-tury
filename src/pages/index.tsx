@@ -12,9 +12,9 @@ import TrailInfoContainer from "../components/TrailInfoContainer"
 import StyledSection from "../components/section"
 import Instagram, { Title as TitleLight } from "../components/instagram"
 import forrestBg from "../images/forrest-bg.png"
-import step1 from "../images/step1.png"
-import step2 from "../images/step2.png"
-import step3 from "../images/step3.png"
+// import step1 from "../images/step1.png"
+// import step2 from "../images/step2.png"
+// import step3 from "../images/step3.png"
 import theme from "../constants/theme"
 import StyledLink from "../components/link"
 
@@ -149,7 +149,7 @@ const IndexPage = () => {
             <InfoWrapper>
               <TrailInfoContainer
                 order={1}
-                imgSource={step1}
+                imgSource="../images/step1.png"
                 imgAlt="Výběr trasy"
                 title="Výběr trasy"
                 description="Vyberte si ze seznamu tras pro tu nejideálnější. Každá karta trasy obsahuje základní informace o délce trasy, typu 
@@ -157,7 +157,7 @@ const IndexPage = () => {
               />
               <TrailInfoContainer
                 order={2}
-                imgSource={step2}
+                imgSource="../images/step2.png"
                 imgAlt="Zobrazení přes Mapy.cz"
                 title="Zobrazení přes Mapy.cz"
                 description="Každá trasa ve svém detailu obsahuje dynamický mapový podklad dostupný z platformy Mapy.cz od Seznamu. Každou trasu je možné si otevřít v nové záložce přímo na Mapy.cz
@@ -165,7 +165,7 @@ const IndexPage = () => {
               />
               <TrailInfoContainer
                 order={3}
-                imgSource={step3}
+                imgSource="../images/step3.png"
                 imgAlt="Hurá na výšlap!"
                 title="Hurá na výšlap!"
                 description="Tadá! Trasa zvolená, mapa uložená a teď už se jen stačí sbalit do batohu a (se svým telefonem a Mapy.cz aplikací) vyrazit na výlet."

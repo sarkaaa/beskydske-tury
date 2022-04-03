@@ -25,7 +25,6 @@ import {
 } from "react-mapycz"
 
 import styled, { css } from "styled-components"
-import { darken } from "polished"
 import SEO from "../components/seo"
 import Header from "../components/header"
 

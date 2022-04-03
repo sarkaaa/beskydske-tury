@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { css } from "styled-components"
-import Emoji from "../components/emoji"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Title = styled.h3(
   ({ theme }) => css`
@@ -65,6 +65,14 @@ const TrailInfoContainer = ({
   imgSource,
 }: Props) => (
   <InfoContainer order={order}>
+    <StaticImage
+      src={imgSource}
+      alt={imgAlt}
+      placeholder="blurred"
+      layout="fixed"
+      // width={200}
+      // height={200}
+    />
     <img
       src={imgSource}
       alt={imgAlt}
