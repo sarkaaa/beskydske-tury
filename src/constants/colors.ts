@@ -1,7 +1,9 @@
-export const primary = "#0D7419";
-export const secondary = "#6ADD6E";
+export const primary = "#0a2e0a";
+export const secondary = "#0D7419";
 export const terciary = "#4ec752";
 export const dark = "#4A4A4A";
 export const gray = "#6C6C6C";
 export const light = "#FCFCFC";
+export const red = "#72100d";
+export const sand = "#fff6da";
 export const selectionBg = "#c7e6c3";

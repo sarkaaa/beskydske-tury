@@ -68,5 +68,13 @@ module.exports = {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/trasy/*`] },
     },
+    {
+      resolve: `gatsby-source-instagram-all`,
+      options: {
+        access_token: process.env.INSTAGRAM_TOKEN || "",
+        limit: 10,
+        pageLimit: 10,
+      },
+    },
   ],
 }

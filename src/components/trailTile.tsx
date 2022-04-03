@@ -93,7 +93,7 @@ const TileButton = styled.span(
     color: transparent;
     font-family: "Noto Sans", sans-serif;
     font-size: 1.4rem;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     text-align: center;
     padding: 1rem 2rem;

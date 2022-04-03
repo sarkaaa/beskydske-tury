@@ -52,12 +52,12 @@ const LinkedIconWrapper = styled.a`
   padding: 0.1rem;
   border-radius: 1.5rem;
   transition: linear 0.25s;
-  background-color: ${({ theme }) => theme.colors.light};
+  background-color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
 
   & > svg {
-    color: ${({ theme }) => theme.colors.primary};
-    font-size: 1rem;
+    color: ${({ theme }) => theme.colors.light};
+    font-size: 1.25rem;
   }
 
   &:hover,

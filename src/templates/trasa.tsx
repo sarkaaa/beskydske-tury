@@ -4,9 +4,11 @@ import {
   RouteInfoResultProps,
 } from "react-mapycz/lib/helperFunctions"
 import SMapProvider from "react-mapycz/lib/SMapProvider"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import StyledLink from "../components/link"
+import Button from "../components/button"
 import Layout from "../components/layout"
+
 import { Icon } from "../components/icon"
 import Container from "../components/container"
 import {
@@ -23,6 +25,7 @@ import {
 } from "react-mapycz"
 
 import styled, { css } from "styled-components"
+import { darken } from "polished"
 import SEO from "../components/seo"
 import Header from "../components/header"
 
@@ -33,6 +36,10 @@ const InfoPanelWrapper = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(16deg, #f4e9d3, #efdcb5);
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    box-shadow: 0px 0px 15px #e6e6e6;
 
     @media ${theme.sizes.screenWidth.tablet} {
       flex-direction: row;
@@ -42,38 +49,51 @@ const InfoPanelWrapper = styled.div(
 
 const InfoWrapper = styled.div(
   ({ theme }) => css`
+    color: ${theme.colors.dark};
     flex: 1;
     display: block;
     margin: 0.5rem 0;
-    padding: 0 0.5rem;
-    border-bottom: 1px solid ${theme.colors.gray};
+    padding: 0 0.75rem;
+
+    &:not(:last-of-type) {
+      border-bottom: 1px dotted ${theme.colors.red};
+    }
 
     @media ${theme.sizes.screenWidth.tablet} {
+      border-bottom: 0;
+      margin: 2rem 0;
+      padding: 0 0.5rem;
+
       &:not(:last-of-type) {
-        border-bottom: none;
-        border-right: 1px solid ${theme.colors.primary};
-        margin: 2rem 0;
-        padding: 0 1rem;
+        border-right: 1px dotted ${theme.colors.red};
+        border-bottom: 0;
+        padding: 0 1.25rem;
       }
+    }
+    p {
+      color: ${theme.colors.dark};
     }
   `
 )
 
-const MapWrapper = styled(Map)(
+const MapWrapper = styled.div(
   ({ theme }) => css`
+    position: relative;
     width: 100%;
+    box-shadow: 0px 0px 15px #d8d8d8;
 
-    @media ${theme.sizes.screenWidth.tablet} {
-      width: 60vh;
+    &,
+    > div {
+      border-radius: 0.5rem;
     }
   `
 )
 
 const InfoTitle = styled.h4(
   ({ theme }) => css`
-    color: ${theme.colors.primary};
+    color: ${theme.colors.dark};
     font-family: "Noto Sans", sans-serif;
-    font-weight: 400;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0.75rem 0;
@@ -92,14 +112,25 @@ const LinkWrapper = styled.div`
   margin-top: 2rem;
 `
 
-const InfoContent = styled.div`
-  display: flex;
-  align-items: baseline;
+const InfoContent = styled.div(
+  ({ theme }) => css`
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
 
-  p {
-    margin: 0.25rem 0;
-  }
-`
+    p {
+      margin: 0.25rem 0 0.25rem 0.5rem;
+    }
+
+    svg {
+      width: 1.25rem !important;
+      height: 1.25rem;
+      background: ${theme.colors.red};
+      padding: 0.75rem;
+      border-radius: 999px;
+    }
+  `
+)
 
 const Content = styled.p(
   ({ theme }) => css`
@@ -124,6 +155,7 @@ const Trasa = ({ data }) => {
     availability_bus,
     availability_train,
     coords,
+    criterion,
     trail_type,
     cover_image,
   } = data.strapiTrail
@@ -165,38 +197,39 @@ const Trasa = ({ data }) => {
           <Icon iconName="arrowLeft" dark small />
           <StyledLink to="/trasy">Zpět na všechny trasy</StyledLink>
         </BackLinkWrapper>
-        <MapWrapper center={mapCoords[2]}>
-          <KeyboardControl />
-          <ZoomControl />
-          <MouseControl zoom={true} pan={true} wheel={true} />
-          <CompassControl right={10} top={50} />
-          <MarkerLayer>
-            <PathMarker coords={mapCoords} />
-          </MarkerLayer>
-          <PathLayer>
-            <Path
-              coords={mapCoords}
-              criterion="turist2"
-              color={colorDefaultValue}
-              width={pathDefaultValue}
-              dynamicRoute
-            />
-          </PathLayer>
+        <MapWrapper>
+          <Map center={mapCoords[2]} height="500px">
+            <KeyboardControl />
+            <ZoomControl />
+            <MouseControl zoom={true} pan={true} wheel={true} />
+            <CompassControl right={10} top={50} />
+            <MarkerLayer>
+              <PathMarker coords={mapCoords} />
+            </MarkerLayer>
+            <PathLayer>
+              <Path
+                coords={mapCoords}
+                criterion={criterion}
+                color={colorDefaultValue}
+                width={pathDefaultValue}
+                dynamicRoute
+              />
+            </PathLayer>
+          </Map>
         </MapWrapper>
         <div>
           <InfoPanelWrapper>
             <InfoWrapper>
               <InfoTitle>Délka trasy</InfoTitle>
               <InfoContent>
-                <Icon iconName="mountain" dark small />
-
+                <Icon iconName="mountain" small />
                 <p>{(routeInfo?.length * 0.001).toFixed(2)} km</p>
               </InfoContent>
             </InfoWrapper>
             <InfoWrapper>
               <InfoTitle>Stoupání</InfoTitle>
               <InfoContent>
-                <Icon iconName="feets" dark small />
+                <Icon iconName="feets" small />
                 <p>{routeInfo?.ascent} [m]</p>
               </InfoContent>
             </InfoWrapper>
@@ -204,7 +237,7 @@ const Trasa = ({ data }) => {
               <InfoTitle>Dostupnost</InfoTitle>
               {availability_train && (
                 <InfoContent>
-                  <Icon iconName="train" dark small />
+                  <Icon iconName="train" small />
                   <div>
                     <p>{availability_train?.station1!}</p>
                     <p>{availability_train?.station2!}</p>
@@ -214,7 +247,7 @@ const Trasa = ({ data }) => {
               )}
               {availability_bus && (
                 <InfoContent>
-                  <Icon iconName="bus" dark small />
+                  <Icon iconName="bus" small />
                   <div>
                     <p>{availability_bus?.stop1!}</p>
                     <p>{availability_bus?.stop2!}</p>
@@ -224,7 +257,7 @@ const Trasa = ({ data }) => {
               )}
               {availability_car && (
                 <InfoContent>
-                  <Icon iconName="car" dark small />
+                  <Icon iconName="car" small />
                   <div>
                     <p>{availability_car?.parking1!}</p>
                     <p>{availability_car?.parking2!}</p>
@@ -236,16 +269,22 @@ const Trasa = ({ data }) => {
             <InfoWrapper>
               <InfoTitle>Typ trasy</InfoTitle>
               <InfoContent>
-                <Icon iconName="marker" dark small />
+                <Icon iconName="marker" small />
                 <p>Z bodu A do bodu {trail_type === "aa" ? "A" : "B"}</p>
               </InfoContent>
             </InfoWrapper>
           </InfoPanelWrapper>
+          <h2 style={{ textAlign: "left" }}>Popis trasy</h2>
           <Content>{content}</Content>
           <LinkWrapper>
-            <StyledLink href={routeInfo?.url} target="_blank">
+            <Button
+              as={StyledLink}
+              href={routeInfo?.url}
+              target="_blank"
+              buttonLink
+            >
               Otevřít trasu v Mapy.cz
-            </StyledLink>
+            </Button>
           </LinkWrapper>
         </div>
       </Container>

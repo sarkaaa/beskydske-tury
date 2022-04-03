@@ -26,14 +26,24 @@ const Navbar = styled.div<{ transparent?: boolean }>(
     top: 0;
     right: 0;
     left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    transition: all 0.3s ease-in-out;
+
     background-color: ${transparent
-      ? "rgba(255, 255, 255, 0.25)"
+      ? "rgba(255, 255, 255, 0.6)"
       : theme.colors.light};
     padding: 1rem 3rem;
     z-index: 99999;
+  `
+)
+
+const NavbarInner = styled.div(
+  () => css`
+    width: 100%;
+    max-width: 1920px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
   `
 )
 
@@ -50,10 +60,10 @@ const Main = styled.main(
 
 const Footer = styled.footer(
   ({ theme }) => css`
+    background: #fff6da;
     width: 100%;
     margin: 0;
     padding: 1rem 3rem;
-    border-top: 1px solid ${theme.colors.gray};
   `
 )
 
@@ -139,17 +149,19 @@ const Layout = ({ children }: Props) => {
       <GlobalStyles />
       <Wrapper>
         <Navbar transparent={scrollState === "top"}>
-          <p>logo</p>
-          {width > 700 ? (
-            <Navigation categories={CATEGORIES} />
-          ) : (
-            <MobileNavigation categories={CATEGORIES} />
-          )}
+          <NavbarInner>
+            <span>logo</span>
+            {width > 700 ? (
+              <Navigation categories={CATEGORIES} />
+            ) : (
+              <MobileNavigation categories={CATEGORIES} />
+            )}
+          </NavbarInner>
         </Navbar>
         <Main>{children}</Main>
         <Footer>
           <FooterContainer>
-            <p>Beskydské túry, 2020</p>
+            <p style={{ fontWeight: 600 }}>Beskydské túry, 2022</p>
             <IconsWrapper>
               <Icon to="mailto:info@beskydsketury.cz" iconName="email" />
               <Icon

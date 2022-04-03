@@ -2,9 +2,12 @@ import React from "react"
 import styled, { css } from "styled-components"
 import Emoji from "../components/emoji"
 
-const Title = styled.h3`
-  text-align: center;
-`
+const Title = styled.h3(
+  ({ theme }) => css`
+    color: ${theme.colors.light};
+    text-align: center;
+  `
+)
 
 const InfoContainer = styled.div<{ order: number }>(
   ({ theme, order }) => css`
@@ -12,20 +15,20 @@ const InfoContainer = styled.div<{ order: number }>(
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 1.5rem;
   position: relative;
-
+  
   @media ${theme.sizes.screenWidth.mobile} {
     flex: 50%;
   }
 
   @media ${theme.sizes.screenWidth.tablet} {
     flex: 28%;
+    padding: 0 1.5rem;
   }
 
   :after {
     content: "${order}";
-    color: #d3d3d3;
+    color: #5e7e5b;
     font-size: 25rem;
     font-family: "Noto Sans", sans-serif;
     line-height: 1;
@@ -39,6 +42,10 @@ const InfoContainer = styled.div<{ order: number }>(
     position: relative;
     z-index: 2;
   }
+
+  p {
+    color: #d2d2d2;
+  }
 `
 )
 
@@ -46,19 +53,23 @@ type Props = {
   order: number
   title: string
   description: string
-  emojiLabel: string
-  emojiSymbol: string
+  imgSource: string
+  imgAlt: string
 }
 
 const TrailInfoContainer = ({
   order,
   title,
   description,
-  emojiLabel,
-  emojiSymbol,
+  imgAlt,
+  imgSource,
 }: Props) => (
   <InfoContainer order={order}>
-    <Emoji label={emojiLabel} symbol={emojiSymbol} emojiSize="large" />
+    <img
+      src={imgSource}
+      alt={imgAlt}
+      style={{ width: "100%", height: "auto" }}
+    />
     <Title>{title}</Title>
     <p>{description}</p>
   </InfoContainer>

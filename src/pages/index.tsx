@@ -9,6 +9,14 @@ import Header from "../components/header"
 import Emoji from "../components/emoji"
 import Container from "../components/container"
 import TrailInfoContainer from "../components/TrailInfoContainer"
+import StyledSection from "../components/section"
+import Instagram, { Title as TitleLight } from "../components/instagram"
+import forrestBg from "../images/forrest-bg.png"
+import step1 from "../images/step1.png"
+import step2 from "../images/step2.png"
+import step3 from "../images/step3.png"
+import theme from "../constants/theme"
+import StyledLink from "../components/link"
 
 const InfoWrapper = styled.div(
   ({ theme }) => css`
@@ -46,31 +54,43 @@ const HorizontalInfo = styled.div(
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 5rem;
-    padding: 0 1.5rem;
 
     @media ${theme.sizes.screenWidth.tablet} {
       flex-direction: row;
+      margin-top: 5rem;
+      padding: 0 1.5rem;
     }
 
-    & div {
+    & > div {
       flex: 1;
-      &:first-child {
-        text-align: center;
+      &:last-child {
+        display: none;
+
+        @media ${theme.sizes.screenWidth.tablet} {
+          display: block;
+        }
       }
     }
   `
 )
+
+const ForrestSection = styled.div`
+  background-color: #fff6da;
+  background-image: url(${forrestBg});
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  margin-bottom: -4px;
+`
 
 const HorizontalInfoContent = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 1rem;
 
     @media ${theme.sizes.screenWidth.tablet} {
-      align-items: flex-start;
+      padding-left: 1rem;
     }
   `
 )
@@ -80,75 +100,86 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Beskydské túry" />
       <Header title="Beskydské túry" subtitle="Pěší trasy v Beskydech" />
-      <Element name="mainSection" className="mainSection">
-        <Container>
-          <div>
-            <h2>O čem jsou Beskydské túry?</h2>
+      <Element
+        name="mainSection"
+        className="mainSection"
+        style={{ width: "100%" }}
+      >
+        <ForrestSection>
+          <Container>
             <HorizontalInfo>
-              <div>
-                <Emoji label="opensource" symbol="🐻🏔" emojiSize="large" />
-              </div>
-              <HorizontalInfoContent>
+              <HorizontalInfoContent style={{ paddingBottom: "5rem" }}>
+                <h3>O čem jsou Beskydské túry?</h3>
                 <p>
                   Beskydské túry je webová aplikace s přehledem vybraných túr v
                   Moravskoslezských Beskydech. Všechny trasy jsou dostupné v
-                  záložce <Link to="/trasy">Trasy</Link> a návštěvník si může
-                  vybrat trasy podle svých preferencí a nálady.
+                  záložce <StyledLink to="/trasy">Trasy</StyledLink> a
+                  návštěvník si může vybrat trasy podle svých preferencí a
+                  nálady.
                 </p>
                 <p>
                   Mimo jiné je tento projekt vytvořen jako volnočasová aktivita
                   a celý kód je jako open-source zvěřejněný v repozitáří na{" "}
-                  <a
+                  <StyledLink
                     href="https://github.com/sarkaaa/beskydske-tury"
                     target="_blank"
                   >
                     Githubu
-                  </a>
+                  </StyledLink>
                   .
                 </p>
                 <ButtonWrapper>
-                  <Button to="/about" as={Link} arrowRight>
+                  <Button
+                    to="/about"
+                    as={Link}
+                    buttonType="secondary"
+                    arrowRight
+                  >
                     Více informací
                   </Button>
                 </ButtonWrapper>
               </HorizontalInfoContent>
+              <div></div>
             </HorizontalInfo>
-          </div>
-          <div>
-            <h2>Jak vybrat trasu?</h2>
+          </Container>
+        </ForrestSection>
+        <StyledSection bg={theme.colors.primary}>
+          <React.Fragment>
+            <TitleLight>Jak vybrat trasu?</TitleLight>
             <InfoWrapper>
               <TrailInfoContainer
                 order={1}
-                emojiLabel="mountain"
-                emojiSymbol="⛰"
+                imgSource={step1}
+                imgAlt="Výběr trasy"
                 title="Výběr trasy"
                 description="Vyberte si ze seznamu tras pro tu nejideálnější. Každá karta trasy obsahuje základní informace o délce trasy, typu 
-                trasy a dopravní dostupností (auto, autobus, vlak). Po rozkliknutí karty jsou zobrazeny podrobnosti."
+                  trasy a dopravní dostupností (auto, autobus, vlak). Po rozkliknutí karty jsou zobrazeny podrobnosti."
               />
               <TrailInfoContainer
                 order={2}
-                emojiLabel="map"
-                emojiSymbol="🗺"
+                imgSource={step2}
+                imgAlt="Zobrazení přes Mapy.cz"
                 title="Zobrazení přes Mapy.cz"
                 description="Každá trasa ve svém detailu obsahuje dynamický mapový podklad dostupný z platformy Mapy.cz od Seznamu. Každou trasu je možné si otevřít v nové záložce přímo na Mapy.cz
-                a tak si trasu uložit do svého profilu."
+                  a tak si trasu uložit do svého profilu."
               />
               <TrailInfoContainer
                 order={3}
-                emojiLabel="boot"
-                emojiSymbol="🥾"
+                imgSource={step3}
+                imgAlt="Hurá na výšlap!"
                 title="Hurá na výšlap!"
                 description="Tadá! Trasa zvolená, mapa uložená a teď už se jen stačí sbalit do batohu a (se svým telefonem a Mapy.cz aplikací) vyrazit na výlet."
               />
             </InfoWrapper>
             <ButtonWrapper centered>
-              <Button to="/trasy" as={Link} arrowRight>
+              <Button to="/trasy" as={Link} buttonType="dark" arrowRight>
                 Přejít na trasy
               </Button>
             </ButtonWrapper>
-          </div>
-        </Container>
+          </React.Fragment>
+        </StyledSection>
       </Element>
+      <Instagram />
     </Layout>
   )
 }

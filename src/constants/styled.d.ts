@@ -29,6 +29,8 @@ declare module 'styled-components' {
       dark: string;
       gray: string;
       light: string;
+      red: string;
+      sand: string;
       selectionBg: string;
     };
   }
