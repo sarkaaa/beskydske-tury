@@ -14,7 +14,7 @@ const GlobalStyles = createGlobalStyle(
     font-weight: 700;
     font-size: ${theme.sizes.sizeXL};
     text-align: center;
-    line-height: 1.2;
+    line-height: 1.5;
   }
   @media ${theme.sizes.screenWidth.tablet} {
     h1 {
@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle(
     }
   }
   h3 {
-    color: ${theme.colors.dark};
+    color: ${theme.colors.primary};
     font-family: 'Noto Sans', sans-serif;
     font-weight: 700;
     font-size: ${theme.sizes.sizeM};
@@ -47,7 +47,8 @@ const GlobalStyles = createGlobalStyle(
     font-weight: 500;
     font-size: ${theme.sizes.sizeXS};
     line-height: 2;
-  }`
+  }
+  `
 )
 
 export default GlobalStyles;

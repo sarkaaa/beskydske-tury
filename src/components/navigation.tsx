@@ -10,7 +10,7 @@ const Categories = styled.ul`
 
   & li {
     float: left;
-    margin: 0.3rem 0.5rem;
+    margin: 0 0.5rem;
   }
 
   & li a {

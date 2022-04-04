@@ -93,7 +93,7 @@ const TileButton = styled.span(
     color: transparent;
     font-family: "Noto Sans", sans-serif;
     font-size: 1.4rem;
-    letter-spacing: 6px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     text-align: center;
     padding: 1rem 2rem;
@@ -232,7 +232,7 @@ const TrailTile = ({ trail }: Props) => {
           <TrailLengthAvailabityWrapper>
             <TrailLengthAvailabilityContent>
               <Icon iconName="mountain" />
-              <InfoText>{(routeResult?.length * 0.001).toFixed(2)} km</InfoText>
+              <InfoText>{(routeResult?.length * 0.001).toFixed(1)} km</InfoText>
             </TrailLengthAvailabilityContent>
             <TrailLengthAvailabilityContent>
               {availability_train && <Icon iconName="train" />}
