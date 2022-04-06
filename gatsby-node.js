@@ -26,6 +26,8 @@ exports.createPages = ({ actions, graphql }) => {
       allStrapiTrail {
         edges {
           node {
+            title
+            slug
             id
           }
         }
@@ -36,10 +38,10 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each article.
     result.data.allStrapiTrail.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.id}`,
-        component: path.resolve(`src/templates/trasa.tsx`),
+        path: `/trasa/${node.slug}`,
+        component: path.resolve("./src/templates/trasa.tsx"),
         context: {
-          id: node.id,
+          slug: node.slug,
         },
       })
     })
@@ -59,6 +61,7 @@ exports.sourceNodes = ({ actions }) => {
 
     type StrapiTrail implements Node {
       title: String
+      slug: String
       trail_type: String
       availability_car: CarAvailibility
       availability_bus: BusAvailibility

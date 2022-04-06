@@ -43,6 +43,7 @@ export const TRAIL_QUERY = graphql`
       edges {
         node {
           id
+          slug
           title
           content
           cover_image {

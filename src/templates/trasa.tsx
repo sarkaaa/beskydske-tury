@@ -149,6 +149,7 @@ const params = {
 const Trasa = ({ data }) => {
   const {
     title,
+    slug,
     content,
     availability_car,
     availability_bus,
@@ -292,9 +293,10 @@ const Trasa = ({ data }) => {
 }
 
 export const query = graphql`
-  query TrailTemplate($id: String!) {
-    strapiTrail(id: { eq: $id }) {
+  query TrailTemplate($slug: String!) {
+    strapiTrail(slug: { eq: $slug }) {
       id
+      slug
       title
       content
       cover_image {
