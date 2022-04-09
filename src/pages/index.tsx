@@ -48,8 +48,8 @@ const ButtonWrapper = styled.div<{ centered?: boolean }>(
   `
 )
 
-const HorizontalInfo = styled.div(
-  ({ theme }) => css`
+export const HorizontalInfo = styled.div<{ hidden?: boolean }>(
+  ({ theme, hidden }) => css`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,16 +61,19 @@ const HorizontalInfo = styled.div(
       padding: 0 1.5rem;
     }
 
-    & > div {
-      flex: 1;
-      &:last-child {
-        display: none;
+    ${hidden &&
+    css`
+      & > div {
+        flex: 1;
+        &:last-child {
+          display: none;
 
-        @media ${theme.sizes.screenWidth.tablet} {
-          display: block;
+          @media ${theme.sizes.screenWidth.tablet} {
+            display: block;
+          }
         }
       }
-    }
+    `}
   `
 )
 
@@ -83,7 +86,7 @@ const ForrestSection = styled.div`
   margin-bottom: -4px;
 `
 
-const HorizontalInfoContent = styled.div(
+export const HorizontalInfoContent = styled.div(
   ({ theme }) => css`
     display: flex;
     flex-direction: column;
@@ -107,7 +110,7 @@ const IndexPage = () => {
       >
         <ForrestSection>
           <Container>
-            <HorizontalInfo>
+            <HorizontalInfo hidden>
               <HorizontalInfoContent style={{ paddingBottom: "5rem" }}>
                 <h3>O čem jsou Beskydské túry?</h3>
                 <p>
@@ -119,7 +122,7 @@ const IndexPage = () => {
                 </p>
                 <p>
                   Mimo jiné je tento projekt vytvořen jako volnočasová aktivita
-                  a celý kód je jako open-source zvěřejněný v repozitáří na{" "}
+                  a celý kód je jako open-source zveřejněný v repozitáří{" "}
                   <StyledLink
                     href="https://github.com/sarkaaa/beskydske-tury"
                     target="_blank"
@@ -152,8 +155,7 @@ const IndexPage = () => {
                 imgSource="../images/step1.png"
                 imgAlt="Výběr trasy"
                 title="Výběr trasy"
-                description="Vyberte si ze seznamu tras pro tu nejideálnější. Každá karta trasy obsahuje základní informace o délce trasy, typu 
-                  trasy a dopravní dostupností (auto, autobus, vlak). Po rozkliknutí karty jsou zobrazeny podrobnosti."
+                description="Vyberte si ze seznamu tras pro Vás tu nejideálnější. Každá karta trasy obsahuje základní informace o délce trasy, typu trasy a dopravní dostupností (auto, autobus, vlak). Po rozkliknutí karty jsou zobrazeny podrobnosti o jednotlivé trase."
               />
               <TrailInfoContainer
                 order={2}
@@ -161,14 +163,14 @@ const IndexPage = () => {
                 imgAlt="Zobrazení přes Mapy.cz"
                 title="Zobrazení přes Mapy.cz"
                 description="Každá trasa ve svém detailu obsahuje dynamický mapový podklad dostupný z platformy Mapy.cz od Seznamu. Každou trasu je možné si otevřít v nové záložce přímo na Mapy.cz
-                  a tak si trasu uložit do svého profilu."
+                a tak si trasu uložit do svého profilu."
               />
               <TrailInfoContainer
                 order={3}
                 imgSource="../images/step3.png"
                 imgAlt="Hurá na výšlap!"
                 title="Hurá na výšlap!"
-                description="Tadá! Trasa zvolená, mapa uložená a teď už se jen stačí sbalit do batohu a (se svým telefonem a Mapy.cz aplikací) vyrazit na výlet."
+                description="Tadá! Trasa je zvolená, mapa uložená, počasí zkontrolováno a teď už se jen stačí sbalit do batohu a s dobrou náladu (a telefonem s Mapy.cz aplikací) vyrazit na výlet."
               />
             </InfoWrapper>
             <ButtonWrapper centered>
