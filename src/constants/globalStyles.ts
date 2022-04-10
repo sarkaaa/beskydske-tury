@@ -41,7 +41,8 @@ const GlobalStyles = createGlobalStyle(
     font-size: ${theme.sizes.sizeM};
     text-align: center;
   }
-  p {
+  p,
+  ul li {
     color: ${theme.colors.dark};
     font-family: 'Merriweather', sans-serif;
     font-weight: 500;

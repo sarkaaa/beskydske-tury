@@ -12,11 +12,13 @@ const Wrapper = styled.div<{ bg?: string }>(
 const StyledSection = ({
   children,
   bg,
+  className,
 }: {
   children: React.ReactNode
   bg?: string
+  className?: string
 }) => (
-  <Wrapper bg={bg}>
+  <Wrapper className={className} bg={bg}>
     <Container>{children}</Container>
   </Wrapper>
 )
