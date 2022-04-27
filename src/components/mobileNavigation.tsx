@@ -82,7 +82,7 @@ type Props = {
 const MobileNavigation = ({ categories }: Props) => (
   <Menu.slide styles={MenuStyles} right>
     {categories.map(({ title, to }) => (
-      <NavigationLink to={to}>{title}</NavigationLink>
+      <NavigationLink key={title} to={to}>{title}</NavigationLink>
     ))}
   </Menu.slide>
 )

@@ -28,9 +28,12 @@ module.exports = {
     "graphql/template-strings": [
       "error",
       {
-        env: "relay",
-        schemaJsonFilepath: path.resolve(__dirname, "./schema.json"),
-        tagName: "graphql",
+        env: `relay`,
+        schemaString: fs.readFileSync(
+          path.resolve(__dirname, "./schema.graphql"),
+          { encoding: "utf-8", flag: "r" }
+        ),
+        tagName: `graphql`,
       },
     ],
   },

@@ -2,30 +2,70 @@
 
 exports[`Button renders correctly 1`] = `
 .c0 {
-  border-radius: 3rem;
-  padding: 0.6rem 2.5rem;
+  color: #0a2e0a;
   font-size: 1rem;
-  font-family: 'Noto Sans',sans-serif;
-  color: #FCFCFC;
+  font-family: "Noto Sans",sans-serif;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border-radius: 3rem;
   border: solid 2px transparent;
-  background-image: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)),linear-gradient(-50deg,#0D7419,#4ec752,#6ADD6E);
+  background-image: linear-gradient( to right, #0a2e0a, #0D7419 );
   background-origin: border-box;
-  background-clip: content-box,border-box;
-  -webkit-transition: linear 0.2s;
-  transition: linear 0.2s;
+  padding: 2px;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  cursor: pointer;
+  position: relative;
+  height: 60px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  box-sizing: border-box;
 }
 
-.c0:hover {
-  cursor: pointer;
+.c0 .sc-gsnTZi {
+  background: transparent;
+}
+
+.c0:hover,
+.c0:focus {
   box-shadow: none;
   color: #FCFCFC;
-  background-image: linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)),linear-gradient(-50deg,#0a5913,#5cc460);
+  background-image: linear-gradient( to right, #0a2e0a, #0D7419 );
+}
+
+.c0:hover .sc-gsnTZi,
+.c0:focus .sc-gsnTZi {
+  color: #FCFCFC;
+  background: transparent;
+  -webkit-transform: translateX(0.25rem);
+  -ms-transform: translateX(0.25rem);
+  transform: translateX(0.25rem);
+}
+
+.c0:hover span,
+.c0:focus span {
+  background: transparent;
+}
+
+.c0 span {
+  background: #FCFCFC;
+  border-radius: 3rem;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+  box-sizing: border-box;
+  padding-top: 1.05rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 <button
   className="c0"
   onClick={[Function]}
 >
-  Hello World
+  <span>
+    Hello World
+  </span>
 </button>
 `;

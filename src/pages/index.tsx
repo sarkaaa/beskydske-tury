@@ -8,7 +8,7 @@ import Button from "../components/button"
 import Header from "../components/header"
 import Emoji from "../components/emoji"
 import Container from "../components/container"
-import TrailInfoContainer from "../components/TrailInfoContainer"
+import TrailInfoContainer from "../components/trailInfoContainer"
 import StyledSection from "../components/section"
 import Instagram, { Title as TitleLight } from "../components/instagram"
 import forrestBg from "../images/forrest-bg.png"
@@ -136,7 +136,7 @@ const IndexPage = () => {
                     to="/about"
                     as={Link}
                     buttonType="secondary"
-                    arrowRight
+                    arrowright
                   >
                     Více informací
                   </Button>
@@ -174,7 +174,7 @@ const IndexPage = () => {
               />
             </InfoWrapper>
             <ButtonWrapper centered>
-              <Button to="/trasy" as={Link} buttonType="dark" arrowRight>
+              <Button to="/trasy" as={Link} buttonType="dark" arrowright>
                 Přejít na trasy
               </Button>
             </ButtonWrapper>

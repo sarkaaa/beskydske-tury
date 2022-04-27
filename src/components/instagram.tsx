@@ -122,15 +122,17 @@ const InstagramTileDescription = styled.span(
 )
 
 const InstagramTile = ({
+  key,
   bg,
   link,
   description,
 }: {
+  key: string
   bg: string
   link: string
   description: string
 }) => (
-  <InstagramTileWrapper>
+  <InstagramTileWrapper key={key}>
     <InstagramTileInner bg={bg} href={link} target="_blank">
       <InstagramTileOverlay>
         <InstagramTileDescription>
@@ -168,6 +170,7 @@ const Instagram = () => {
       <Inner screenWidth={igGrid}>
         {data.allInstagramContent.edges.map(({ node }) => (
           <InstagramTile
+            key={node.id}
             bg={node.media_url}
             link={node.permalink}
             description={node.caption}

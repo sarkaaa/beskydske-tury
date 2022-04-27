@@ -23,7 +23,7 @@ const iconNames = {
   car: faCarSide,
   bus: faBus,
   train: faTrain,
-  arrowRight: faArrowRight,
+  arrowright: faArrowRight,
   arrowLeft: faArrowLeft,
   feets: faShoePrints,
 }
@@ -81,7 +81,7 @@ type Props = {
     | "car"
     | "bus"
     | "train"
-    | "arrowRight"
+    | "arrowright"
     | "arrowLeft"
     | "feets"
   dark?: boolean

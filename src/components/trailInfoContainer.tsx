@@ -65,14 +65,14 @@ const TrailInfoContainer = ({
   imgSource,
 }: Props) => (
   <InfoContainer order={order}>
-    <StaticImage
+    {/* <StaticImage
       src={imgSource}
       alt={imgAlt}
       placeholder="blurred"
       layout="fixed"
       // width={200}
       // height={200}
-    />
+    /> */}
     <img
       src={imgSource}
       alt={imgAlt}

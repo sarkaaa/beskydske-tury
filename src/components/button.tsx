@@ -7,9 +7,9 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 const StyledButton = styled.button<{
   buttonType?: "primary" | "secondary" | "dark"
   small?: boolean
-  arrowRight?: boolean
+  arrowright?: boolean
 }>(
-  ({ theme, small, buttonType = "primary", arrowRight }) => css`
+  ({ theme, small, buttonType = "primary", arrowright }) => css`
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.sizeS};
     font-family: "Noto Sans", sans-serif;
@@ -84,7 +84,7 @@ const StyledButton = styled.button<{
       padding-right: 1rem;
 
       ${
-        arrowRight &&
+        arrowright &&
         css`
           & {
             padding-right: 2.75rem;
@@ -146,15 +146,15 @@ const Icon = styled(FontAwesomeIcon)(
 
 type Props = {
   children: React.ReactNode
-  arrowRight?: boolean
+  arrowright?: boolean
   [x: string]: any
 }
 
-const Button = ({ children, arrowRight = false, ...props }: Props) => (
-  <StyledButton {...props} arrowRight={arrowRight}>
+const Button = ({ children, arrowright = false, ...props }: Props) => (
+  <StyledButton {...props} arrowright={arrowright}>
     <span>
       {children}
-      {arrowRight && <Icon icon={faArrowRight} />}
+      {arrowright && <Icon icon={faArrowRight} />}
     </span>
   </StyledButton>
 )

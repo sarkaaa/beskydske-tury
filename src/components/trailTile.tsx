@@ -162,7 +162,7 @@ const TrailLengthAvailabilityContent = styled.div`
 `
 
 type TileProps = {
-  id: number
+  slug: string
   title: string
   availability_car: {
     parking1: string | null
@@ -190,7 +190,7 @@ type Props = {
 
 const TrailTile = ({ trail }: Props) => {
   const {
-    id,
+    slug,
     title,
     availability_car,
     availability_bus,
@@ -218,7 +218,7 @@ const TrailTile = ({ trail }: Props) => {
     <TileWrapper
       bg={cover_image.localFile.childImageSharp.fluid.src}
       as={Link}
-      to={`/${id}`}
+      to={`/${slug}`}
     >
       <TileContent>
         <Title>{title}</Title>
@@ -226,7 +226,7 @@ const TrailTile = ({ trail }: Props) => {
           <TrailTypeWrapper>
             <Icon iconName="marker" />
             <InfoText>A</InfoText>
-            <Icon iconName="arrowRight" />
+            <Icon iconName="arrowright" />
             <InfoText>{trail_type === "aa" ? "A" : "B"}</InfoText>
           </TrailTypeWrapper>
           <TrailLengthAvailabityWrapper>

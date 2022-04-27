@@ -26,7 +26,7 @@ exports.createPages = ({ actions, graphql }) => {
       allStrapiTrail {
         edges {
           node {
-            id
+            slug
           }
         }
       }
@@ -36,10 +36,10 @@ exports.createPages = ({ actions, graphql }) => {
     // Create pages for each article.
     result.data.allStrapiTrail.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.id}`,
+        path: `/${node.slug}`,
         component: path.resolve(`src/templates/trasa.tsx`),
         context: {
-          id: node.id,
+          slug: node.slug,
         },
       })
     })
@@ -58,12 +58,33 @@ exports.sourceNodes = ({ actions }) => {
     }
 
     type StrapiTrail implements Node {
+      slug: String
       title: String
       trail_type: String
+      criterion: ENUM_TRAIL_CRITERION
       availability_car: CarAvailibility
       availability_bus: BusAvailibility
       availability_train: TrainAvailibility
+      content: String!
       coords: Coords
+      trail_type: ENUM_TRAIL_TRAIL_TYPE
+      train: TrainAvailibility
+      cover_image: UploadFile
+    }
+
+    enum ENUM_TRAIL_TRAIL_TYPE {
+      aa
+      ab
+      }
+
+    enum ENUM_TRAIL_CRITERION {
+      fast
+      short
+      bike1
+      bike2
+      bike3
+      turist1
+      turist2
     }
 
     type CarAvailibility implements Node {
@@ -85,30 +106,40 @@ exports.sourceNodes = ({ actions }) => {
     }
 
     type Coords implements Node {
-      lat1: Float
-      lng1: Float
-      lat2: Float
-      lng2: Float
-      lat3: Float
-      lng3: Float
-      lat4: Float
-      lng4: Float
-      lat5: Float
-      lng5: Float
-      lat6: Float
-      lng6: Float
-      lat7: Float
-      lng7: Float
-      lat8: Float
-      lng8: Float
-      lat9: Float
-      lng9: Float
-      lat10: Float
-      lng10: Float
-      lat11: Float
-      lng11: Float
-      lat12: Float
-      lng12: Float
+      lat1: Float!
+      lng1: Float!
+      lat2: Float!
+      lng2: Float!
+      lat3: Float!
+      lng3: Float!
+      lat4: Float!
+      lng4: Float!
+      lat5: Float!
+      lng5: Float!
+      lat6: Float!
+      lng6: Float!
+      lat7: Float!
+      lng7: Float!
+      lat8: Float!
+      lng8: Float!
+      lat9: Float!
+      lng9: Float!
+      lat10: Float!
+      lng10: Float!
+    }
+
+    type UploadFile implements Node {
+      name: String!
+      alternativeText: String
+      caption: String
+      width: Int
+      height: Int
+      formats: JSON
+      hash: String!
+      ext: String
+      mime: String!
+      size: Float!
+      url: String!
     }
   `
 

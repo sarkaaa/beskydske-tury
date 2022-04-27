@@ -197,13 +197,13 @@ const Trasa = ({ data }) => {
           <StyledLink to="/trasy">Zpět na všechny trasy</StyledLink>
         </BackLinkWrapper>
         <MapWrapper>
-          <Map center={mapCoords[2]} height="500px">
+          <Map center={mapCoords.length > 2 ? mapCoords[2] : mapCoords[1]} height="500px">
             <KeyboardControl />
             <ZoomControl />
             <MouseControl zoom={true} pan={true} wheel={true} />
             <CompassControl right={10} top={50} />
             <MarkerLayer>
-              <PathMarker coords={mapCoords} />
+              <PathMarker key={title} coords={mapCoords} />
             </MarkerLayer>
             <PathLayer>
               <Path
@@ -292,8 +292,9 @@ const Trasa = ({ data }) => {
 }
 
 export const query = graphql`
-  query TrailTemplate($id: String!) {
-    strapiTrail(id: { eq: $id }) {
+  query TrailTemplate($slug: String!) {
+    strapiTrail(slug: { eq: $slug }) {
+      slug
       id
       title
       content
@@ -305,23 +306,6 @@ export const query = graphql`
             }
             fluid {
               ...GatsbyImageSharpFluid
-              base64
-              tracedSVG
-              srcWebp
-              srcSetWebp
-              originalImg
-              originalName
-            }
-          }
-        }
-      }
-      cover_image_map {
-        localFile {
-          childImageSharp {
-            fixed(width: 200, height: 125) {
-              ...GatsbyImageSharpFixed
-            }
-            fluid {
               base64
               tracedSVG
               srcWebp
@@ -370,10 +354,6 @@ export const query = graphql`
         lng9
         lat10
         lng10
-        lat11
-        lng11
-        lat12
-        lng12
       }
     }
   }
