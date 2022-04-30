@@ -4,7 +4,7 @@ import {
   RouteInfoResultProps,
 } from "react-mapycz/lib/helperFunctions"
 import SMapProvider from "react-mapycz/lib/SMapProvider"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import StyledLink from "../components/link"
 import Button from "../components/button"
 import Layout from "../components/layout"
@@ -150,9 +150,9 @@ const Trasa = ({ data }) => {
   const {
     title,
     content,
-    availability_car,
-    availability_bus,
-    availability_train,
+    car,
+    bus,
+    train,
     coords,
     criterion,
     trail_type,
@@ -189,7 +189,7 @@ const Trasa = ({ data }) => {
       <SEO title={`${title} | Beskydské túry`} />
       <Header
         title={title}
-        customBg={cover_image.localFile.childImageSharp.fluid.src}
+        customBg={cover_image.url}
       />
       <Container>
         <BackLinkWrapper>
@@ -234,33 +234,33 @@ const Trasa = ({ data }) => {
             </InfoWrapper>
             <InfoWrapper>
               <InfoTitle>Dostupnost</InfoTitle>
-              {availability_train && (
+              {train && (
                 <InfoContent>
                   <Icon iconName="train" small />
                   <div>
-                    <p>{availability_train?.station1!}</p>
-                    <p>{availability_train?.station2!}</p>
-                    <p>{availability_train?.station3!}</p>
+                    <p>{train?.station1!}</p>
+                    <p>{train?.station2!}</p>
+                    <p>{train?.station3!}</p>
                   </div>
                 </InfoContent>
               )}
-              {availability_bus && (
+              {bus && (
                 <InfoContent>
                   <Icon iconName="bus" small />
                   <div>
-                    <p>{availability_bus?.stop1!}</p>
-                    <p>{availability_bus?.stop2!}</p>
-                    <p>{availability_bus?.stop3!}</p>
+                    <p>{bus?.stop1!}</p>
+                    <p>{bus?.stop2!}</p>
+                    <p>{bus?.stop3!}</p>
                   </div>
                 </InfoContent>
               )}
-              {availability_car && (
+              {car && (
                 <InfoContent>
                   <Icon iconName="car" small />
                   <div>
-                    <p>{availability_car?.parking1!}</p>
-                    <p>{availability_car?.parking2!}</p>
-                    <p>{availability_car?.parking3!}</p>
+                    <p>{car?.parking1!}</p>
+                    <p>{car?.parking2!}</p>
+                    <p>{car?.parking3!}</p>
                   </div>
                 </InfoContent>
               )}
@@ -274,7 +274,7 @@ const Trasa = ({ data }) => {
             </InfoWrapper>
           </InfoPanelWrapper>
           <h2 style={{ textAlign: "left" }}>Popis trasy</h2>
-          <Content>{content}</Content>
+          <Content>{content.data.content}</Content>
           <LinkWrapper>
             <Button
               as={StyledLink}
@@ -297,37 +297,26 @@ export const query = graphql`
       slug
       id
       title
-      content
-      cover_image {
-        localFile {
-          childImageSharp {
-            fixed(width: 200, height: 125) {
-              ...GatsbyImageSharpFixed
-            }
-            fluid {
-              ...GatsbyImageSharpFluid
-              base64
-              tracedSVG
-              srcWebp
-              srcSetWebp
-              originalImg
-              originalName
-            }
-          }
+      content {
+        data {
+          content
         }
       }
+      cover_image {
+        url
+      }
       trail_type
-      availability_car {
+      car {
         parking1
         parking2
         parking3
       }
-      availability_bus {
+      bus {
         stop1
         stop2
         stop3
       }
-      availability_train {
+      train {
         station1
         station2
         station3
@@ -335,7 +324,6 @@ export const query = graphql`
       criterion
       coords {
         lat1
-        lng1
         lat2
         lng2
         lat3

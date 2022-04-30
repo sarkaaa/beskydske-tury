@@ -69,8 +69,10 @@ const TileWrapper = styled.button<{ bg: string }>(
 
 const TileContent = styled.div`
   position: relative;
+  width: 100%;
   padding: 1.5rem;
   z-index: 2;
+  box-sizing: border-box;
   transition: all 0.7s ease-in-out;
 `
 
@@ -164,22 +166,23 @@ const TrailLengthAvailabilityContent = styled.div`
 type TileProps = {
   slug: string
   title: string
-  availability_car: {
+  car: {
     parking1: string | null
     parking2: string | null
     parking3: string | null
   } | null
-  availability_bus: {
+  bus: {
     stop1: string
     stop2: string
     stop3: string
   } | null
-  availability_train: {
+  train: {
     station1: string
     station2: string
     station3: string
   } | null
   coords: any
+  criterion: 'turist1' | 'turist2'
   trail_type: "aa" | "ab"
   cover_image: any
 }
@@ -192,10 +195,11 @@ const TrailTile = ({ trail }: Props) => {
   const {
     slug,
     title,
-    availability_car,
-    availability_bus,
-    availability_train,
+    car,
+    bus,
+    train,
     coords,
+    criterion,
     trail_type,
     cover_image,
   } = trail
@@ -212,11 +216,11 @@ const TrailTile = ({ trail }: Props) => {
     }
   }
 
-  const routeResult = routeInfo({ coords: mapCoords, criterion: "turist1" })
+  const routeResult = routeInfo({ coords: mapCoords, criterion: criterion })
 
   return (
     <TileWrapper
-      bg={cover_image.localFile.childImageSharp.fluid.src}
+      bg={cover_image.url}
       as={Link}
       to={`/${slug}`}
     >
@@ -235,9 +239,9 @@ const TrailTile = ({ trail }: Props) => {
               <InfoText>{(routeResult?.length * 0.001).toFixed(1)} km</InfoText>
             </TrailLengthAvailabilityContent>
             <TrailLengthAvailabilityContent>
-              {availability_train && <Icon iconName="train" />}
-              {availability_bus && <Icon iconName="bus" />}
-              {availability_car && <Icon iconName="car" />}
+              {train && <Icon iconName="train" />}
+              {bus && <Icon iconName="bus" />}
+              {car && <Icon iconName="car" />}
             </TrailLengthAvailabilityContent>
           </TrailLengthAvailabityWrapper>
         </TrailInfo>

@@ -62,13 +62,13 @@ exports.sourceNodes = ({ actions }) => {
       title: String
       trail_type: String
       criterion: ENUM_TRAIL_CRITERION
-      availability_car: CarAvailibility
-      availability_bus: BusAvailibility
-      availability_train: TrainAvailibility
-      content: String!
-      coords: Coords
-      trail_type: ENUM_TRAIL_TRAIL_TYPE
-      train: TrainAvailibility
+      availability_car: CarAvailibility!
+      availability_bus: BusAvailibility!
+      availability_train: TrainAvailibility!
+      content: Content!
+      coords: Coords!
+      trail_type: ENUM_TRAIL_TRAIL_TYPE!
+      train: TrainAvailibility!
       cover_image: UploadFile
     }
 
@@ -86,6 +86,15 @@ exports.sourceNodes = ({ actions }) => {
       turist1
       turist2
     }
+
+    type Content implements Node {
+      data: ContentData
+    }
+
+    type ContentData implements Node {
+      content: String
+    }
+
 
     type CarAvailibility implements Node {
       parking1: String

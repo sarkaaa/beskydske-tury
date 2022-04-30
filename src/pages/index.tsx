@@ -17,6 +17,7 @@ import forrestBg from "../images/forrest-bg.png"
 // import step3 from "../images/step3.png"
 import theme from "../constants/theme"
 import StyledLink from "../components/link"
+import { StaticImage } from "gatsby-plugin-image"
 
 const InfoWrapper = styled.div(
   ({ theme }) => css`
@@ -152,26 +153,44 @@ const IndexPage = () => {
             <InfoWrapper>
               <TrailInfoContainer
                 order={1}
-                imgSource="../images/step1.png"
                 imgAlt="Výběr trasy"
                 title="Výběr trasy"
                 description="Vyberte si ze seznamu tras pro Vás tu nejideálnější. Každá karta trasy obsahuje základní informace o délce trasy, typu trasy a dopravní dostupností (auto, autobus, vlak). Po rozkliknutí karty jsou zobrazeny podrobnosti o jednotlivé trase."
-              />
+              >
+                <StaticImage
+                  src="../images/step1.png"
+                  placeholder="blurred"
+                  alt="Výběr trasy"
+                  height={200}
+                />                
+              </TrailInfoContainer>
               <TrailInfoContainer
                 order={2}
-                imgSource="../images/step2.png"
                 imgAlt="Zobrazení přes Mapy.cz"
                 title="Zobrazení přes Mapy.cz"
                 description="Každá trasa ve svém detailu obsahuje dynamický mapový podklad dostupný z platformy Mapy.cz od Seznamu. Každou trasu je možné si otevřít v nové záložce přímo na Mapy.cz
                 a tak si trasu uložit do svého profilu."
-              />
+              >
+                <StaticImage
+                  src="../images/step2.png"
+                  placeholder="blurred"
+                  alt="Zobrazení přes Mapy.cz"
+                  width={200}
+                />
+                </TrailInfoContainer>
               <TrailInfoContainer
                 order={3}
-                imgSource="../images/step3.png"
                 imgAlt="Hurá na výšlap!"
                 title="Hurá na výšlap!"
                 description="Tadá! Trasa je zvolená, mapa uložená, počasí zkontrolováno a teď už se jen stačí sbalit do batohu a s dobrou náladu (a telefonem s Mapy.cz aplikací) vyrazit na výlet."
-              />
+              >
+                <StaticImage
+                  src="../images/step3.png"
+                  placeholder="blurred"
+                  alt="Hurá na výšlap!"
+                  width={200}
+                />
+              </TrailInfoContainer>
             </InfoWrapper>
             <ButtonWrapper centered>
               <Button to="/trasy" as={Link} buttonType="dark" arrowright>

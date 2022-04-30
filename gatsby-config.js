@@ -62,10 +62,10 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
-        // apiURL:  process.env.API_URL || "http://localhost:1337",
-        apiURL:  "http://localhost:1337",
-        // accessToken: process.env.API_TOKEN,
-        accessToken: "1f8c18f6ce3d5515bdbc8bbfe61416047e17aeabc396a0f94dabefef0fe4b5dedf9a9823af8cc15f1debb72133915f19e15f5c0605e9c0d337ca273d282e018f2243827453666ee73709b0fb7aca074d616a36d7b287cc3359cd2afc9d7225da4b31809c1dd5c31010d472ca88d50fde753835ed413abd610f09e1aa36d0cc98",
+        apiURL:  process.env.API_URL || "http://localhost:1337",
+        // apiURL:  "http://localhost:1337",
+        accessToken: process.env.API_TOKEN,
+        // accessToken: "6bd52f90dc03e472d3fe5c3e428cac71dd44c44809d52e6df482f43bb2f85e074b5d1b96f1c3f4862bb0cc872a0fe4cd459b33aee01a88203d61d6766f46664e641bb270c8a9bdc21c0f543d0825010e11accaaa97a6668736558c1a55b5301e01fa918d5c1ba6889b5d711835f6ba487ea63504b979b82f358b0564cac4edea",
         collectionTypes: ["user", {
           singularName: "trail",
           queryParams: {
