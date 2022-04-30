@@ -28,7 +28,7 @@ const Trasy = ({ data }) => {
       <Header title="Trasy" />
       <Container>
         <TrailsWrapper>
-          {data?.allStrapiTrail.edges.map(item => (
+          {data?.allStrapiTrail.edges.reverse().map(item => (
             <TrailTile key={item.node.id} trail={item.node} />
           ))}
         </TrailsWrapper>
@@ -42,139 +42,59 @@ query IndexQuery {
   allStrapiTrail {
     edges {
       node {
-          
-            slug
-            title
-            content {
-              data {
-                content
-              }
-            }
-            cover_image {
-              data {
-                attributes {
-                  url
-                }
-              }
-            }
-            trail_type
-          criterion
-          coords {
-            lat1
-            lng1
-            lat2
-            lng2
-            lat3
-            lng3
-            lat4
-            lng4
-            lat5
-            lng5
-            lat6
-            lng6
-            lat7
-            lng7
-            lat8
-            lng8
-            lat9
-            lng9
-            lat10
-            lng10
+        slug
+        title
+        content {
+          data {
+            content
           }
         }
+        cover_image {
+          url
+        }
+        trail_type
+        criterion
+        coords {
+          lat1
+          lng1
+          lat2
+          lng2
+          lat3
+          lng3
+          lat4
+          lng4
+          lat5
+          lng5
+          lat6
+          lng6
+          lat7
+          lng7
+          lat8
+          lng8
+          lat9
+          lng9
+          lat10
+          lng10
+        }
+        car {
+          parking1
+          parking2
+          parking3
+        }
+        bus {
+          stop1
+          stop2
+          stop3
+        }
+        train {
+          station1
+          station2
+          station3
+        }
+      }
     }
   }
 }
 `
-
-// export const TRAIL_QUERY = graphql`
-//   query IndexQuery {
-//     allStrapiTrail {
-//       edges {
-//         node {
-//           slug
-//           id
-//           title
-//           content
-//           cover_image {
-//             localFile {
-//               childImageSharp {
-//                 fixed(width: 200, height: 125) {
-//                   ...GatsbyImageSharpFixed
-//                 }
-//                 fluid {
-//                   ...GatsbyImageSharpFluid
-//                   base64
-//                   tracedSVG
-//                   srcWebp
-//                   srcSetWebp
-//                   originalImg
-//                   originalName
-//                 }
-//               }
-//             }
-//           }
-//           cover_image_map {
-//             localFile {
-//               childImageSharp {
-//                 fixed(width: 200, height: 125) {
-//                   ...GatsbyImageSharpFixed
-//                 }
-//                 fluid {
-//                   ...GatsbyImageSharpFluid
-//                   base64
-//                   tracedSVG
-//                   srcWebp
-//                   srcSetWebp
-//                   originalImg
-//                   originalName
-//                 }
-//               }
-//             }
-//           }
-//           trail_type
-//           availability_car {
-//             parking1
-//             parking2
-//             parking3
-//           }
-//           availability_bus {
-//             stop1
-//             stop2
-//             stop3
-//           }
-//           availability_train {
-//             station1
-//             station2
-//             station3
-//           }
-//           criterion
-//           coords {
-//             lat1
-//             lng1
-//             lat2
-//             lng2
-//             lat3
-//             lng3
-//             lat4
-//             lng4
-//             lat5
-//             lng5
-//             lat6
-//             lng6
-//             lat7
-//             lng7
-//             lat8
-//             lng8
-//             lat9
-//             lng9
-//             lat10
-//             lng10
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
 
 export default Trasy

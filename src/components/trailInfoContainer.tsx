@@ -53,7 +53,7 @@ type Props = {
   order: number
   title: string
   description: string
-  imgSource: string
+  children: React.ReactChild
   imgAlt: string
 }
 
@@ -61,26 +61,16 @@ const TrailInfoContainer = ({
   order,
   title,
   description,
-  imgAlt,
-  imgSource,
-}: Props) => (
-  <InfoContainer order={order}>
-    {/* <StaticImage
-      src={imgSource}
-      alt={imgAlt}
-      placeholder="blurred"
-      layout="fixed"
-      // width={200}
-      // height={200}
-    /> */}
-    <img
-      src={imgSource}
-      alt={imgAlt}
-      style={{ width: "100%", height: "auto" }}
-    />
-    <Title>{title}</Title>
-    <p>{description}</p>
-  </InfoContainer>
-)
+  children,
+}: Props) => {
+
+  return (
+    <InfoContainer order={order}>
+      {children}
+      <Title>{title}</Title>
+      <p>{description}</p>
+    </InfoContainer>
+  )
+}
 
 export default TrailInfoContainer
