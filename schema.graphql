@@ -700,7 +700,7 @@ type ImageSharpResize {
 
 type Query {
   allStrapiTrail(filter: STRAPI_TRAILFilterInput, sort: STRAPI_TRAILSortInput, skip: Int, limit: Int): STRAPI_TRAILConnection!
-  strapiTrail(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, publishedAt: DateQueryOperatorInput, content: STRAPI_TRAILContentFilterInput, criterion: StringQueryOperatorInput, trail_type: StringQueryOperatorInput, slug: StringQueryOperatorInput, strapi_id: IntQueryOperatorInput, bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput, car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput, train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput, childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput, childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput): STRAPI_TRAIL
+  strapiTrail(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, content: STRAPI_TRAILContentFilterInput, criterion: StringQueryOperatorInput, trail_type: StringQueryOperatorInput, slug: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, publishedAt: DateQueryOperatorInput, cover_image: STRAPI__MEDIAFilterInput, bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput, car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput, train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput, strapi_id: IntQueryOperatorInput, childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput, childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput): STRAPI_TRAIL
   file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, url: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
@@ -717,6 +717,10 @@ type Query {
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
+  content(data: ContentDataFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Content
+  allContent(filter: ContentFilterInput, sort: ContentSortInput, skip: Int, limit: Int): ContentConnection!
+  contentData(content: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ContentData
+  allContentData(filter: ContentDataFilterInput, sort: ContentDataSortInput, skip: Int, limit: Int): ContentDataConnection!
   carAvailibility(parking1: StringQueryOperatorInput, parking2: StringQueryOperatorInput, parking3: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): CarAvailibility
   allCarAvailibility(filter: CarAvailibilityFilterInput, sort: CarAvailibilitySortInput, skip: Int, limit: Int): CarAvailibilityConnection!
   busAvailibility(stop1: StringQueryOperatorInput, stop2: StringQueryOperatorInput, stop3: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): BusAvailibility
@@ -727,7 +731,9 @@ type Query {
   allCoords(filter: CoordsFilterInput, sort: CoordsSortInput, skip: Int, limit: Int): CoordsConnection!
   uploadFile(name: StringQueryOperatorInput, alternativeText: StringQueryOperatorInput, caption: StringQueryOperatorInput, width: IntQueryOperatorInput, height: IntQueryOperatorInput, formats: JSONQueryOperatorInput, hash: StringQueryOperatorInput, ext: StringQueryOperatorInput, mime: StringQueryOperatorInput, size: FloatQueryOperatorInput, url: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): UploadFile
   allUploadFile(filter: UploadFileFilterInput, sort: UploadFileSortInput, skip: Int, limit: Int): UploadFileConnection!
-  strapiComponentCoordsCoords(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, lat1: FloatQueryOperatorInput, lng1: FloatQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_COORDS_COORDS
+  strapiMedia(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, name: StringQueryOperatorInput, alternativeText: StringQueryOperatorInput, caption: StringQueryOperatorInput, width: IntQueryOperatorInput, height: IntQueryOperatorInput, formats: STRAPI__MEDIAFormatsFilterInput, hash: StringQueryOperatorInput, ext: StringQueryOperatorInput, mime: StringQueryOperatorInput, size: FloatQueryOperatorInput, url: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, localFile: FileFilterInput, strapi_id: IntQueryOperatorInput): STRAPI__MEDIA
+  allStrapiMedia(filter: STRAPI__MEDIAFilterInput, sort: STRAPI__MEDIASortInput, skip: Int, limit: Int): STRAPI__MEDIAConnection!
+  strapiComponentCoordsCoords(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, lat1: FloatQueryOperatorInput, lat2: FloatQueryOperatorInput, lng1: FloatQueryOperatorInput, lng2: FloatQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_COORDS_COORDS
   allStrapiComponentCoordsCoords(filter: STRAPI__COMPONENT_COORDS_COORDSFilterInput, sort: STRAPI__COMPONENT_COORDS_COORDSSortInput, skip: Int, limit: Int): STRAPI__COMPONENT_COORDS_COORDSConnection!
   strapiComponentAvailabilityAvailabilityTrain(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, station1: StringQueryOperatorInput, station2: StringQueryOperatorInput, station3: StringQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAIN
   allStrapiComponentAvailabilityAvailabilityTrain(filter: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, sort: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINSortInput, skip: Int, limit: Int): STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINConnection!
@@ -857,9 +863,6 @@ enum STRAPI_TRAILFieldsEnum {
   internal___owner
   internal___type
   title
-  createdAt
-  updatedAt
-  publishedAt
   content___data___id
   content___data___parent___id
   content___data___parent___children
@@ -878,7 +881,148 @@ enum STRAPI_TRAILFieldsEnum {
   criterion
   trail_type
   slug
-  strapi_id
+  createdAt
+  updatedAt
+  publishedAt
+  cover_image___id
+  cover_image___parent___id
+  cover_image___parent___parent___id
+  cover_image___parent___parent___children
+  cover_image___parent___children
+  cover_image___parent___children___id
+  cover_image___parent___children___children
+  cover_image___parent___internal___content
+  cover_image___parent___internal___contentDigest
+  cover_image___parent___internal___description
+  cover_image___parent___internal___fieldOwners
+  cover_image___parent___internal___ignoreType
+  cover_image___parent___internal___mediaType
+  cover_image___parent___internal___owner
+  cover_image___parent___internal___type
+  cover_image___children
+  cover_image___children___id
+  cover_image___children___parent___id
+  cover_image___children___parent___children
+  cover_image___children___children
+  cover_image___children___children___id
+  cover_image___children___children___children
+  cover_image___children___internal___content
+  cover_image___children___internal___contentDigest
+  cover_image___children___internal___description
+  cover_image___children___internal___fieldOwners
+  cover_image___children___internal___ignoreType
+  cover_image___children___internal___mediaType
+  cover_image___children___internal___owner
+  cover_image___children___internal___type
+  cover_image___internal___content
+  cover_image___internal___contentDigest
+  cover_image___internal___description
+  cover_image___internal___fieldOwners
+  cover_image___internal___ignoreType
+  cover_image___internal___mediaType
+  cover_image___internal___owner
+  cover_image___internal___type
+  cover_image___name
+  cover_image___alternativeText
+  cover_image___caption
+  cover_image___width
+  cover_image___height
+  cover_image___formats___large___ext
+  cover_image___formats___large___url
+  cover_image___formats___large___hash
+  cover_image___formats___large___mime
+  cover_image___formats___large___name
+  cover_image___formats___large___size
+  cover_image___formats___large___width
+  cover_image___formats___large___height
+  cover_image___formats___small___ext
+  cover_image___formats___small___url
+  cover_image___formats___small___hash
+  cover_image___formats___small___mime
+  cover_image___formats___small___name
+  cover_image___formats___small___size
+  cover_image___formats___small___width
+  cover_image___formats___small___height
+  cover_image___formats___medium___ext
+  cover_image___formats___medium___url
+  cover_image___formats___medium___hash
+  cover_image___formats___medium___mime
+  cover_image___formats___medium___name
+  cover_image___formats___medium___size
+  cover_image___formats___medium___width
+  cover_image___formats___medium___height
+  cover_image___formats___thumbnail___ext
+  cover_image___formats___thumbnail___url
+  cover_image___formats___thumbnail___hash
+  cover_image___formats___thumbnail___mime
+  cover_image___formats___thumbnail___name
+  cover_image___formats___thumbnail___size
+  cover_image___formats___thumbnail___width
+  cover_image___formats___thumbnail___height
+  cover_image___hash
+  cover_image___ext
+  cover_image___mime
+  cover_image___size
+  cover_image___url
+  cover_image___createdAt
+  cover_image___updatedAt
+  cover_image___localFile___sourceInstanceName
+  cover_image___localFile___absolutePath
+  cover_image___localFile___relativePath
+  cover_image___localFile___extension
+  cover_image___localFile___size
+  cover_image___localFile___prettySize
+  cover_image___localFile___modifiedTime
+  cover_image___localFile___accessTime
+  cover_image___localFile___changeTime
+  cover_image___localFile___birthTime
+  cover_image___localFile___root
+  cover_image___localFile___dir
+  cover_image___localFile___base
+  cover_image___localFile___ext
+  cover_image___localFile___name
+  cover_image___localFile___relativeDirectory
+  cover_image___localFile___dev
+  cover_image___localFile___mode
+  cover_image___localFile___nlink
+  cover_image___localFile___uid
+  cover_image___localFile___gid
+  cover_image___localFile___rdev
+  cover_image___localFile___ino
+  cover_image___localFile___atimeMs
+  cover_image___localFile___mtimeMs
+  cover_image___localFile___ctimeMs
+  cover_image___localFile___atime
+  cover_image___localFile___mtime
+  cover_image___localFile___ctime
+  cover_image___localFile___birthtime
+  cover_image___localFile___birthtimeMs
+  cover_image___localFile___blksize
+  cover_image___localFile___blocks
+  cover_image___localFile___url
+  cover_image___localFile___publicURL
+  cover_image___localFile___childrenImageSharp
+  cover_image___localFile___childrenImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  cover_image___localFile___childrenImageSharp___id
+  cover_image___localFile___childrenImageSharp___children
+  cover_image___localFile___childImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  cover_image___localFile___childImageSharp___id
+  cover_image___localFile___childImageSharp___children
+  cover_image___localFile___id
+  cover_image___localFile___parent___id
+  cover_image___localFile___parent___children
+  cover_image___localFile___children
+  cover_image___localFile___children___id
+  cover_image___localFile___children___children
+  cover_image___localFile___internal___content
+  cover_image___localFile___internal___contentDigest
+  cover_image___localFile___internal___description
+  cover_image___localFile___internal___fieldOwners
+  cover_image___localFile___internal___ignoreType
+  cover_image___localFile___internal___mediaType
+  cover_image___localFile___internal___owner
+  cover_image___localFile___internal___type
+  cover_image___strapi_id
   bus___id
   bus___parent___id
   bus___parent___parent___id
@@ -1044,8 +1188,11 @@ enum STRAPI_TRAILFieldsEnum {
   coords___internal___owner
   coords___internal___type
   coords___lat1
+  coords___lat2
   coords___lng1
+  coords___lng2
   coords___strapi_id
+  strapi_id
   childrenStrapiTrailContentTextnode
   childrenStrapiTrailContentTextnode___id
   childrenStrapiTrailContentTextnode___parent___id
@@ -1147,18 +1294,19 @@ input STRAPI_TRAILFilterInput {
   children: NodeFilterListInput
   internal: InternalFilterInput
   title: StringQueryOperatorInput
-  createdAt: DateQueryOperatorInput
-  updatedAt: DateQueryOperatorInput
-  publishedAt: DateQueryOperatorInput
   content: STRAPI_TRAILContentFilterInput
   criterion: StringQueryOperatorInput
   trail_type: StringQueryOperatorInput
   slug: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
+  createdAt: DateQueryOperatorInput
+  updatedAt: DateQueryOperatorInput
+  publishedAt: DateQueryOperatorInput
+  cover_image: STRAPI__MEDIAFilterInput
   bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput
   car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput
   train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput
   coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput
+  strapi_id: IntQueryOperatorInput
   childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput
   childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
 }
@@ -1201,6 +1349,18 @@ input BooleanQueryOperatorInput {
   nin: [Boolean]
 }
 
+input STRAPI_TRAILContentFilterInput {
+  data: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
+}
+
+input STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  content: StringQueryOperatorInput
+}
+
 input DateQueryOperatorInput {
   eq: Date
   ne: Date
@@ -1212,16 +1372,26 @@ input DateQueryOperatorInput {
   nin: [Date]
 }
 
-input STRAPI_TRAILContentFilterInput {
-  data: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
-}
-
-input STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput {
+input STRAPI__MEDIAFilterInput {
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
-  content: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  alternativeText: StringQueryOperatorInput
+  caption: StringQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  formats: STRAPI__MEDIAFormatsFilterInput
+  hash: StringQueryOperatorInput
+  ext: StringQueryOperatorInput
+  mime: StringQueryOperatorInput
+  size: FloatQueryOperatorInput
+  url: StringQueryOperatorInput
+  createdAt: DateQueryOperatorInput
+  updatedAt: DateQueryOperatorInput
+  localFile: FileFilterInput
+  strapi_id: IntQueryOperatorInput
 }
 
 input IntQueryOperatorInput {
@@ -1235,47 +1405,23 @@ input IntQueryOperatorInput {
   nin: [Int]
 }
 
-input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  stop1: StringQueryOperatorInput
-  stop2: StringQueryOperatorInput
-  stop3: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
+input STRAPI__MEDIAFormatsFilterInput {
+  large: STRAPI__MEDIAFormatsLargeFilterInput
+  small: STRAPI__MEDIAFormatsSmallFilterInput
+  medium: STRAPI__MEDIAFormatsMediumFilterInput
+  thumbnail: STRAPI__MEDIAFormatsThumbnailFilterInput
 }
 
-input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  parking1: StringQueryOperatorInput
-  parking2: StringQueryOperatorInput
-  parking3: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
-}
-
-input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  station1: StringQueryOperatorInput
-  station2: StringQueryOperatorInput
-  station3: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
-}
-
-input STRAPI__COMPONENT_COORDS_COORDSFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  lat1: FloatQueryOperatorInput
-  lng1: FloatQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
+input STRAPI__MEDIAFormatsLargeFilterInput {
+  ext: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  hash: StringQueryOperatorInput
+  mime: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  size: FloatQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  provider_metadata: STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput
 }
 
 input FloatQueryOperatorInput {
@@ -1289,18 +1435,104 @@ input FloatQueryOperatorInput {
   nin: [Float]
 }
 
-input STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput {
-  elemMatch: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
+input STRAPI__MEDIAFormatsLargeProvider_metadataFilterInput {
+  public_id: StringQueryOperatorInput
+  resource_type: StringQueryOperatorInput
 }
 
-input STRAPI_TRAILSortInput {
-  fields: [STRAPI_TRAILFieldsEnum]
-  order: [SortOrderEnum] = [ASC]
+input STRAPI__MEDIAFormatsSmallFilterInput {
+  ext: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  hash: StringQueryOperatorInput
+  mime: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  size: FloatQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  provider_metadata: STRAPI__MEDIAFormatsSmallProvider_metadataFilterInput
 }
 
-enum SortOrderEnum {
-  ASC
-  DESC
+input STRAPI__MEDIAFormatsSmallProvider_metadataFilterInput {
+  public_id: StringQueryOperatorInput
+  resource_type: StringQueryOperatorInput
+}
+
+input STRAPI__MEDIAFormatsMediumFilterInput {
+  ext: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  hash: StringQueryOperatorInput
+  mime: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  size: FloatQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  provider_metadata: STRAPI__MEDIAFormatsMediumProvider_metadataFilterInput
+}
+
+input STRAPI__MEDIAFormatsMediumProvider_metadataFilterInput {
+  public_id: StringQueryOperatorInput
+  resource_type: StringQueryOperatorInput
+}
+
+input STRAPI__MEDIAFormatsThumbnailFilterInput {
+  ext: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  hash: StringQueryOperatorInput
+  mime: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  size: FloatQueryOperatorInput
+  width: IntQueryOperatorInput
+  height: IntQueryOperatorInput
+  provider_metadata: STRAPI__MEDIAFormatsThumbnailProvider_metadataFilterInput
+}
+
+input STRAPI__MEDIAFormatsThumbnailProvider_metadataFilterInput {
+  public_id: StringQueryOperatorInput
+  resource_type: StringQueryOperatorInput
+}
+
+input FileFilterInput {
+  sourceInstanceName: StringQueryOperatorInput
+  absolutePath: StringQueryOperatorInput
+  relativePath: StringQueryOperatorInput
+  extension: StringQueryOperatorInput
+  size: IntQueryOperatorInput
+  prettySize: StringQueryOperatorInput
+  modifiedTime: DateQueryOperatorInput
+  accessTime: DateQueryOperatorInput
+  changeTime: DateQueryOperatorInput
+  birthTime: DateQueryOperatorInput
+  root: StringQueryOperatorInput
+  dir: StringQueryOperatorInput
+  base: StringQueryOperatorInput
+  ext: StringQueryOperatorInput
+  name: StringQueryOperatorInput
+  relativeDirectory: StringQueryOperatorInput
+  dev: IntQueryOperatorInput
+  mode: IntQueryOperatorInput
+  nlink: IntQueryOperatorInput
+  uid: IntQueryOperatorInput
+  gid: IntQueryOperatorInput
+  rdev: IntQueryOperatorInput
+  ino: FloatQueryOperatorInput
+  atimeMs: FloatQueryOperatorInput
+  mtimeMs: FloatQueryOperatorInput
+  ctimeMs: FloatQueryOperatorInput
+  atime: DateQueryOperatorInput
+  mtime: DateQueryOperatorInput
+  ctime: DateQueryOperatorInput
+  birthtime: DateQueryOperatorInput
+  birthtimeMs: FloatQueryOperatorInput
+  blksize: IntQueryOperatorInput
+  blocks: IntQueryOperatorInput
+  url: StringQueryOperatorInput
+  publicURL: StringQueryOperatorInput
+  childrenImageSharp: ImageSharpFilterListInput
+  childImageSharp: ImageSharpFilterInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
 }
 
 input ImageSharpFilterListInput {
@@ -1369,6 +1601,65 @@ input ImageSharpResizeFilterInput {
   height: IntQueryOperatorInput
   aspectRatio: FloatQueryOperatorInput
   originalName: StringQueryOperatorInput
+}
+
+input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  stop1: StringQueryOperatorInput
+  stop2: StringQueryOperatorInput
+  stop3: StringQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  parking1: StringQueryOperatorInput
+  parking2: StringQueryOperatorInput
+  parking3: StringQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  station1: StringQueryOperatorInput
+  station2: StringQueryOperatorInput
+  station3: StringQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI__COMPONENT_COORDS_COORDSFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  lat1: FloatQueryOperatorInput
+  lat2: FloatQueryOperatorInput
+  lng1: FloatQueryOperatorInput
+  lng2: FloatQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput {
+  elemMatch: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
+}
+
+input STRAPI_TRAILSortInput {
+  fields: [STRAPI_TRAILFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+enum SortOrderEnum {
+  ASC
+  DESC
 }
 
 type FileConnection {
@@ -1666,50 +1957,6 @@ type FileGroupConnection {
   group(skip: Int, limit: Int, field: FileFieldsEnum!): [FileGroupConnection!]!
   field: String!
   fieldValue: String
-}
-
-input FileFilterInput {
-  sourceInstanceName: StringQueryOperatorInput
-  absolutePath: StringQueryOperatorInput
-  relativePath: StringQueryOperatorInput
-  extension: StringQueryOperatorInput
-  size: IntQueryOperatorInput
-  prettySize: StringQueryOperatorInput
-  modifiedTime: DateQueryOperatorInput
-  accessTime: DateQueryOperatorInput
-  changeTime: DateQueryOperatorInput
-  birthTime: DateQueryOperatorInput
-  root: StringQueryOperatorInput
-  dir: StringQueryOperatorInput
-  base: StringQueryOperatorInput
-  ext: StringQueryOperatorInput
-  name: StringQueryOperatorInput
-  relativeDirectory: StringQueryOperatorInput
-  dev: IntQueryOperatorInput
-  mode: IntQueryOperatorInput
-  nlink: IntQueryOperatorInput
-  uid: IntQueryOperatorInput
-  gid: IntQueryOperatorInput
-  rdev: IntQueryOperatorInput
-  ino: FloatQueryOperatorInput
-  atimeMs: FloatQueryOperatorInput
-  mtimeMs: FloatQueryOperatorInput
-  ctimeMs: FloatQueryOperatorInput
-  atime: DateQueryOperatorInput
-  mtime: DateQueryOperatorInput
-  ctime: DateQueryOperatorInput
-  birthtime: DateQueryOperatorInput
-  birthtimeMs: FloatQueryOperatorInput
-  blksize: IntQueryOperatorInput
-  blocks: IntQueryOperatorInput
-  url: StringQueryOperatorInput
-  publicURL: StringQueryOperatorInput
-  childrenImageSharp: ImageSharpFilterListInput
-  childImageSharp: ImageSharpFilterInput
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
 }
 
 input FileSortInput {
@@ -2853,6 +3100,314 @@ input ImageSharpSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
+input ContentDataFilterInput {
+  content: StringQueryOperatorInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+type ContentConnection {
+  totalCount: Int!
+  edges: [ContentEdge!]!
+  nodes: [Content!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentFieldsEnum!): [String!]!
+  max(field: ContentFieldsEnum!): Float
+  min(field: ContentFieldsEnum!): Float
+  sum(field: ContentFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContentFieldsEnum!): [ContentGroupConnection!]!
+}
+
+type ContentEdge {
+  next: Content
+  node: Content!
+  previous: Content
+}
+
+enum ContentFieldsEnum {
+  data___content
+  data___id
+  data___parent___id
+  data___parent___parent___id
+  data___parent___parent___children
+  data___parent___children
+  data___parent___children___id
+  data___parent___children___children
+  data___parent___internal___content
+  data___parent___internal___contentDigest
+  data___parent___internal___description
+  data___parent___internal___fieldOwners
+  data___parent___internal___ignoreType
+  data___parent___internal___mediaType
+  data___parent___internal___owner
+  data___parent___internal___type
+  data___children
+  data___children___id
+  data___children___parent___id
+  data___children___parent___children
+  data___children___children
+  data___children___children___id
+  data___children___children___children
+  data___children___internal___content
+  data___children___internal___contentDigest
+  data___children___internal___description
+  data___children___internal___fieldOwners
+  data___children___internal___ignoreType
+  data___children___internal___mediaType
+  data___children___internal___owner
+  data___children___internal___type
+  data___internal___content
+  data___internal___contentDigest
+  data___internal___description
+  data___internal___fieldOwners
+  data___internal___ignoreType
+  data___internal___mediaType
+  data___internal___owner
+  data___internal___type
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+}
+
+type ContentGroupConnection {
+  totalCount: Int!
+  edges: [ContentEdge!]!
+  nodes: [Content!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentFieldsEnum!): [String!]!
+  max(field: ContentFieldsEnum!): Float
+  min(field: ContentFieldsEnum!): Float
+  sum(field: ContentFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContentFieldsEnum!): [ContentGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+input ContentFilterInput {
+  data: ContentDataFilterInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+input ContentSortInput {
+  fields: [ContentFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+type ContentDataConnection {
+  totalCount: Int!
+  edges: [ContentDataEdge!]!
+  nodes: [ContentData!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentDataFieldsEnum!): [String!]!
+  max(field: ContentDataFieldsEnum!): Float
+  min(field: ContentDataFieldsEnum!): Float
+  sum(field: ContentDataFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContentDataFieldsEnum!): [ContentDataGroupConnection!]!
+}
+
+type ContentDataEdge {
+  next: ContentData
+  node: ContentData!
+  previous: ContentData
+}
+
+enum ContentDataFieldsEnum {
+  content
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+}
+
+type ContentDataGroupConnection {
+  totalCount: Int!
+  edges: [ContentDataEdge!]!
+  nodes: [ContentData!]!
+  pageInfo: PageInfo!
+  distinct(field: ContentDataFieldsEnum!): [String!]!
+  max(field: ContentDataFieldsEnum!): Float
+  min(field: ContentDataFieldsEnum!): Float
+  sum(field: ContentDataFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: ContentDataFieldsEnum!): [ContentDataGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+input ContentDataSortInput {
+  fields: [ContentDataFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
 type CarAvailibilityConnection {
   totalCount: Int!
   edges: [CarAvailibilityEdge!]!
@@ -3598,6 +4153,351 @@ input UploadFileSortInput {
   order: [SortOrderEnum] = [ASC]
 }
 
+type STRAPI__MEDIAConnection {
+  totalCount: Int!
+  edges: [STRAPI__MEDIAEdge!]!
+  nodes: [STRAPI__MEDIA!]!
+  pageInfo: PageInfo!
+  distinct(field: STRAPI__MEDIAFieldsEnum!): [String!]!
+  max(field: STRAPI__MEDIAFieldsEnum!): Float
+  min(field: STRAPI__MEDIAFieldsEnum!): Float
+  sum(field: STRAPI__MEDIAFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: STRAPI__MEDIAFieldsEnum!): [STRAPI__MEDIAGroupConnection!]!
+}
+
+type STRAPI__MEDIAEdge {
+  next: STRAPI__MEDIA
+  node: STRAPI__MEDIA!
+  previous: STRAPI__MEDIA
+}
+
+enum STRAPI__MEDIAFieldsEnum {
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+  name
+  alternativeText
+  caption
+  width
+  height
+  formats___large___ext
+  formats___large___url
+  formats___large___hash
+  formats___large___mime
+  formats___large___name
+  formats___large___size
+  formats___large___width
+  formats___large___height
+  formats___large___provider_metadata___public_id
+  formats___large___provider_metadata___resource_type
+  formats___small___ext
+  formats___small___url
+  formats___small___hash
+  formats___small___mime
+  formats___small___name
+  formats___small___size
+  formats___small___width
+  formats___small___height
+  formats___small___provider_metadata___public_id
+  formats___small___provider_metadata___resource_type
+  formats___medium___ext
+  formats___medium___url
+  formats___medium___hash
+  formats___medium___mime
+  formats___medium___name
+  formats___medium___size
+  formats___medium___width
+  formats___medium___height
+  formats___medium___provider_metadata___public_id
+  formats___medium___provider_metadata___resource_type
+  formats___thumbnail___ext
+  formats___thumbnail___url
+  formats___thumbnail___hash
+  formats___thumbnail___mime
+  formats___thumbnail___name
+  formats___thumbnail___size
+  formats___thumbnail___width
+  formats___thumbnail___height
+  formats___thumbnail___provider_metadata___public_id
+  formats___thumbnail___provider_metadata___resource_type
+  hash
+  ext
+  mime
+  size
+  url
+  createdAt
+  updatedAt
+  localFile___sourceInstanceName
+  localFile___absolutePath
+  localFile___relativePath
+  localFile___extension
+  localFile___size
+  localFile___prettySize
+  localFile___modifiedTime
+  localFile___accessTime
+  localFile___changeTime
+  localFile___birthTime
+  localFile___root
+  localFile___dir
+  localFile___base
+  localFile___ext
+  localFile___name
+  localFile___relativeDirectory
+  localFile___dev
+  localFile___mode
+  localFile___nlink
+  localFile___uid
+  localFile___gid
+  localFile___rdev
+  localFile___ino
+  localFile___atimeMs
+  localFile___mtimeMs
+  localFile___ctimeMs
+  localFile___atime
+  localFile___mtime
+  localFile___ctime
+  localFile___birthtime
+  localFile___birthtimeMs
+  localFile___blksize
+  localFile___blocks
+  localFile___url
+  localFile___publicURL
+  localFile___childrenImageSharp
+  localFile___childrenImageSharp___fixed___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fixed___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___sizes @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___originalImg @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___presentationWidth @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___fluid___presentationHeight @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___original___width
+  localFile___childrenImageSharp___original___height
+  localFile___childrenImageSharp___original___src
+  localFile___childrenImageSharp___resize___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___resize___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___resize___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___resize___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___resize___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___resize___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childrenImageSharp___id
+  localFile___childrenImageSharp___parent___id
+  localFile___childrenImageSharp___parent___children
+  localFile___childrenImageSharp___children
+  localFile___childrenImageSharp___children___id
+  localFile___childrenImageSharp___children___children
+  localFile___childrenImageSharp___internal___content
+  localFile___childrenImageSharp___internal___contentDigest
+  localFile___childrenImageSharp___internal___description
+  localFile___childrenImageSharp___internal___fieldOwners
+  localFile___childrenImageSharp___internal___ignoreType
+  localFile___childrenImageSharp___internal___mediaType
+  localFile___childrenImageSharp___internal___owner
+  localFile___childrenImageSharp___internal___type
+  localFile___childImageSharp___fixed___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fixed___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___base64 @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___srcSet @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___srcWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___srcSetWebp @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___sizes @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___originalImg @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___presentationWidth @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___fluid___presentationHeight @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___original___width
+  localFile___childImageSharp___original___height
+  localFile___childImageSharp___original___src
+  localFile___childImageSharp___resize___src @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___resize___tracedSVG @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___resize___width @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___resize___height @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___resize___aspectRatio @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___resize___originalName @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  localFile___childImageSharp___id
+  localFile___childImageSharp___parent___id
+  localFile___childImageSharp___parent___children
+  localFile___childImageSharp___children
+  localFile___childImageSharp___children___id
+  localFile___childImageSharp___children___children
+  localFile___childImageSharp___internal___content
+  localFile___childImageSharp___internal___contentDigest
+  localFile___childImageSharp___internal___description
+  localFile___childImageSharp___internal___fieldOwners
+  localFile___childImageSharp___internal___ignoreType
+  localFile___childImageSharp___internal___mediaType
+  localFile___childImageSharp___internal___owner
+  localFile___childImageSharp___internal___type
+  localFile___id
+  localFile___parent___id
+  localFile___parent___parent___id
+  localFile___parent___parent___children
+  localFile___parent___children
+  localFile___parent___children___id
+  localFile___parent___children___children
+  localFile___parent___internal___content
+  localFile___parent___internal___contentDigest
+  localFile___parent___internal___description
+  localFile___parent___internal___fieldOwners
+  localFile___parent___internal___ignoreType
+  localFile___parent___internal___mediaType
+  localFile___parent___internal___owner
+  localFile___parent___internal___type
+  localFile___children
+  localFile___children___id
+  localFile___children___parent___id
+  localFile___children___parent___children
+  localFile___children___children
+  localFile___children___children___id
+  localFile___children___children___children
+  localFile___children___internal___content
+  localFile___children___internal___contentDigest
+  localFile___children___internal___description
+  localFile___children___internal___fieldOwners
+  localFile___children___internal___ignoreType
+  localFile___children___internal___mediaType
+  localFile___children___internal___owner
+  localFile___children___internal___type
+  localFile___internal___content
+  localFile___internal___contentDigest
+  localFile___internal___description
+  localFile___internal___fieldOwners
+  localFile___internal___ignoreType
+  localFile___internal___mediaType
+  localFile___internal___owner
+  localFile___internal___type
+  strapi_id
+}
+
+type STRAPI__MEDIAGroupConnection {
+  totalCount: Int!
+  edges: [STRAPI__MEDIAEdge!]!
+  nodes: [STRAPI__MEDIA!]!
+  pageInfo: PageInfo!
+  distinct(field: STRAPI__MEDIAFieldsEnum!): [String!]!
+  max(field: STRAPI__MEDIAFieldsEnum!): Float
+  min(field: STRAPI__MEDIAFieldsEnum!): Float
+  sum(field: STRAPI__MEDIAFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: STRAPI__MEDIAFieldsEnum!): [STRAPI__MEDIAGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+input STRAPI__MEDIASortInput {
+  fields: [STRAPI__MEDIAFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
 type STRAPI__COMPONENT_COORDS_COORDSConnection {
   totalCount: Int!
   edges: [STRAPI__COMPONENT_COORDS_COORDSEdge!]!
@@ -3704,7 +4604,9 @@ enum STRAPI__COMPONENT_COORDS_COORDSFieldsEnum {
   internal___owner
   internal___type
   lat1
+  lat2
   lng1
+  lng2
   strapi_id
 }
 
@@ -4859,14 +5761,14 @@ input InstagramContentSortInput {
 type StrapiTrail implements Node {
   slug: String
   title: String
-  trail_type: ENUM_TRAIL_TRAIL_TYPE
+  trail_type: ENUM_TRAIL_TRAIL_TYPE!
   criterion: ENUM_TRAIL_CRITERION
-  availability_car: CarAvailibility
-  availability_bus: BusAvailibility
-  availability_train: TrainAvailibility
-  content: String!
-  coords: Coords
-  train: TrainAvailibility
+  availability_car: CarAvailibility!
+  availability_bus: BusAvailibility!
+  availability_train: TrainAvailibility!
+  content: Content!
+  coords: Coords!
+  train: TrainAvailibility!
   cover_image: UploadFile
   id: ID!
   parent: Node
@@ -4887,6 +5789,22 @@ enum ENUM_TRAIL_CRITERION {
   bike3
   turist1
   turist2
+}
+
+type Content implements Node {
+  data: ContentData
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type ContentData implements Node {
+  content: String
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
 }
 
 type CarAvailibility implements Node {
@@ -4964,13 +5882,136 @@ type UploadFile implements Node {
   internal: Internal!
 }
 
+type STRAPI__MEDIA implements Node {
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+  name: String
+  alternativeText: String
+  caption: String
+  width: Int
+  height: Int
+  formats: STRAPI__MEDIAFormats
+  hash: String
+  ext: String
+  mime: String
+  size: Float
+  url: String
+  createdAt(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  updatedAt(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  localFile: File
+  strapi_id: Int
+}
+
+type STRAPI__MEDIAFormats {
+  large: STRAPI__MEDIAFormatsLarge
+  small: STRAPI__MEDIAFormatsSmall
+  medium: STRAPI__MEDIAFormatsMedium
+  thumbnail: STRAPI__MEDIAFormatsThumbnail
+}
+
+type STRAPI__MEDIAFormatsLarge {
+  ext: String
+  url: String
+  hash: String
+  mime: String
+  name: String
+  size: Float
+  width: Int
+  height: Int
+  provider_metadata: STRAPI__MEDIAFormatsLargeProvider_metadata
+}
+
+type STRAPI__MEDIAFormatsLargeProvider_metadata {
+  public_id: String
+  resource_type: String
+}
+
+type STRAPI__MEDIAFormatsSmall {
+  ext: String
+  url: String
+  hash: String
+  mime: String
+  name: String
+  size: Float
+  width: Int
+  height: Int
+  provider_metadata: STRAPI__MEDIAFormatsSmallProvider_metadata
+}
+
+type STRAPI__MEDIAFormatsSmallProvider_metadata {
+  public_id: String
+  resource_type: String
+}
+
+type STRAPI__MEDIAFormatsMedium {
+  ext: String
+  url: String
+  hash: String
+  mime: String
+  name: String
+  size: Float
+  width: Int
+  height: Int
+  provider_metadata: STRAPI__MEDIAFormatsMediumProvider_metadata
+}
+
+type STRAPI__MEDIAFormatsMediumProvider_metadata {
+  public_id: String
+  resource_type: String
+}
+
+type STRAPI__MEDIAFormatsThumbnail {
+  ext: String
+  url: String
+  hash: String
+  mime: String
+  name: String
+  size: Float
+  width: Int
+  height: Int
+  provider_metadata: STRAPI__MEDIAFormatsThumbnailProvider_metadata
+}
+
+type STRAPI__MEDIAFormatsThumbnailProvider_metadata {
+  public_id: String
+  resource_type: String
+}
+
 type STRAPI__COMPONENT_COORDS_COORDS implements Node {
   id: ID!
   parent: Node
   children: [Node!]!
   internal: Internal!
   lat1: Float
+  lat2: Float
   lng1: Float
+  lng2: Float
   strapi_id: Int
 }
 
@@ -5021,6 +6062,10 @@ type STRAPI_TRAIL implements Node {
   children: [Node!]!
   internal: Internal!
   title: String
+  content: STRAPI_TRAILContent
+  criterion: String
+  trail_type: String
+  slug: String
   createdAt(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
@@ -5060,15 +6105,12 @@ type STRAPI_TRAIL implements Node {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  content: STRAPI_TRAILContent
-  criterion: String
-  trail_type: String
-  slug: String
-  strapi_id: Int
+  cover_image: STRAPI__MEDIA
   bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUS
   car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CAR
   train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAIN
   coords: STRAPI__COMPONENT_COORDS_COORDS
+  strapi_id: Int
 
   # Returns all children nodes filtered by type STRAPI_TRAIL_CONTENT_TEXTNODE
   childrenStrapiTrailContentTextnode: [STRAPI_TRAIL_CONTENT_TEXTNODE]
