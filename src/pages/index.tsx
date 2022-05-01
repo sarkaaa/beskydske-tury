@@ -6,15 +6,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 import Header from "../components/header"
-import Emoji from "../components/emoji"
 import Container from "../components/container"
 import TrailInfoContainer from "../components/trailInfoContainer"
 import StyledSection from "../components/section"
 import Instagram, { Title as TitleLight } from "../components/instagram"
 import forrestBg from "../images/forrest-bg.png"
-// import step1 from "../images/step1.png"
-// import step2 from "../images/step2.png"
-// import step3 from "../images/step3.png"
 import theme from "../constants/theme"
 import StyledLink from "../components/link"
 import { StaticImage } from "gatsby-plugin-image"
@@ -103,7 +99,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Beskydské túry" />
-      <Header title="Beskydské túry" subtitle="Pěší trasy v Beskydech" />
+      <Header title="Beskydské túry" subtitle="Pěší trasy v Beskydech" homepage />
       <Element
         name="mainSection"
         className="mainSection"

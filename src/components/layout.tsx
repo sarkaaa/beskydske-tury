@@ -6,6 +6,7 @@ import { useWindowSize } from "@react-hook/window-size"
 import Navigation from "./navigation"
 import MobileNavigation from "./mobileNavigation"
 import { LinkedIcon as Icon } from "./icon"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Wrapper = styled.div(
   ({ theme }) => css`
@@ -27,6 +28,7 @@ const Navbar = styled.div<{ transparent?: boolean }>(
     right: 0;
     left: 0;
     transition: all 0.3s ease-in-out;
+    max-height: 3rem;
 
     background-color: ${transparent
       ? "rgba(255, 255, 255, 0.6)"
@@ -150,7 +152,13 @@ const Layout = ({ children }: Props) => {
       <Wrapper>
         <Navbar transparent={scrollState === "top"}>
           <NavbarInner>
-            <span>logo</span>
+            <StaticImage
+              src="../images/logo.png"
+              placeholder="blurred"
+              alt="Beskydské túry"
+              layout="fixed"
+              height={48}
+            />
             {width > 700 ? (
               <Navigation categories={CATEGORIES} />
             ) : (

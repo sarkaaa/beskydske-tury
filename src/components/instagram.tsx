@@ -146,8 +146,6 @@ const InstagramTile = ({
 const Instagram = () => {
   const size = useWindowSize()
 
-  // const { edges } = data.allInstaNode
-
   const data = useStaticQuery(graphql`
     query MyQuery {
       allInstagramContent {

@@ -7,6 +7,7 @@ module.exports = {
     title: `Beskydské túry`,
     description: `Turistické trasy v Beskydech.`,
     author: `@sarkachwastkova`,
+    image: `src/images/thumbnail_lg.png`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -21,7 +22,24 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-extract-schema`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `dominantColor`,
+          quality: 100,
+          breakpoints: [420, 576, 768, 992, 1200, 1920],
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -29,32 +47,15 @@ module.exports = {
         start_url: `/`,
         background_color: `#fcf7d5`,
         theme_color: `#fcf7d5`,
-        icon: `src/images/logo.png`,
+        icon: `src/images/favicons/favicon144.png`,
         display: `minimal-ui`,
       },
     },
     `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       {
-    //         family: `Noto Sans`,
-    //         subsets: [`latin-ext`],
-    //         variants: [`400`, `700`],
-    //       },
-    //       {
-    //         family: `Merriweather`,
-    //         subsets: [`latin-ext`],
-    //         variants: [`300`, `400`, `700`],
-    //       },
-    //     ],
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-164520326-1",
+        trackingId: process.env.ANALYTICS_ID,
       },
     },
     `gatsby-transformer-json`,

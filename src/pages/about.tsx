@@ -2,17 +2,52 @@ import React from "react"
 import styled, { css } from "styled-components"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Button from "../components/button"
 import Header from "../components/header"
 import Container from "../components/container"
-import { HorizontalInfo, HorizontalInfoContent } from "./index"
+import { HorizontalInfoContent } from "./index"
 import StyledLink from "../components/link"
 import StyledSection from "../components/section"
+import Emoji from "../components/emoji"
+import { StaticImage } from "gatsby-plugin-image"
+
+const ContentWrapper = styled.div<{ reversed?: boolean }>(
+  ({ theme, reversed }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @media ${theme.sizes.screenWidth.tablet} {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: ${reversed ? '3fr 2fr' : '2fr 3fr'};
+      grid-template-rows: repeat(1, 1fr);
+      align-items: flex-start;
+    }
+
+    > ${HorizontalInfoContent} {
+      flex: 2;
+    }
+  `
+)
+
+const ImageContent = styled.div(
+  () => css`
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  `
+)
 
 const ProjectInfoSection = styled(StyledSection)(
   ({ theme }) => css`
     background: ${theme.colors.sand};
-    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    padding-top: 2rem;
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+
+    @media ${theme.sizes.screenWidth.desktopLG} {
+      padding-top: 0rem;
+      clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+    }
   `
 )
 
@@ -22,7 +57,7 @@ const Kontakt = () => (
     <Header title="O Beskydských túrách" />
     <Container>
       <h2>Co jsou Beskydské túry?</h2>
-      <HorizontalInfo>
+      <div>
         <HorizontalInfoContent>
           <p>
             Beskydské túry jsou webová aplikace, kde se turista může inspirovat
@@ -32,12 +67,12 @@ const Kontakt = () => (
           </p>
           <ul>
             <li>
-              Z bodu A do bodu A: tyto trasy jsou vhodné pro turisty, kteří
+              <b>Z bodu A do bodu A:</b> tyto trasy jsou vhodné pro turisty, kteří
               jezdí autem. Cíl každé této trasy je tedy na stejném místě jako
               její začátek.
             </li>
             <li>
-              Z body A do bodu B: perfektní pro všechny turisty, kteří preferují
+              <b>Z body A do bodu B:</b> perfektní pro všechny turisty, kteří preferují
               transfer veřejnou dopravou a nejsou tedy vázání na to, aby se
               vrátili na stejné místo. Každá trasa, která je označena tímto
               typem tedy končí na jiném místě než začala. Jak počáteční bod, tak
@@ -45,6 +80,13 @@ const Kontakt = () => (
               (případně stanice).
             </li>
           </ul>
+          <StaticImage
+            src="../images/about.png"
+            placeholder="blurred"
+            alt="Beskydy"
+            objectFit="contain"
+            layout="constrained"
+          />
           <p>
             Celý projekt je moje “volnočasová” aktivita, kterou jsem vytvořila s
             cílem procvičit a rozšířit si své technické a programovací znalosti.
@@ -62,32 +104,41 @@ const Kontakt = () => (
             .
           </p>
         </HorizontalInfoContent>
-      </HorizontalInfo>
-      <h2>Kdo to ,,vymyslel?"</h2>
-      <HorizontalInfo>
+      </div>
+      <h2>Kdo to ,,vymyslel"?</h2>
+      <ContentWrapper reversed>
         <HorizontalInfoContent>
           <p>
             Jsem Šárka a ráda chodím na výšlapy v Beskydech. V posledních letech
             ne tak pravidelně, neb trávím svůj čas daleko od Beskyd, ale když
             čas a situace dovolí, ráda na výlet zajdu, ať je léto nebo zima a v
-            kopcích metr sněhu. :)
+            kopcích metr sněhu. :) Kromě toho taky ráda jezdím na kole. <Emoji symbol="🚴" label="bike" />
           </p>
           <p>
             Velkou část svého času trávím u počítače, v online a{" "}
             <StyledLink href="https://pandacode.cz/" target="_blank">
               programuju
             </StyledLink>{" "}
-            - třeba Beskydské túry. Zajímá mě vše okolo web developmentu -
-            zejména front-end, UI/UX, ecommerce, apod.
+            - třeba Beskydské túry a zajímá mě vše okolo web developmentu. <Emoji symbol="👩🏻‍💻" label="programmer" />
           </p>
         </HorizontalInfoContent>
-        <HorizontalInfoContent>fotka</HorizontalInfoContent>
-      </HorizontalInfo>
+        <ImageContent><StaticImage
+            src="../images/ja.png"
+            placeholder="blurred"
+            alt="Já"
+            width={200}
+          /></ImageContent>
+      </ContentWrapper>
     </Container>
     <ProjectInfoSection>
       <h2>Technické informace</h2>
-      <HorizontalInfo>
-        <HorizontalInfoContent>fotka</HorizontalInfoContent>
+      <ContentWrapper>
+        <ImageContent><StaticImage
+            src="../images/vscode.png"
+            placeholder="blurred"
+            alt="Kod"
+            height={340}
+          /></ImageContent>
         <HorizontalInfoContent>
           <p>
             Beskydské túry vznikly tedy i proto, že jsem chtěla mít “svůj”
@@ -158,7 +209,7 @@ const Kontakt = () => (
             .
           </p>
         </HorizontalInfoContent>
-      </HorizontalInfo>
+      </ContentWrapper>
     </ProjectInfoSection>
   </Layout>
 )

@@ -329,8 +329,6 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   polyfill: Boolean
   pathPrefix: String
   jsxRuntime: String
@@ -345,6 +343,7 @@ type SiteSiteMetadata {
   title: String
   description: String
   author: String
+  image: String
 }
 
 type SiteFunction implements Node {
@@ -700,12 +699,12 @@ type ImageSharpResize {
 
 type Query {
   allStrapiTrail(filter: STRAPI_TRAILFilterInput, sort: STRAPI_TRAILSortInput, skip: Int, limit: Int): STRAPI_TRAILConnection!
-  strapiTrail(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, content: STRAPI_TRAILContentFilterInput, criterion: StringQueryOperatorInput, trail_type: StringQueryOperatorInput, slug: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, publishedAt: DateQueryOperatorInput, cover_image: STRAPI__MEDIAFilterInput, bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput, car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput, train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput, strapi_id: IntQueryOperatorInput, childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput, childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput): STRAPI_TRAIL
+  strapiTrail(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, title: StringQueryOperatorInput, content: STRAPI_TRAILContentFilterInput, criterion: StringQueryOperatorInput, trail_type: StringQueryOperatorInput, slug: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, publishedAt: DateQueryOperatorInput, cover_image: STRAPI__MEDIAFilterInput, car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput, coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput, strapi_id: IntQueryOperatorInput, bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput, photos: STRAPI__MEDIAFilterListInput, train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput, childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput): STRAPI_TRAIL
   file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, url: StringQueryOperatorInput, publicURL: StringQueryOperatorInput, childrenImageSharp: ImageSharpFilterListInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(functionRoute: StringQueryOperatorInput, pluginName: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
@@ -733,7 +732,7 @@ type Query {
   allUploadFile(filter: UploadFileFilterInput, sort: UploadFileSortInput, skip: Int, limit: Int): UploadFileConnection!
   strapiMedia(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, name: StringQueryOperatorInput, alternativeText: StringQueryOperatorInput, caption: StringQueryOperatorInput, width: IntQueryOperatorInput, height: IntQueryOperatorInput, formats: STRAPI__MEDIAFormatsFilterInput, hash: StringQueryOperatorInput, ext: StringQueryOperatorInput, mime: StringQueryOperatorInput, size: FloatQueryOperatorInput, url: StringQueryOperatorInput, createdAt: DateQueryOperatorInput, updatedAt: DateQueryOperatorInput, localFile: FileFilterInput, strapi_id: IntQueryOperatorInput): STRAPI__MEDIA
   allStrapiMedia(filter: STRAPI__MEDIAFilterInput, sort: STRAPI__MEDIASortInput, skip: Int, limit: Int): STRAPI__MEDIAConnection!
-  strapiComponentCoordsCoords(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, lat1: FloatQueryOperatorInput, lat2: FloatQueryOperatorInput, lng1: FloatQueryOperatorInput, lng2: FloatQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_COORDS_COORDS
+  strapiComponentCoordsCoords(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, lat1: FloatQueryOperatorInput, lat2: FloatQueryOperatorInput, lat3: FloatQueryOperatorInput, lat4: FloatQueryOperatorInput, lat5: FloatQueryOperatorInput, lat6: FloatQueryOperatorInput, lat7: FloatQueryOperatorInput, lat8: FloatQueryOperatorInput, lat9: FloatQueryOperatorInput, lat10: FloatQueryOperatorInput, lng1: FloatQueryOperatorInput, lng2: FloatQueryOperatorInput, lng3: FloatQueryOperatorInput, lng4: FloatQueryOperatorInput, lng5: FloatQueryOperatorInput, lng6: FloatQueryOperatorInput, lng7: FloatQueryOperatorInput, lng8: FloatQueryOperatorInput, lng9: FloatQueryOperatorInput, lng10: FloatQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_COORDS_COORDS
   allStrapiComponentCoordsCoords(filter: STRAPI__COMPONENT_COORDS_COORDSFilterInput, sort: STRAPI__COMPONENT_COORDS_COORDSSortInput, skip: Int, limit: Int): STRAPI__COMPONENT_COORDS_COORDSConnection!
   strapiComponentAvailabilityAvailabilityTrain(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, station1: StringQueryOperatorInput, station2: StringQueryOperatorInput, station3: StringQueryOperatorInput, strapi_id: IntQueryOperatorInput): STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAIN
   allStrapiComponentAvailabilityAvailabilityTrain(filter: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput, sort: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINSortInput, skip: Int, limit: Int): STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINConnection!
@@ -1023,48 +1022,6 @@ enum STRAPI_TRAILFieldsEnum {
   cover_image___localFile___internal___owner
   cover_image___localFile___internal___type
   cover_image___strapi_id
-  bus___id
-  bus___parent___id
-  bus___parent___parent___id
-  bus___parent___parent___children
-  bus___parent___children
-  bus___parent___children___id
-  bus___parent___children___children
-  bus___parent___internal___content
-  bus___parent___internal___contentDigest
-  bus___parent___internal___description
-  bus___parent___internal___fieldOwners
-  bus___parent___internal___ignoreType
-  bus___parent___internal___mediaType
-  bus___parent___internal___owner
-  bus___parent___internal___type
-  bus___children
-  bus___children___id
-  bus___children___parent___id
-  bus___children___parent___children
-  bus___children___children
-  bus___children___children___id
-  bus___children___children___children
-  bus___children___internal___content
-  bus___children___internal___contentDigest
-  bus___children___internal___description
-  bus___children___internal___fieldOwners
-  bus___children___internal___ignoreType
-  bus___children___internal___mediaType
-  bus___children___internal___owner
-  bus___children___internal___type
-  bus___internal___content
-  bus___internal___contentDigest
-  bus___internal___description
-  bus___internal___fieldOwners
-  bus___internal___ignoreType
-  bus___internal___mediaType
-  bus___internal___owner
-  bus___internal___type
-  bus___stop1
-  bus___stop2
-  bus___stop3
-  bus___strapi_id
   car___id
   car___parent___id
   car___parent___parent___id
@@ -1107,6 +1064,248 @@ enum STRAPI_TRAILFieldsEnum {
   car___parking2
   car___parking3
   car___strapi_id
+  coords___id
+  coords___parent___id
+  coords___parent___parent___id
+  coords___parent___parent___children
+  coords___parent___children
+  coords___parent___children___id
+  coords___parent___children___children
+  coords___parent___internal___content
+  coords___parent___internal___contentDigest
+  coords___parent___internal___description
+  coords___parent___internal___fieldOwners
+  coords___parent___internal___ignoreType
+  coords___parent___internal___mediaType
+  coords___parent___internal___owner
+  coords___parent___internal___type
+  coords___children
+  coords___children___id
+  coords___children___parent___id
+  coords___children___parent___children
+  coords___children___children
+  coords___children___children___id
+  coords___children___children___children
+  coords___children___internal___content
+  coords___children___internal___contentDigest
+  coords___children___internal___description
+  coords___children___internal___fieldOwners
+  coords___children___internal___ignoreType
+  coords___children___internal___mediaType
+  coords___children___internal___owner
+  coords___children___internal___type
+  coords___internal___content
+  coords___internal___contentDigest
+  coords___internal___description
+  coords___internal___fieldOwners
+  coords___internal___ignoreType
+  coords___internal___mediaType
+  coords___internal___owner
+  coords___internal___type
+  coords___lat1
+  coords___lat2
+  coords___lat3
+  coords___lat4
+  coords___lat5
+  coords___lat6
+  coords___lat7
+  coords___lat8
+  coords___lat9
+  coords___lat10
+  coords___lng1
+  coords___lng2
+  coords___lng3
+  coords___lng4
+  coords___lng5
+  coords___lng6
+  coords___lng7
+  coords___lng8
+  coords___lng9
+  coords___lng10
+  coords___strapi_id
+  strapi_id
+  bus___id
+  bus___parent___id
+  bus___parent___parent___id
+  bus___parent___parent___children
+  bus___parent___children
+  bus___parent___children___id
+  bus___parent___children___children
+  bus___parent___internal___content
+  bus___parent___internal___contentDigest
+  bus___parent___internal___description
+  bus___parent___internal___fieldOwners
+  bus___parent___internal___ignoreType
+  bus___parent___internal___mediaType
+  bus___parent___internal___owner
+  bus___parent___internal___type
+  bus___children
+  bus___children___id
+  bus___children___parent___id
+  bus___children___parent___children
+  bus___children___children
+  bus___children___children___id
+  bus___children___children___children
+  bus___children___internal___content
+  bus___children___internal___contentDigest
+  bus___children___internal___description
+  bus___children___internal___fieldOwners
+  bus___children___internal___ignoreType
+  bus___children___internal___mediaType
+  bus___children___internal___owner
+  bus___children___internal___type
+  bus___internal___content
+  bus___internal___contentDigest
+  bus___internal___description
+  bus___internal___fieldOwners
+  bus___internal___ignoreType
+  bus___internal___mediaType
+  bus___internal___owner
+  bus___internal___type
+  bus___stop1
+  bus___stop2
+  bus___stop3
+  bus___strapi_id
+  photos
+  photos___id
+  photos___parent___id
+  photos___parent___parent___id
+  photos___parent___parent___children
+  photos___parent___children
+  photos___parent___children___id
+  photos___parent___children___children
+  photos___parent___internal___content
+  photos___parent___internal___contentDigest
+  photos___parent___internal___description
+  photos___parent___internal___fieldOwners
+  photos___parent___internal___ignoreType
+  photos___parent___internal___mediaType
+  photos___parent___internal___owner
+  photos___parent___internal___type
+  photos___children
+  photos___children___id
+  photos___children___parent___id
+  photos___children___parent___children
+  photos___children___children
+  photos___children___children___id
+  photos___children___children___children
+  photos___children___internal___content
+  photos___children___internal___contentDigest
+  photos___children___internal___description
+  photos___children___internal___fieldOwners
+  photos___children___internal___ignoreType
+  photos___children___internal___mediaType
+  photos___children___internal___owner
+  photos___children___internal___type
+  photos___internal___content
+  photos___internal___contentDigest
+  photos___internal___description
+  photos___internal___fieldOwners
+  photos___internal___ignoreType
+  photos___internal___mediaType
+  photos___internal___owner
+  photos___internal___type
+  photos___name
+  photos___alternativeText
+  photos___caption
+  photos___width
+  photos___height
+  photos___formats___large___ext
+  photos___formats___large___url
+  photos___formats___large___hash
+  photos___formats___large___mime
+  photos___formats___large___name
+  photos___formats___large___size
+  photos___formats___large___width
+  photos___formats___large___height
+  photos___formats___small___ext
+  photos___formats___small___url
+  photos___formats___small___hash
+  photos___formats___small___mime
+  photos___formats___small___name
+  photos___formats___small___size
+  photos___formats___small___width
+  photos___formats___small___height
+  photos___formats___medium___ext
+  photos___formats___medium___url
+  photos___formats___medium___hash
+  photos___formats___medium___mime
+  photos___formats___medium___name
+  photos___formats___medium___size
+  photos___formats___medium___width
+  photos___formats___medium___height
+  photos___formats___thumbnail___ext
+  photos___formats___thumbnail___url
+  photos___formats___thumbnail___hash
+  photos___formats___thumbnail___mime
+  photos___formats___thumbnail___name
+  photos___formats___thumbnail___size
+  photos___formats___thumbnail___width
+  photos___formats___thumbnail___height
+  photos___hash
+  photos___ext
+  photos___mime
+  photos___size
+  photos___url
+  photos___createdAt
+  photos___updatedAt
+  photos___localFile___sourceInstanceName
+  photos___localFile___absolutePath
+  photos___localFile___relativePath
+  photos___localFile___extension
+  photos___localFile___size
+  photos___localFile___prettySize
+  photos___localFile___modifiedTime
+  photos___localFile___accessTime
+  photos___localFile___changeTime
+  photos___localFile___birthTime
+  photos___localFile___root
+  photos___localFile___dir
+  photos___localFile___base
+  photos___localFile___ext
+  photos___localFile___name
+  photos___localFile___relativeDirectory
+  photos___localFile___dev
+  photos___localFile___mode
+  photos___localFile___nlink
+  photos___localFile___uid
+  photos___localFile___gid
+  photos___localFile___rdev
+  photos___localFile___ino
+  photos___localFile___atimeMs
+  photos___localFile___mtimeMs
+  photos___localFile___ctimeMs
+  photos___localFile___atime
+  photos___localFile___mtime
+  photos___localFile___ctime
+  photos___localFile___birthtime
+  photos___localFile___birthtimeMs
+  photos___localFile___blksize
+  photos___localFile___blocks
+  photos___localFile___url
+  photos___localFile___publicURL
+  photos___localFile___childrenImageSharp
+  photos___localFile___childrenImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  photos___localFile___childrenImageSharp___id
+  photos___localFile___childrenImageSharp___children
+  photos___localFile___childImageSharp___gatsbyImageData @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  photos___localFile___childImageSharp___id
+  photos___localFile___childImageSharp___children
+  photos___localFile___id
+  photos___localFile___parent___id
+  photos___localFile___parent___children
+  photos___localFile___children
+  photos___localFile___children___id
+  photos___localFile___children___children
+  photos___localFile___internal___content
+  photos___localFile___internal___contentDigest
+  photos___localFile___internal___description
+  photos___localFile___internal___fieldOwners
+  photos___localFile___internal___ignoreType
+  photos___localFile___internal___mediaType
+  photos___localFile___internal___owner
+  photos___localFile___internal___type
+  photos___strapi_id
   train___id
   train___parent___id
   train___parent___parent___id
@@ -1149,50 +1348,6 @@ enum STRAPI_TRAILFieldsEnum {
   train___station2
   train___station3
   train___strapi_id
-  coords___id
-  coords___parent___id
-  coords___parent___parent___id
-  coords___parent___parent___children
-  coords___parent___children
-  coords___parent___children___id
-  coords___parent___children___children
-  coords___parent___internal___content
-  coords___parent___internal___contentDigest
-  coords___parent___internal___description
-  coords___parent___internal___fieldOwners
-  coords___parent___internal___ignoreType
-  coords___parent___internal___mediaType
-  coords___parent___internal___owner
-  coords___parent___internal___type
-  coords___children
-  coords___children___id
-  coords___children___parent___id
-  coords___children___parent___children
-  coords___children___children
-  coords___children___children___id
-  coords___children___children___children
-  coords___children___internal___content
-  coords___children___internal___contentDigest
-  coords___children___internal___description
-  coords___children___internal___fieldOwners
-  coords___children___internal___ignoreType
-  coords___children___internal___mediaType
-  coords___children___internal___owner
-  coords___children___internal___type
-  coords___internal___content
-  coords___internal___contentDigest
-  coords___internal___description
-  coords___internal___fieldOwners
-  coords___internal___ignoreType
-  coords___internal___mediaType
-  coords___internal___owner
-  coords___internal___type
-  coords___lat1
-  coords___lat2
-  coords___lng1
-  coords___lng2
-  coords___strapi_id
-  strapi_id
   childrenStrapiTrailContentTextnode
   childrenStrapiTrailContentTextnode___id
   childrenStrapiTrailContentTextnode___parent___id
@@ -1302,11 +1457,12 @@ input STRAPI_TRAILFilterInput {
   updatedAt: DateQueryOperatorInput
   publishedAt: DateQueryOperatorInput
   cover_image: STRAPI__MEDIAFilterInput
-  bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput
   car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput
-  train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput
   coords: STRAPI__COMPONENT_COORDS_COORDSFilterInput
   strapi_id: IntQueryOperatorInput
+  bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput
+  photos: STRAPI__MEDIAFilterListInput
+  train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput
   childrenStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterListInput
   childStrapiTrailContentTextnode: STRAPI_TRAIL_CONTENT_TEXTNODEFilterInput
 }
@@ -1603,17 +1759,6 @@ input ImageSharpResizeFilterInput {
   originalName: StringQueryOperatorInput
 }
 
-input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  stop1: StringQueryOperatorInput
-  stop2: StringQueryOperatorInput
-  stop3: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
-}
-
 input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput {
   id: StringQueryOperatorInput
   parent: NodeFilterInput
@@ -1625,6 +1770,49 @@ input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CARFilterInput {
   strapi_id: IntQueryOperatorInput
 }
 
+input STRAPI__COMPONENT_COORDS_COORDSFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  lat1: FloatQueryOperatorInput
+  lat2: FloatQueryOperatorInput
+  lat3: FloatQueryOperatorInput
+  lat4: FloatQueryOperatorInput
+  lat5: FloatQueryOperatorInput
+  lat6: FloatQueryOperatorInput
+  lat7: FloatQueryOperatorInput
+  lat8: FloatQueryOperatorInput
+  lat9: FloatQueryOperatorInput
+  lat10: FloatQueryOperatorInput
+  lng1: FloatQueryOperatorInput
+  lng2: FloatQueryOperatorInput
+  lng3: FloatQueryOperatorInput
+  lng4: FloatQueryOperatorInput
+  lng5: FloatQueryOperatorInput
+  lng6: FloatQueryOperatorInput
+  lng7: FloatQueryOperatorInput
+  lng8: FloatQueryOperatorInput
+  lng9: FloatQueryOperatorInput
+  lng10: FloatQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUSFilterInput {
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+  stop1: StringQueryOperatorInput
+  stop2: StringQueryOperatorInput
+  stop3: StringQueryOperatorInput
+  strapi_id: IntQueryOperatorInput
+}
+
+input STRAPI__MEDIAFilterListInput {
+  elemMatch: STRAPI__MEDIAFilterInput
+}
+
 input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput {
   id: StringQueryOperatorInput
   parent: NodeFilterInput
@@ -1633,18 +1821,6 @@ input STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAINFilterInput {
   station1: StringQueryOperatorInput
   station2: StringQueryOperatorInput
   station3: StringQueryOperatorInput
-  strapi_id: IntQueryOperatorInput
-}
-
-input STRAPI__COMPONENT_COORDS_COORDSFilterInput {
-  id: StringQueryOperatorInput
-  parent: NodeFilterInput
-  children: NodeFilterListInput
-  internal: InternalFilterInput
-  lat1: FloatQueryOperatorInput
-  lat2: FloatQueryOperatorInput
-  lng1: FloatQueryOperatorInput
-  lng2: FloatQueryOperatorInput
   strapi_id: IntQueryOperatorInput
 }
 
@@ -2163,6 +2339,7 @@ input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
   author: StringQueryOperatorInput
+  image: StringQueryOperatorInput
 }
 
 type SiteConnection {
@@ -2188,8 +2365,7 @@ enum SiteFieldsEnum {
   siteMetadata___title
   siteMetadata___description
   siteMetadata___author
-  port
-  host
+  siteMetadata___image
   polyfill
   pathPrefix
   jsxRuntime
@@ -2299,8 +2475,6 @@ type SiteGroupConnection {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
   jsxRuntime: StringQueryOperatorInput
@@ -4605,8 +4779,24 @@ enum STRAPI__COMPONENT_COORDS_COORDSFieldsEnum {
   internal___type
   lat1
   lat2
+  lat3
+  lat4
+  lat5
+  lat6
+  lat7
+  lat8
+  lat9
+  lat10
   lng1
   lng2
+  lng3
+  lng4
+  lng5
+  lng6
+  lng7
+  lng8
+  lng9
+  lng10
   strapi_id
 }
 
@@ -6010,8 +6200,24 @@ type STRAPI__COMPONENT_COORDS_COORDS implements Node {
   internal: Internal!
   lat1: Float
   lat2: Float
+  lat3: Float
+  lat4: Float
+  lat5: Float
+  lat6: Float
+  lat7: Float
+  lat8: Float
+  lat9: Float
+  lat10: Float
   lng1: Float
   lng2: Float
+  lng3: Float
+  lng4: Float
+  lng5: Float
+  lng6: Float
+  lng7: Float
+  lng8: Float
+  lng9: Float
+  lng10: Float
   strapi_id: Int
 }
 
@@ -6106,11 +6312,12 @@ type STRAPI_TRAIL implements Node {
     locale: String
   ): Date
   cover_image: STRAPI__MEDIA
-  bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUS
   car: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_CAR
-  train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAIN
   coords: STRAPI__COMPONENT_COORDS_COORDS
   strapi_id: Int
+  bus: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_BUS
+  photos: [STRAPI__MEDIA]
+  train: STRAPI__COMPONENT_AVAILABILITY_AVAILABILITY_TRAIN
 
   # Returns all children nodes filtered by type STRAPI_TRAIL_CONTENT_TEXTNODE
   childrenStrapiTrailContentTextnode: [STRAPI_TRAIL_CONTENT_TEXTNODE]
