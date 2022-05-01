@@ -76,7 +76,7 @@ const InfoWrapper = styled.div(
 )
 
 const MapWrapper = styled.div(
-  ({ theme }) => css`
+  () => css`
     position: relative;
     width: 100%;
     box-shadow: 0px 0px 15px #d8d8d8;
@@ -181,7 +181,7 @@ const Trasa = ({ data }) => {
       fetchRouteInfo()
     }, [])
   } catch (err) {
-    console.log(err)
+    console.log(err) 
   }
 
   return (
@@ -324,6 +324,7 @@ export const query = graphql`
       criterion
       coords {
         lat1
+        lng1
         lat2
         lng2
         lat3

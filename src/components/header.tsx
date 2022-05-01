@@ -105,15 +105,16 @@ type Props = {
   title: string
   subtitle?: string
   customBg?: string
+  homepage?: boolean
 }
 
-const Header = ({ title, subtitle = null, customBg }: Props) => (
-  <Wrapper customBg={customBg} homePage={window.location.pathname === "/"}>
+const Header = ({ title, subtitle = null, customBg, homepage }: Props) => (
+  <Wrapper customBg={customBg} homePage={homepage}>
     <TitleContainer>
-      <Title small={window.location.pathname !== "/"}>{title}</Title>
+      <Title small={!homepage}>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
     </TitleContainer>
-    {window.location.pathname === "/" && (
+    {homepage && (
       <Link
         activeClass="active"
         className="mainSection"

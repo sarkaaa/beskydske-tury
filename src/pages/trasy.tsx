@@ -29,6 +29,7 @@ const Trasy = ({ data }) => {
       <Container>
         <TrailsWrapper>
           {data?.allStrapiTrail.edges.reverse().map(item => (
+            item.node.slug !== 'test' &&
             <TrailTile key={item.node.id} trail={item.node} />
           ))}
         </TrailsWrapper>
