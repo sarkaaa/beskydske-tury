@@ -274,7 +274,7 @@ const Trasa = ({ data }) => {
             </InfoWrapper>
           </InfoPanelWrapper>
           <h2 style={{ textAlign: "left" }}>Popis trasy</h2>
-          <Content>{content.data.content}</Content>
+          <Content>{content?.data?.content}</Content>
           <LinkWrapper>
             <Button
               as={StyledLink}
