@@ -10,10 +10,13 @@ Website with hiking trails in Beskid mountains - now in progress. Website will c
 1. `git clone git@github.com:sarkaaa/beskydske-tury.git`
 2. `yarn` or `npm i`
 3. Dev mode: `gatsby develop`
-4. Storybook: `yarn storybook`
 
 ### Dev
 Written in ReactJS/TypeScript using GatsbyJS. GraphQL for data.
+
+### Related repositories
+1. [Beskydské túry Strapi](https://github.com/sarkaaa/bt-strapi-cms)
+2. [Beskydské túry Cypress](https://github.com/sarkaaa/bt-cypress)
 
 # Beskydské túry [CZ]
 ## O projektu
@@ -26,4 +29,7 @@ Napsáno v ReactJS/TypeScript s použitím GatsbyJS. GraphQL pro manipulaci s da
 1. `git clone git@github.com:sarkaaa/beskydske-tury.git`
 2. `yarn` nebo `npm i`
 3. Dev mode: `gatsby develop`
-4. Storybook: `yarn storybook`
+
+### Související repozitáře
+1. [Beskydské túry Strapi](https://github.com/sarkaaa/bt-strapi-cms)
+2. [Beskydské túry Cypress](https://github.com/sarkaaa/bt-cypress)
