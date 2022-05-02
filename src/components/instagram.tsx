@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { css } from "styled-components"
 import useWindowSize from "../helpers/useWindowSize"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
 const Wrapper = styled.div(
   ({ theme }) => css`
@@ -143,37 +143,46 @@ const InstagramTile = ({
   </InstagramTileWrapper>
 )
 
+const IgFeed = ({ data }) => (
+  <>
+    {
+      data?.map(({ node }) => (
+        <InstagramTile
+          key={node.id}
+          bg={node.media_url}
+          link={node.permalink}
+          description={node.caption}
+        />
+      ))
+    }
+  </>
+)
+
 const Instagram = () => {
   const size = useWindowSize()
-
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      allInstagramContent {
-        edges {
-          node {
-            caption
-            media_url
-            permalink
-          }
-        }
-      }
-    }
-  `)
-
   const igGrid = size.width > 992 ? (size.width / 5) * 2 : size.width
 
   return (
     <Wrapper>
       <Title>Sledujte @beskydsketury na Instagramu!</Title>
       <Inner screenWidth={igGrid}>
-        {data.allInstagramContent.edges.map(({ node }) => (
-          <InstagramTile
-            key={node.id}
-            bg={node.media_url}
-            link={node.permalink}
-            description={node.caption}
-          />
-        ))}
+      <StaticQuery
+      query={graphql`
+      query MyQuery {
+        allInstagramContent {
+          edges {
+            node {
+              caption
+              media_url
+              permalink
+            }
+          }
+        }
+      }
+      `}
+      render={data => <IgFeed data={data.allInstagramContent.edges} />
+    }
+      />
       </Inner>
     </Wrapper>
   )
