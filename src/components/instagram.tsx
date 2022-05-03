@@ -167,21 +167,21 @@ const Instagram = () => {
       <Title>Sledujte @beskydsketury na Instagramu!</Title>
       <Inner screenWidth={igGrid}>
       <StaticQuery
-      query={graphql`
-      query MyQuery {
-        allInstagramContent {
-          edges {
-            node {
-              caption
-              media_url
-              permalink
+        query={graphql`
+          query MyQuery {
+            allInstagramContent {
+              edges {
+                node {
+                  caption
+                  media_url
+                  permalink
+                }
+              }
             }
           }
+        `}
+        render={data => <IgFeed data={data.allInstagramContent.edges} />
         }
-      }
-      `}
-      render={data => <IgFeed data={data.allInstagramContent.edges} />
-    }
       />
       </Inner>
     </Wrapper>

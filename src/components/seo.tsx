@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { useStaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql } from "gatsby";
 
 type Props = {
   description?: string;
@@ -9,28 +9,8 @@ type Props = {
   title: string;
 };
 
-const SEO = ({
-  description = `Beskydské túry - turistické trasy v Beskydech`,
-  lang = `cz`,
-  meta = [],
-  title,
-}: Props) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            image
-          }
-        }
-      }
-    `
-  );
-
-  const metaDescription = description || site.siteMetadata.description;
+const SeoComponent = ({ data, description, title, meta, lang }) => {
+  const metaDescription = description || data?.site.siteMetadata.description;
 
   const metaTypes = [
     {
@@ -51,7 +31,7 @@ const SEO = ({
     },
     {
       property: `og:image`,
-      content: site.siteMetadata.image,
+      content: data?.site.siteMetadata.image,
     },
     {
       name: `twitter:card`,
@@ -59,7 +39,7 @@ const SEO = ({
     },
     {
       name: `twitter:creator`,
-      content: site.siteMetadata.author,
+      content: data?.site.siteMetadata.author,
     },
     {
       name: `twitter:title`,
@@ -71,7 +51,7 @@ const SEO = ({
     },
     {
       name: `twitter:image`,
-      content: site.siteMetadata.image,
+      content: data?.site.siteMetadata.image,
     },
   ];
 
@@ -81,10 +61,37 @@ const SEO = ({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${data?.site.siteMetadata.title}`}
       meta={metaTypes.concat(meta)}
     />
   );
+}
+
+const SEO = ({
+  description = `Beskydské túry - turistické trasy v Beskydech`,
+  lang = `cz`,
+  meta = [],
+  title,
+}: Props) => {
+  return (
+    <StaticQuery
+      query={
+        graphql`
+          query siteData {
+            site {
+              siteMetadata {
+                title
+                description
+                author
+                image
+              }
+            }
+          }
+        `
+      }
+      render={data => <SeoComponent data={data} title={title} description={description} meta={meta} lang={lang} />}
+    />
+  )
 };
 
 export default SEO;
