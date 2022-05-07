@@ -25,7 +25,7 @@ type Props = {
 const Navigation = ({ categories }: Props) => (
   <Categories>
     {categories.map(({ title, to }) => (
-      <li key={title}>
+      <li key={title} data-cy="navLink">
         <StyledLink to={to} navLink>
           {title}
         </StyledLink>

@@ -65,10 +65,10 @@ const TrailInfoContainer = ({
 }: Props) => {
 
   return (
-    <InfoContainer order={order}>
+    <InfoContainer order={order} data-cy="infoContainer">
       {children}
-      <Title>{title}</Title>
-      <p>{description}</p>
+      <Title data-cy="infoContainerTitle">{title}</Title>
+      <p data-cy="infoContainerDescription">{description}</p>
     </InfoContainer>
   )
 }

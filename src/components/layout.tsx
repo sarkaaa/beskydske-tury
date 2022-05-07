@@ -158,6 +158,7 @@ const Layout = ({ children }: Props) => {
               alt="Beskydské túry"
               layout="fixed"
               height={48}
+              data-cy="btLogo"
             />
             {width > 700 ? (
               <Navigation categories={CATEGORIES} />
@@ -167,7 +168,7 @@ const Layout = ({ children }: Props) => {
           </NavbarInner>
         </Navbar>
         <Main>{children}</Main>
-        <Footer>
+        <Footer data-cy="footer">
           <FooterContainer>
             <p style={{ fontWeight: 600 }}>Beskydské túry, 2022</p>
             <IconsWrapper>

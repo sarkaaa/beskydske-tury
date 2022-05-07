@@ -98,7 +98,7 @@ export const Icon = ({ iconName, dark = false, small = false }: Props) => (
 
 export const LinkedIcon = ({ to, iconName }: { to: string } & Props) => (
   <>
-    <LinkedIconWrapper href={to} target="_blank">
+    <LinkedIconWrapper href={to} target="_blank" data-cy="iconLink">
       <FontAwesomeIcon icon={iconNames[iconName]} />
     </LinkedIconWrapper>
   </>
