@@ -111,8 +111,8 @@ type Props = {
 const Header = ({ title, subtitle = null, customBg, homepage }: Props) => (
   <Wrapper customBg={customBg} homePage={homepage}>
     <TitleContainer>
-      <Title small={!homepage}>{title}</Title>
-      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      <Title small={!homepage} data-cy="headerTitle">{title}</Title>
+      {subtitle && <Subtitle data-cy="headerSubtitle">{subtitle}</Subtitle>}
     </TitleContainer>
     {homepage && (
       <Link
@@ -122,6 +122,7 @@ const Header = ({ title, subtitle = null, customBg, homepage }: Props) => (
         spy={true}
         smooth={true}
         duration={500}
+        data-cy="headerChevronDown"
       >
         <Icon icon={faChevronDown} />
       </Link>

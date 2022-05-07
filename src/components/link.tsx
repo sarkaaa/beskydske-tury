@@ -146,11 +146,11 @@ const StyledLink = ({
   <React.Fragment>
     <StyledLinkWrapper navLink={navLink} buttonLink={buttonLink}>
       {props && props.to ? (
-        <Link to={props.to} {...props}>
+        <Link to={props.to} {...props} data-cy="link">
           {children}
         </Link>
       ) : (
-        <a {...props}>{children}</a>
+        <a {...props} data-cy="link">{children}</a>
       )}
     </StyledLinkWrapper>
   </React.Fragment>

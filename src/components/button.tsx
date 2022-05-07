@@ -151,7 +151,7 @@ type Props = {
 }
 
 const Button = ({ children, arrowright = false, ...props }: Props) => (
-  <StyledButton {...props} arrowright={arrowright}>
+  <StyledButton {...props} arrowright={arrowright} data-cy="button">
     <span>
       {children}
       {arrowright && <Icon icon={faArrowRight} />}

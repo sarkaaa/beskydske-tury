@@ -132,10 +132,10 @@ const InstagramTile = ({
   link: string
   description: string
 }) => (
-  <InstagramTileWrapper key={key}>
-    <InstagramTileInner bg={bg} href={link} target="_blank">
-      <InstagramTileOverlay>
-        <InstagramTileDescription>
+  <InstagramTileWrapper key={key} data-cy="igTile">
+    <InstagramTileInner bg={bg} href={link} target="_blank" data-cy="igTileInner">
+      <InstagramTileOverlay data-cy="igTileOverlay">
+        <InstagramTileDescription data-cy="igTileDescription">
           {description.substring(0, 120)}...
         </InstagramTileDescription>
       </InstagramTileOverlay>
@@ -163,7 +163,7 @@ const Instagram = () => {
   const igGrid = size.width > 992 ? (size.width / 5) * 2 : size.width
 
   return (
-    <Wrapper>
+    <Wrapper data-cy="igWrapper">
       <Title>Sledujte @beskydsketury na Instagramu!</Title>
       <Inner screenWidth={igGrid}>
       <StaticQuery

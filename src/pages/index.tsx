@@ -106,28 +106,30 @@ const IndexPage = () => {
         style={{ width: "100%" }}
       >
         <ForrestSection>
-          <Container>
+          <Container data-cy="mainInfo">
             <HorizontalInfo hidden>
               <HorizontalInfoContent style={{ paddingBottom: "5rem" }}>
-                <h3>O čem jsou Beskydské túry?</h3>
-                <p>
-                  Beskydské túry je webová aplikace s přehledem vybraných túr v
-                  Moravskoslezských Beskydech. Všechny trasy jsou dostupné v
-                  záložce <StyledLink to="/trasy">Trasy</StyledLink> a
-                  návštěvník si může vybrat trasy podle svých preferencí a
-                  nálady.
-                </p>
-                <p>
-                  Mimo jiné je tento projekt vytvořen jako volnočasová aktivita
-                  a celý kód je jako open-source zveřejněný v repozitáří{" "}
-                  <StyledLink
-                    href="https://github.com/sarkaaa/beskydske-tury"
-                    target="_blank"
-                  >
-                    Githubu
-                  </StyledLink>
-                  .
-                </p>
+                <h3 data-cy="mainInfoTitle">O čem jsou Beskydské túry?</h3>
+                <div data-cy="mainInfoContent">
+                  <p>
+                    Beskydské túry je webová aplikace s přehledem vybraných túr v
+                    Moravskoslezských Beskydech. Všechny trasy jsou dostupné v
+                    záložce <StyledLink to="/trasy">Trasy</StyledLink> a
+                    návštěvník si může vybrat trasy podle svých preferencí a
+                    nálady.
+                  </p>
+                  <p>
+                    Mimo jiné je tento projekt vytvořen jako volnočasová aktivita
+                    a celý kód je jako open-source zveřejněný v repozitáří{" "}
+                    <StyledLink
+                      href="https://github.com/sarkaaa/beskydske-tury"
+                      target="_blank"
+                    >
+                      Githubu
+                    </StyledLink>
+                    .
+                  </p>
+                </div>
                 <ButtonWrapper>
                   <Button
                     to="/about"
@@ -145,8 +147,8 @@ const IndexPage = () => {
         </ForrestSection>
         <StyledSection bg={theme.colors.primary}>
           <React.Fragment>
-            <TitleLight>Jak vybrat trasu?</TitleLight>
-            <InfoWrapper>
+            <TitleLight data-cy="title">Jak vybrat trasu?</TitleLight>
+            <InfoWrapper data-cy="findTrail">
               <TrailInfoContainer
                 order={1}
                 imgAlt="Výběr trasy"
@@ -158,6 +160,7 @@ const IndexPage = () => {
                   placeholder="blurred"
                   alt="Výběr trasy"
                   height={200}
+                  data-cy="infoContainerImg"
                 />                
               </TrailInfoContainer>
               <TrailInfoContainer
@@ -172,6 +175,7 @@ const IndexPage = () => {
                   placeholder="blurred"
                   alt="Zobrazení přes Mapy.cz"
                   width={200}
+                  data-cy="infoContainerImg"
                 />
                 </TrailInfoContainer>
               <TrailInfoContainer
@@ -185,6 +189,7 @@ const IndexPage = () => {
                   placeholder="blurred"
                   alt="Hurá na výšlap!"
                   width={200}
+                  data-cy="infoContainerImg"
                 />
               </TrailInfoContainer>
             </InfoWrapper>
