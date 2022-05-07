@@ -51,7 +51,7 @@ const ProjectInfoSection = styled(StyledSection)(
   `
 )
 
-const Kontakt = () => (
+const About = () => (
   <Layout>
     <SEO title="O Beskydských túrách" />
     <Header title="O Beskydských túrách" />
@@ -72,7 +72,7 @@ const Kontakt = () => (
               její začátek.
             </li>
             <li>
-              <b>Z body A do bodu B:</b> perfektní pro všechny turisty, kteří preferují
+              <b>Z bodu A do bodu B:</b> perfektní pro všechny turisty, kteří preferují
               transfer veřejnou dopravou a nejsou tedy vázání na to, aby se
               vrátili na stejné místo. Každá trasa, která je označena tímto
               typem tedy končí na jiném místě než začala. Jak počáteční bod, tak
@@ -185,7 +185,7 @@ const Kontakt = () => (
             <StyledLink href="https://strapi.io/" target="_blank">
               Strapi
             </StyledLink>{" "}
-            (+ Postgress) a aplikace je hostována na{" "}
+            (+ Postgres) a backend aplikace je hostován na{" "}
             <StyledLink href="https://www.heroku.com/" target="_blank">
               Heroku
             </StyledLink>
@@ -214,4 +214,4 @@ const Kontakt = () => (
   </Layout>
 )
 
-export default Kontakt
+export default About

@@ -114,7 +114,7 @@ const CATEGORIES = [
   },
   {
     title: "O webu",
-    to: "/about",
+    to: "/o-webu",
   },
 ]
 

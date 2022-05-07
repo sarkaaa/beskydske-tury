@@ -132,7 +132,7 @@ const IndexPage = () => {
                 </div>
                 <ButtonWrapper>
                   <Button
-                    to="/about"
+                    to="/o-webu"
                     as={Link}
                     buttonType="secondary"
                     arrowright

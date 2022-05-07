@@ -34,6 +34,7 @@ const Inner = styled.div<{ screenWidth: number }>(
 export const Title = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.light};
+    padding: 0 1rem;
   `
 )
 
