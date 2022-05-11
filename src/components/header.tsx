@@ -109,7 +109,7 @@ type Props = {
 }
 
 const Header = ({ title, subtitle = null, customBg, homepage }: Props) => (
-  <Wrapper customBg={customBg} homePage={homepage}>
+  <Wrapper customBg={customBg} homePage={homepage} data-cy="headerWrapper">
     <TitleContainer>
       <Title small={!homepage} data-cy="headerTitle">{title}</Title>
       {subtitle && <Subtitle data-cy="headerSubtitle">{subtitle}</Subtitle>}

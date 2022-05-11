@@ -55,7 +55,7 @@ const About = () => (
   <Layout>
     <SEO title="O Beskydských túrách" />
     <Header title="O Beskydských túrách" />
-    <Container>
+    <Container data-cy="aboutInfo">
       <h2>Co jsou Beskydské túry?</h2>
       <div>
         <HorizontalInfoContent>
@@ -86,6 +86,7 @@ const About = () => (
             alt="Beskydy"
             objectFit="contain"
             layout="constrained"
+            data-cy="aboutInfoImage"
           />
           <p>
             Celý projekt je moje “volnočasová” aktivita, kterou jsem vytvořila s
@@ -132,7 +133,7 @@ const About = () => (
     </Container>
     <ProjectInfoSection>
       <h2>Technické informace</h2>
-      <ContentWrapper>
+      <ContentWrapper data-cy="aboutTechnicalInfo">
         <ImageContent><StaticImage
             src="../images/vscode.png"
             placeholder="blurred"
