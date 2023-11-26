@@ -52,12 +52,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: process.env.ANALYTICS_ID,
-      },
-    },
     `gatsby-transformer-json`,
     // !Strapi
     {
