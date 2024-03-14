@@ -46,8 +46,8 @@ query IndexQuery {
         slug
         title
         content {
-          data {
-            content
+          children {
+            text
           }
         }
         cover_image {

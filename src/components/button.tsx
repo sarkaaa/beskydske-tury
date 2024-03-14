@@ -5,11 +5,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 const StyledButton = styled.button<{
-  buttonType?: "primary" | "secondary" | "dark"
+  buttontype?: "primary" | "secondary" | "dark"
   small?: boolean
-  arrowright?: boolean
+  $arrowright?: boolean
 }>(
-  ({ theme, small, buttonType = "primary", arrowright }) => css`
+  ({ theme, small, buttontype = "primary", $arrowright }) => css`
     color: ${theme.colors.primary};
     font-size: ${theme.sizes.sizeS};
     font-family: "Noto Sans", sans-serif;
@@ -18,9 +18,9 @@ const StyledButton = styled.button<{
     border: solid 2px transparent;
     background-image: linear-gradient(
       to right,
-      ${buttonType === "secondary" ? theme.colors.red : theme.colors.primary},
+      ${buttontype === "secondary" ? theme.colors.red : theme.colors.primary},
         ${
-          buttonType === "secondary"
+          buttontype === "secondary"
             ? lighten(0.1, theme.colors.red)
             : theme.colors.secondary
         }
@@ -53,9 +53,9 @@ const StyledButton = styled.button<{
       color: ${({ theme }) => theme.colors.light};
       background-image: linear-gradient(
         to right,
-        ${buttonType === "secondary" ? theme.colors.red : theme.colors.primary},
+        ${buttontype === "secondary" ? theme.colors.red : theme.colors.primary},
         ${
-          buttonType === "secondary"
+          buttontype === "secondary"
             ? lighten(0.1, theme.colors.red)
             : theme.colors.secondary
         }
@@ -74,7 +74,7 @@ const StyledButton = styled.button<{
 
     & span {
       background: ${
-        buttonType === "secondary" ? theme.colors.sand : theme.colors.light
+        buttontype === "secondary" ? theme.colors.sand : theme.colors.light
       };
       border-radius: 3rem;
       transition: background 0.5s ease;
@@ -84,7 +84,7 @@ const StyledButton = styled.button<{
       padding-right: 1rem;
 
       ${
-        arrowright &&
+        $arrowright &&
         css`
           & {
             padding-right: 2.75rem;
@@ -94,7 +94,7 @@ const StyledButton = styled.button<{
     }
 
     ${
-      buttonType === "dark" &&
+      buttontype === "dark" &&
       css`
         background-image: linear-gradient(
           to right,
@@ -151,7 +151,7 @@ type Props = {
 }
 
 const Button = ({ children, arrowright = false, ...props }: Props) => (
-  <StyledButton {...props} arrowright={arrowright} data-cy="button">
+  <StyledButton {...props} $arrowright={arrowright} data-cy="button">
     <span>
       {children}
       {arrowright && <Icon icon={faArrowRight} />}

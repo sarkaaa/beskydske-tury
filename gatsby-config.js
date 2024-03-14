@@ -57,21 +57,20 @@ module.exports = {
     {
       resolve: "gatsby-source-strapi",
       options: {
+        maxParallelRequests: 500,
         apiURL:  process.env.API_URL || "http://localhost:1337",
         accessToken: process.env.API_TOKEN,
-        collectionTypes: ["user", {
+        collectionTypes: ["user", "coords",
+        {
           singularName: "trail",
           queryParams: {
             publicationState:
               process.env.GATSBY_IS_PREVIEW === "true" ? "preview" : "live",
-            populate: {
-              cover: "*",
-              blocks: {
-                populate: "*",
-              },
-            },
+            populate: "*",
+          queryLimit: 5000,
           },
-        }],
+        }
+      ],
         // singleTypes: [`global`],
         queryLimit: 5000,
       },
@@ -79,14 +78,6 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/trasy/*`] },
-    },
-    {
-      resolve: `gatsby-source-instagram-all`,
-      options: {
-        access_token: process.env.INSTAGRAM_TOKEN || "",
-        limit: 10,
-        pageLimit: 10,
-      },
-    },
+    }
   ],
 }

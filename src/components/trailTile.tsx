@@ -45,18 +45,30 @@ const TileWrapper = styled.button<{ bg: string }>(
         color: ${theme.colors.dark};
         transition-delay: 0.5s;
 
-        :before {
-          transition-delay: 0s;
+        &:before,
+        &:after {
+          height: 100%;
         }
 
-        :after {
+        &:before {
+          transition-delay: 0s;
+          top: 0px;
+          left: -1px;
+          border-width: 0px 1px;
+          border-right-style: solid;
+          border-left-style: solid;
+          border-right-color: rgb(252, 252, 252);
+          border-left-color: rgb(252, 252, 252);
+          border-image: initial;
+          border-top-style: initial;
+          border-top-color: initial;
+          border-bottom-style: initial;
+          border-bottom-color: initial;
+        }
+
+        &:after {
           background: ${theme.colors.light};
           transition-delay: 0.35s;
-        }
-
-        :before,
-        :after {
-          height: 100%;
         }
       }
 

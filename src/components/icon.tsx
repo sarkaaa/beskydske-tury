@@ -28,16 +28,16 @@ const iconNames = {
   feets: faShoePrints,
 }
 
-const IconWrapper = styled.div<{ dark?: boolean; small?: boolean }>(
-  ({ theme, dark, small }) => css`
+const IconWrapper = styled.div<{ $dark?: boolean; $small?: boolean }>(
+  ({ theme, $dark, $small }) => css`
     margin: 0 0.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
 
     & > svg {
-      color: ${dark ? theme.colors.dark : theme.colors.light};
-      font-size: ${small ? "1rem" : "1.5rem"};
+      color: ${$dark ? theme.colors.dark : theme.colors.light};
+      font-size: ${$small ? "1rem" : "1.5rem"};
     }
   `
 )
@@ -90,7 +90,7 @@ type Props = {
 
 export const Icon = ({ iconName, dark = false, small = false }: Props) => (
   <>
-    <IconWrapper dark={dark} small={small}>
+    <IconWrapper $dark={dark} $small={small}>
       <FontAwesomeIcon icon={iconNames[iconName]} />
     </IconWrapper>
   </>
