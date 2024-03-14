@@ -36,11 +36,11 @@ const InfoWrapper = styled.div(
   `
 )
 
-const ButtonWrapper = styled.div<{ centered?: boolean }>(
-  ({ centered }) => css`
+const ButtonWrapper = styled.div<{ $centered?: boolean }>(
+  ({ $centered }) => css`
     position: relative;
     display: flex;
-    justify-content: ${centered ? "center" : "flex-start"};
+    justify-content: ${$centered ? "center" : "flex-start"};
     margin: 1rem 0;
   `
 )
@@ -134,8 +134,8 @@ const IndexPage = () => {
                   <Button
                     to="/o-webu"
                     as={Link}
-                    buttonType="secondary"
-                    arrowright
+                    buttontype="secondary"
+                    $arrowright
                   >
                     Více informací
                   </Button>
@@ -193,8 +193,8 @@ const IndexPage = () => {
                 />
               </TrailInfoContainer>
             </InfoWrapper>
-            <ButtonWrapper centered>
-              <Button to="/trasy" as={Link} buttonType="dark" arrowright>
+            <ButtonWrapper $centered>
+              <Button to="/trasy" as={Link} buttontype="dark" arrowright>
                 Přejít na trasy
               </Button>
             </ButtonWrapper>

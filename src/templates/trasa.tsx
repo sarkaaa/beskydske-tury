@@ -222,7 +222,7 @@ const Trasa = ({ data }) => {
               <InfoTitle>Délka trasy</InfoTitle>
               <InfoContent>
                 <Icon iconName="mountain" small />
-                <p>{(routeInfo?.length * 0.001).toFixed(2)} km</p>
+                <p>{(routeInfo?.length || 0 * 0.001).toFixed(2)} km</p>
               </InfoContent>
             </InfoWrapper>
             <InfoWrapper>
@@ -298,8 +298,8 @@ export const query = graphql`
       id
       title
       content {
-        data {
-          content
+        children {
+          text
         }
       }
       cover_image {

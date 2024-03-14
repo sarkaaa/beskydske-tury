@@ -2,6 +2,7 @@ import React from "react"
 import styled, { css } from "styled-components"
 import useWindowSize from "../helpers/useWindowSize"
 import { StaticQuery, graphql } from "gatsby"
+import StyledLink from "./link"
 
 const Wrapper = styled.div(
   ({ theme }) => css`
@@ -35,6 +36,17 @@ export const Title = styled.h2(
   ({ theme }) => css`
     color: ${theme.colors.light};
     padding: 0 1rem;
+
+    a,
+    a:hover,
+    a:focus {
+      color: ${theme.colors.light};
+      
+      &::before,
+      &::after {
+        background: ${theme.colors.light};
+      }
+    }
   `
 )
 
@@ -160,13 +172,13 @@ const IgFeed = ({ data }) => (
 )
 
 const Instagram = () => {
-  const size = useWindowSize()
-  const igGrid = size.width > 992 ? (size.width / 5) * 2 : size.width
+  // const size = useWindowSize()
+  // const igGrid = size.width > 992 ? (size.width / 5) * 2 : size.width
 
   return (
     <Wrapper data-cy="igWrapper">
-      <Title>Sledujte @beskydsketury na Instagramu!</Title>
-      <Inner screenWidth={igGrid}>
+      <Title><StyledLink href="https://instagram.com/beskydsketury" target="_blank">Sledujte @beskydsketury na Instagramu!</StyledLink></Title>
+      {/* <Inner screenWidth={igGrid}>
       <StaticQuery
         query={graphql`
           query MyQuery {
@@ -184,7 +196,7 @@ const Instagram = () => {
         render={data => <IgFeed data={data.allInstagramContent.edges} />
         }
       />
-      </Inner>
+      </Inner> */}
     </Wrapper>
   )
 }

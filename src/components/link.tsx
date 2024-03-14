@@ -2,11 +2,11 @@ import * as React from "react"
 import { Link } from "gatsby"
 import styled, { css } from "styled-components"
 
-const StyledLinkWrapper = styled.div<{
-  navLink?: boolean
-  buttonLink?: boolean
+const StyledLinkWrapper = styled.span<{
+  $navlink?: boolean
+  $buttonlink?: boolean
 }>(
-  ({ theme, navLink, buttonLink }) => css`
+  ({ theme, $navlink, $buttonlink }) => css`
     position: relative;
     display: inline-block;
     margin: 0 0.1rem;
@@ -15,7 +15,7 @@ const StyledLinkWrapper = styled.div<{
     z-index: 0;
     transition: ease-out 0.4s;
 
-    ${navLink &&
+    ${$navlink &&
     css`
       color: ${theme.colors.dark};
       padding: 0.25rem;
@@ -106,7 +106,7 @@ const StyledLinkWrapper = styled.div<{
         transition-delay: 0.25s;
       }
 
-      ${buttonLink &&
+      ${$buttonlink &&
       css`
         font-weight: 400;
 
@@ -144,7 +144,7 @@ const StyledLink = ({
   ...props
 }: Props) => (
   <React.Fragment>
-    <StyledLinkWrapper navLink={navLink} buttonLink={buttonLink}>
+    <StyledLinkWrapper $navlink={navLink} $buttonlink={buttonLink}>
       {props && props.to ? (
         <Link to={props.to} {...props} data-cy="link">
           {children}

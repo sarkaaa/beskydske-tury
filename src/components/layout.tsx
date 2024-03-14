@@ -21,8 +21,8 @@ const Wrapper = styled.div(
   `
 )
 
-const Navbar = styled.div<{ transparent?: boolean }>(
-  ({ theme, transparent }) => css`
+const Navbar = styled.div<{ $transparent?: boolean }>(
+  ({ theme, $transparent }) => css`
     position: fixed;
     top: 0;
     right: 0;
@@ -30,7 +30,7 @@ const Navbar = styled.div<{ transparent?: boolean }>(
     transition: all 0.3s ease-in-out;
     max-height: 3rem;
 
-    background-color: ${transparent
+    background-color: ${$transparent
       ? "rgba(255, 255, 255, 0.6)"
       : theme.colors.light};
     padding: 1rem 3rem;
@@ -125,7 +125,7 @@ type Props = {
 const Layout = ({ children }: Props) => {
   const [width] = useWindowSize()
 
-  let listener = null
+  let listener: any = null
   const [scrollState, setScrollState] = useState("top")
 
   useEffect(() => {
@@ -150,7 +150,7 @@ const Layout = ({ children }: Props) => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Wrapper>
-        <Navbar transparent={scrollState === "top"}>
+        <Navbar $transparent={scrollState === "top"}>
           <NavbarInner>
             <StaticImage
               src="../images/logo.png"

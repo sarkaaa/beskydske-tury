@@ -49,12 +49,12 @@ exports.createPages = ({ actions, graphql }) => {
   return getTrails
 }
 
-exports.sourceNodes = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions
   const typeDefs = `
     type Query {
-      allStrapiTrail: StrapiTrail
-      strapiTrail: StrapiTrail
+      allStrapiTrail: StrapiTrail!
+      strapiTrail: StrapiTrail!
     }
 
     type StrapiTrail implements Node {
@@ -62,20 +62,19 @@ exports.sourceNodes = ({ actions }) => {
       title: String
       trail_type: String
       criterion: ENUM_TRAIL_CRITERION
-      availability_car: CarAvailibility!
-      availability_bus: BusAvailibility!
-      availability_train: TrainAvailibility!
-      content: Content!
-      coords: Coords!
+      availability_car: CarAvailibility
+      availability_bus: BusAvailibility
+      availability_train: TrainAvailibility
+      content: JSON!
+      coords: Coords
       trail_type: ENUM_TRAIL_TRAIL_TYPE!
-      train: TrainAvailibility!
       cover_image: UploadFile
     }
 
     enum ENUM_TRAIL_TRAIL_TYPE {
       aa
       ab
-      }
+    }
 
     enum ENUM_TRAIL_CRITERION {
       fast
@@ -86,15 +85,6 @@ exports.sourceNodes = ({ actions }) => {
       turist1
       turist2
     }
-
-    type Content implements Node {
-      data: ContentData
-    }
-
-    type ContentData implements Node {
-      content: String
-    }
-
 
     type CarAvailibility implements Node {
       parking1: String
@@ -115,26 +105,26 @@ exports.sourceNodes = ({ actions }) => {
     }
 
     type Coords implements Node {
-      lat1: Float!
-      lng1: Float!
-      lat2: Float!
-      lng2: Float!
-      lat3: Float!
-      lng3: Float!
-      lat4: Float!
-      lng4: Float!
-      lat5: Float!
-      lng5: Float!
-      lat6: Float!
-      lng6: Float!
-      lat7: Float!
-      lng7: Float!
-      lat8: Float!
-      lng8: Float!
-      lat9: Float!
-      lng9: Float!
-      lat10: Float!
-      lng10: Float!
+      lat1: Float
+      lng1: Float
+      lat2: Float
+      lng2: Float
+      lat3: Float
+      lng3: Float
+      lat4: Float
+      lng4: Float
+      lat5: Float
+      lng5: Float
+      lat6: Float
+      lng6: Float
+      lat7: Float
+      lng7: Float
+      lat8: Float
+      lng8: Float
+      lat9: Float
+      lng9: Float
+      lat10: Float
+      lng10: Float
     }
 
     type UploadFile implements Node {
